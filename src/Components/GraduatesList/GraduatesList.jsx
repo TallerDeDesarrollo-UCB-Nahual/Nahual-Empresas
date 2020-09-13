@@ -8,7 +8,7 @@ class GraduatesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			users: []
+			graduates: []
 		};
 	}
 
@@ -17,17 +17,20 @@ class GraduatesList extends Component {
 		axios
 			.get(`${API_URL}/empresas-egresades`)
 			.then(response => {
-				this.setState({ users: response.data });
+				this.setState({
+					graduates: response.data
+				});
 			})
 			.catch(function(error) {
 				console.log(error);
 			});
 	}
 
-	listaEgresade() {
-		return this.state.users.map(function(currentList, i) {
-			return <Graduated item={currentList} key={i} />;
-		});
+	listGraduates=() => {
+		return(
+			 this.state.graduates.map((currentList, i) => {
+				return <Graduated item={currentList} key={i} />
+			}));
 	}
 
 	render() {
@@ -37,12 +40,14 @@ class GraduatesList extends Component {
 				<div style={{ marginRight: 80, marginLeft: 80 }}>
 					<Table celled>
 						<Table.Header>
-							<Table.HeaderCell colSpan="2">
-								<FilterButton />
-							</Table.HeaderCell>
-							<Table.HeaderCell colSpan="4">
-								<Input icon="search" iconPosition="left" className="search" />
-							</Table.HeaderCell>
+							<tr>
+								<Table.HeaderCell colSpan="2">
+									<FilterButton />
+								</Table.HeaderCell>
+								<Table.HeaderCell colSpan="4">
+									<Input icon="search" iconPosition="left" className="search" />
+								</Table.HeaderCell>
+							</tr>
 						</Table.Header>
 						<Table.Header>
 							<Table.Row style={{ textAlign: "center" }}>
@@ -56,7 +61,7 @@ class GraduatesList extends Component {
 								<Table.HeaderCell></Table.HeaderCell>
 							</Table.Row>
 						</Table.Header>
-						<Table.Body>{this.listaEgresade()}</Table.Body>
+						<Table.Body>{this.listGraduates()}</Table.Body>
 					</Table>
 				</div>
 			</div>
