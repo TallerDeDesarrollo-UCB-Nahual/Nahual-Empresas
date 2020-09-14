@@ -3,21 +3,21 @@ import { Dropdown, Input } from "semantic-ui-react";
 function FilterButton(props) {
   const filterOptions = [
     {
-      key: "Nodo",
+      key: "Node",
       text: "Nodo",
-      value: "Important",
+      value: "Node",
       label: { color: "red", empty: true, circular: true }
     },
     {
-      key: "Modulo",
+      key: "Module",
       text: "Modulo Cursado",
-      value: "Announcement",
+      value: "Module",
       label: { color: "blue", empty: true, circular: true }
     },
     {
-      key: "Nivel",
+      key: "Level",
       text: "Nivel de Ingles",
-      value: "Cannot Fix",
+      value: "Level",
       label: { color: "black", empty: true, circular: true }
     }
   ];
