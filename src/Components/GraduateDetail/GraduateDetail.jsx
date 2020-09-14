@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Modal, Grid, Image } from 'semantic-ui-react'
+import { Button, Icon, Modal, Grid, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
 import LogoNahual from '../../assets/logo-proyecto-nahual.webp'
 
 const GraduateDetail = ({ graduate }) => {
@@ -20,25 +20,30 @@ const GraduateDetail = ({ graduate }) => {
                     </Modal.Header>
                     <Modal.Content scrolling>
                         <Grid divided='vertically'>
-                            
                         </Grid>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button onClick={() => setOpen(false)} basic >
                             Atras
-                </Button>
+                        </Button>
                         {graduate.Linkedin ?
                             <Button color='linkedin'>
                                 <Icon name='linkedin' /> LinkedIn
-                    </Button>
+                            </Button>
                             :
                             <Button disabled color='linkedin'>
                                 <Icon name='linkedin' /> LinkedIn
-                    </Button>
+                            </Button>
                         }
                     </Modal.Actions>
                 </>
-                : <h1>Cargando...</h1>
+                :
+                <Segment>
+                    <Dimmer active inverted>
+                        <Loader inverted>Cargando</Loader>
+                    </Dimmer>
+                    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                </Segment>
             }
         </Modal>
     )
