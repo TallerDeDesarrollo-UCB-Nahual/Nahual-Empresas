@@ -31,9 +31,16 @@ const GraduateDetail = ({ graduate }) => {
                             Atras
                         </Button>
                         {graduate.Linkedin ?
-                            <Button color='linkedin'>
-                                <Icon name='linkedin' /> LinkedIn
-                            </Button>
+                            <a
+                                href={`https://www.linkedin.com${graduate.Linkedin}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Button color='linkedin'>
+                                    <Icon name='linkedin' />
+                                    LinkedIn
+                                </Button>
+                            </a>
                             :
                             <Button disabled color='linkedin'>
                                 <Icon name='linkedin' /> LinkedIn
