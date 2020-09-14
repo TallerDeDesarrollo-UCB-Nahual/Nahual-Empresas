@@ -9,7 +9,9 @@ class GraduatesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			graduates: []
+			graduates: [],
+			graduatesv2: [],
+			filter:true
 		};
 	}
 
@@ -24,14 +26,19 @@ class GraduatesList extends Component {
 			})
 			.catch(function(error) {
 				console.log(error);
-			});
+		});
 	}
 
-	listGraduates = () => {
-		return this.state.graduates.map((graduated, index) => {
-			return <Graduated item={graduated} key={index} />;
-		});
-	};
+	listGraduates=() => {
+		return(
+			this.state.graduates.map((currentList, i) => {
+				return <Graduated item={currentList} key={i} />
+		}));
+	}
+
+	filteredList(filterOption){
+		console.log(filterOption)
+	}
 
 	render() {
 		return (
