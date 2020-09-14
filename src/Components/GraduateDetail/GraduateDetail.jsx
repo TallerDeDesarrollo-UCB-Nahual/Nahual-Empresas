@@ -1,4 +1,5 @@
 import React from 'react'
+import PersonalInformation from "./PersonalInformation";
 import { Button, Icon, Modal, Grid, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
 import LogoNahual from '../../assets/logo-proyecto-nahual.webp'
 
@@ -20,6 +21,7 @@ const GraduateDetail = ({ graduate }) => {
                     </Modal.Header>
                     <Modal.Content scrolling>
                         <Grid divided='vertically'>
+                            <PersonalInformation graduate={graduate} />
                         </Grid>
                     </Modal.Content>
                     <Modal.Actions>
