@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import GraduatesList from "../GraduatesList/GraduatesList";
-
 
 class FilterByModuleCompleted extends Component {
-
   constructor(props) {
-		super(props);
-		this.state = {
+    super(props);
+    this.state = {
       optionsModuleCompleted: [
         {
           key: "All",
@@ -18,16 +15,11 @@ class FilterByModuleCompleted extends Component {
         {
           key: "Functional Testing",
           text: "Testing Funcional",
-          value: "Functional_Testing",
+          value: "Testing Funcional",
           label: { color: "red", empty: true, circular: true },
         }
       ]
     }
-	}
-
-
-  _handleOnSelected = (event,data) => {
-    new GraduatesList().filteredList(data.value);
   }
 
   render () {
@@ -35,12 +27,14 @@ class FilterByModuleCompleted extends Component {
       <Dropdown 
         text='Modulo Cursado' 
         pointing='left' 
+        additionLabel='ModuleCompleted'
         className='link item'
         options={this.state.optionsModuleCompleted}
-        onChange={this._handleOnSelected}>
+        onChange={this.props.handleOnSelected}>
       </Dropdown>
     );
   }
 }
+
 
 export default FilterByModuleCompleted;

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
 import FilterByModuleCompleted from "../FilterGraduates/ByModuleCompleted";
 
-function FilterButton() {
-  return (
-    <Dropdown
+class FilterButton extends Component{
+  render() {
+    return (
+      <Dropdown
       text='Filtrar'
       icon='filter'
       floating
@@ -14,11 +15,12 @@ function FilterButton() {
     >
       <Dropdown.Menu style={{width:"165px"}}>
         <Menu.Item> Nodo </Menu.Item>
-        <FilterByModuleCompleted></FilterByModuleCompleted>
+        <FilterByModuleCompleted  handleOnSelected={this.props.handleOnSelected}/>
         <Menu.Item> Nivel de Ingles </Menu.Item>
       </Dropdown.Menu>
     </Dropdown>
-  );
+    );
+  }
 }
 
 export default FilterButton;

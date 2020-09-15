@@ -5,13 +5,14 @@ import Graduated from "./Graduated";
 import axios from "axios";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 
+
 class GraduatesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			graduates: [],
-			graduatesv2: [],
-			filter:true
+			filterBy: 'All',
+			filterCriteria:'All'
 		};
 	}
 
@@ -30,14 +31,38 @@ class GraduatesList extends Component {
 	}
 
 	listGraduates=() => {
+		if (this.state.filterCriteria === 'All')
+			return this.MapGraduates(this.state.graduates);
+		else
+			return this.MapGraduates(this.factoryFilter())
+	}
+	
+	MapGraduates(listEgresades){
 		return(
-			this.state.graduates.map((currentList, i) => {
+			listEgresades.map((currentList, i) => {
 				return <Graduated item={currentList} key={i} />
 		}));
 	}
 
-	filteredList(filterOption){
-		console.log(filterOption)
+	factoryFilter(){
+		if (this.state.filterBy === 'ModuleCompleted')
+			return this.filterByModuleCompleted(this.state.filterCriteria);
+	}
+
+	filterByModuleCompleted(filterCriteria){
+		const ListFiltered = [];
+		this.state.graduates.forEach((graduated) => {
+			graduated.moduleCompleted.forEach((course) => {
+				 if (course.course === filterCriteria)
+				 		ListFiltered.push(graduated);
+			})
+		})
+		return ListFiltered;
+	}
+
+	handleOnSelected = (event,data) =>{
+		this.setState({filterBy: data.additionLabel})
+		this.setState({filterCriteria: data.value})
 	}
 
 	render() {
@@ -64,7 +89,7 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton />
+									<FilterButton handleOnSelected={this.handleOnSelected}/>
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									<Input icon="search" iconPosition="left" className="search" />
@@ -98,4 +123,5 @@ class GraduatesList extends Component {
 		);
 	}
 }
+
 export default GraduatesList;
