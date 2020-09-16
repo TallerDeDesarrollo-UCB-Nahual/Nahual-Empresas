@@ -7,17 +7,13 @@ function  FilterByModuleCompleted(props){
       key: "All",
       text: "Todos",
       value: "All",
-      title: "Modulo Completado",
-      filterby: "ModuleCompleted",
-      label: { color: "red", empty: true, circular: true },
+      filterby: "ModuleCompleted"
     },
     {
-      key: "Functional Testing",
+      key: "FunctionalTesting",
       text: "Testing Funcional",
       value: "Testing Funcional",
-      title: "Modulo Completado",
-      filterby: "ModuleCompleted",
-      label: { color: "red", empty: true, circular: true },
+      filterby: "ModuleCompleted"
     }
   ];
 
@@ -34,7 +30,7 @@ function  FilterByModuleCompleted(props){
             value={option.value}
             text={option.text}
             {... option}
-            onClick={props.handlOnChange}
+            onClick={props.handleOnSelectOption}
           />
         ))}
       </Dropdown.Menu>
