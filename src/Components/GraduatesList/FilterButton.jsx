@@ -15,10 +15,10 @@ function FilterButton(props){
       <Dropdown.Menu style={{width:"165px"}}>
         <Menu.Item> Nodo </Menu.Item>
         <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
-        <Menu.Item> Nivel de Ingles </Menu.Item>
+        <ByEnglishLevel handleOnSelected={props.handleOnSelectedOption}/>
       </Dropdown.Menu>
     </Dropdown>
-  );
-}
+    );
+  }
 
 export default FilterButton;
