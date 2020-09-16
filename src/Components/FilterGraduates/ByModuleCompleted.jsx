@@ -1,40 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
 import { Dropdown } from "semantic-ui-react";
 
-class FilterByModuleCompleted extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      optionsModuleCompleted: [
-        {
-          key: "All",
-          text: "Todos",
-          value: "All",
-          label: { color: "red", empty: true, circular: true },
-        },
-        {
-          key: "Functional Testing",
-          text: "Testing Funcional",
-          value: "Testing Funcional",
-          label: { color: "red", empty: true, circular: true },
-        }
-      ]
+function  FilterByModuleCompleted(props){
+  const filterOptions = [
+    {
+      key: "All",
+      text: "Todos",
+      value: "All",
+      title: "Modulo Completado",
+      filterby: "ModuleCompleted",
+      label: { color: "red", empty: true, circular: true },
+    },
+    {
+      key: "Functional Testing",
+      text: "Testing Funcional",
+      value: "Testing Funcional",
+      title: "Modulo Completado",
+      filterby: "ModuleCompleted",
+      label: { color: "red", empty: true, circular: true },
     }
-  }
+  ];
 
-  render () {
-    return  (
-      <Dropdown 
-        text='Modulo Cursado' 
-        pointing='left' 
-        additionLabel='ModuleCompleted'
-        className='link item'
-        options={this.state.optionsModuleCompleted}
-        onChange={this.props.handleOnSelected}>
-      </Dropdown>
-    );
-  }
+  return  (
+    <Dropdown
+      text='Modulo Cursado' 
+      pointing='left' 
+      className='link item'
+    >
+      <Dropdown.Menu >
+        {filterOptions.map((option) => (
+          <Dropdown.Item 
+            key={option.key}
+            value={option.value}
+            text={option.text}
+            {... option}
+            onClick={props.handlOnChange}
+          />
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+  );
 }
-
 
 export default FilterByModuleCompleted;

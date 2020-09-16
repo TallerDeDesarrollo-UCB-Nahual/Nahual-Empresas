@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Checkbox, Table } from "semantic-ui-react";
 import GraduateDetail from "../GraduateDetail/GraduateDetail.jsx";
 

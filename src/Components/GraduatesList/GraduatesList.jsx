@@ -12,7 +12,8 @@ class GraduatesList extends Component {
 		this.state = {
 			graduates: [],
 			filterBy: 'All',
-			filterCriteria:'All'
+			filterCriteria:'All',
+			titleFilter:'Todos',
 		};
 	}
 
@@ -32,37 +33,42 @@ class GraduatesList extends Component {
 
 	listGraduates=() => {
 		if (this.state.filterCriteria === 'All')
-			return this.MapGraduates(this.state.graduates);
+			return this.mappingGraduatedList(this.state.graduates);
 		else
-			return this.MapGraduates(this.factoryFilter())
+			return this.mappingGraduatedList(this.factoryFilter())
 	}
 	
-	MapGraduates(listEgresades){
+	mappingGraduatedList(graduatedList){
 		return(
-			listEgresades.map((currentList, i) => {
-				return <Graduated item={currentList} key={i} />
+			graduatedList.map((graduated, index) => {
+				return <Graduated item={graduated} key={index} />
 		}));
 	}
 
 	factoryFilter(){
-		if (this.state.filterBy === 'ModuleCompleted')
-			return this.filterByModuleCompleted(this.state.filterCriteria);
+		switch (this.state.filterBy) {
+			case 'ModuleCompleted':
+				return this.filterByModuleCompleted(this.state.filterCriteria);				
+			default:
+				return this.state.graduates;
+		}
 	}
 
 	filterByModuleCompleted(filterCriteria){
-		const ListFiltered = [];
-		this.state.graduates.forEach((graduated) => {
-			graduated.moduleCompleted.forEach((course) => {
-				 if (course.course === filterCriteria)
-				 		ListFiltered.push(graduated);
+		const listFiltered = [];
+			this.state.graduates.forEach((graduated) => {
+				graduated.moduleCompleted.forEach((course) => {
+					if (course.course === filterCriteria)
+							listFiltered.push(graduated);
 			})
 		})
-		return ListFiltered;
+		return listFiltered;
 	}
 
 	handleOnSelected = (event,data) =>{
-		this.setState({filterBy: data.additionLabel})
-		this.setState({filterCriteria: data.value})
+		this.setState({
+			filterBy : data.filterby,
+			filterCriteria:data.value})
 	}
 
 	render() {
@@ -89,7 +95,7 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelected={this.handleOnSelected}/>
+									<FilterButton handlOnChange={this.handleOnSelected}/>
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									<Input icon="search" iconPosition="left" className="search" />
