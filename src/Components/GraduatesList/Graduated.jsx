@@ -3,7 +3,7 @@ import { Checkbox, Table } from "semantic-ui-react";
 
 function Graduated(props) {
 	return (
-		<Table.Row>
+		<Table.Row style={{border: "#81ce32 2px solid"}}>
 			<Table.Cell style={{ textAlign: "center" }}>
 				<Checkbox />
 			</Table.Cell>
