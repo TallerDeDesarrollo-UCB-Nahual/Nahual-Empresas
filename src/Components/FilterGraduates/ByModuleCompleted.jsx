@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 
-function  FilterByModuleCompleted(props){
+function ByModuleCompleted(props){
   const filterOptions = [
     {
       key: "All",
@@ -30,7 +30,7 @@ function  FilterByModuleCompleted(props){
             value={option.value}
             text={option.text}
             {... option}
-            onClick={props.handleOnSelectOption}
+            onClick={props.handleOnSelectOption}  
           />
         ))}
       </Dropdown.Menu>
@@ -38,4 +38,4 @@ function  FilterByModuleCompleted(props){
   );
 }
 
-export default FilterByModuleCompleted;
+export default ByModuleCompleted;

@@ -51,7 +51,7 @@ class GraduatesList extends Component {
 				return this.state.graduates;
 		}
 	}
-
+	
 	filterByModuleCompleted(filterCriteria) {
 		const listFiltered = [];
 			this.state.graduates.forEach((graduated) => {
