@@ -15,8 +15,18 @@ function Graduated(props) {
       <Table.Cell style={{ textAlign: "center" }}>
 				<GraduateDetail id={props.item.id}></GraduateDetail>
 			</Table.Cell>
+<<<<<<< HEAD
     </Table.Row>
   );
+=======
+			<Table.Cell>{props.item.fullName}</Table.Cell>
+			<Table.Cell>{props.item.node}</Table.Cell>
+			<Table.Cell>{props.item.finishedCourses}</Table.Cell>
+			<Table.Cell>{props.item.englishLevel}</Table.Cell>
+			<Table.Cell style={{ textAlign: "center" }}></Table.Cell>
+		</Table.Row>
+	);
+>>>>>>> c890549... Fixed syntax observations, added services and factory filter component
 }
 
 export default Graduated;
