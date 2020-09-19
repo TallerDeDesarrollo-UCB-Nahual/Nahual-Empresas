@@ -12,10 +12,10 @@ function Graduated(props) {
 			<Table.Cell>{props.item.nodo}</Table.Cell>
 			<Table.Cell>{props.item.moduleCompleted[0].course}</Table.Cell>
 			<Table.Cell>{props.item.englishLevel}</Table.Cell>
-			<Table.Cell style={{ textAlign: "center" }}> 
-				<GraduateDetail graduate={props.item}></GraduateDetail> 
+			<Table.Cell style={{ textAlign: "center" }}>
+				<GraduateDetail id={props.item.id}></GraduateDetail>
 			</Table.Cell>
-			
+
 		</Table.Row>
 	);
 }
