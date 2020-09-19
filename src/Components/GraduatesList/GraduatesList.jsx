@@ -13,7 +13,8 @@ class GraduatesList extends Component {
 		this.state = {
 			graduates: [],
 			filterBy: 'All',
-			filterCriteria: ''
+			filterCriteria: '',
+			NewRequestFilter: false
 		};
 	}
 
@@ -24,7 +25,11 @@ class GraduatesList extends Component {
 	async getAllGraduates(){
 		await GraduateService.GetGraduates()
 		.then(response => {
-			this.setState({ graduates: response.data.resultSet });
+			this.setState({ 
+				graduates: response.data.resultSet,
+				NewRequestFilter: false
+			});
+
 		})
 		.catch(function(error) {
 			console.log(error);
@@ -34,17 +39,24 @@ class GraduatesList extends Component {
 	async getFilteredGraduates() {
 		await FactoryFilter(this.state.filterCriteria)
 		.then(response => {
-			this.setState({ graduates: response.data.resultSet })
+			this.setState({ 
+				graduates: response.data.resultSet,
+				NewRequestFilter: false 
+			})
 		}).catch(error => {
 			alert("There is an error with the Data Base.")
 		})
 	}
-	
+
 	listGraduates() {
-		if (this.state.filterBy === 'All')
-			this.getAllGraduates();
-		else
-			this.getFilteredGraduates()
+		if (this.state.NewRequestFilter === true)
+		{		
+			if (this.state.filterBy === 'All')	
+				this.getAllGraduates();
+			else{
+				this.getFilteredGraduates();
+			}
+		}
 		return this.mapGraduatedList(this.state.graduates);
 	}
 	
@@ -58,7 +70,8 @@ class GraduatesList extends Component {
 	handleOnSelectOption = (event,data) => {
 		this.setState({
 			filterCriteria:data,
-			filterBy:data.value
+			filterBy:data.value,
+			NewRequestFilter: true
 		})
 	}
 
