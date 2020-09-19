@@ -13,7 +13,7 @@ class GraduatesList extends Component {
 		this.state = {
 			graduates: [],
 			filterBy: 'All',
-			filterCriteria: '',
+			filterCriteria: ''
 		};
 	}
 

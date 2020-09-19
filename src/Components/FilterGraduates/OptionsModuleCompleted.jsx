@@ -6,7 +6,7 @@ class OptionsModuleCompleted extends Component{
   constructor (props){
     super(props)
 		this.state = {
-      filterOptions: [],
+      filterOptions: []
     };
   }
 
@@ -31,7 +31,7 @@ class OptionsModuleCompleted extends Component{
     return OptionModuleCompletedAll;
   }
 
-  ConstrucFilterOptions(response){
+  ConstrucFilterOptions(response) {
     const ListOptionModulesCompleted = []
     ListOptionModulesCompleted.push(this.AddDefulModuleCompleted());
     response.forEach(OptionModuleCompleted => {
