@@ -4,6 +4,8 @@ import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import axios from "axios";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
+import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
+import GraduateService from "../../Services/Services-Graduates/GraduateService";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -11,29 +13,39 @@ class GraduatesList extends Component {
 		this.state = {
 			graduates: [],
 			filterBy: 'All',
-			filterCriteria: 'All'
+			filterCriteria: '',
 		};
 	}
 
 	componentDidMount() {
-		const API_URL = process.env.REACT_APP_API_URL;
-		axios
-			.get(`${API_URL}/graduates/unemployes`)
-			.then(response => {
-				this.setState({
-					graduates: response.data.resultSet
-				});
-			})
-			.catch(function(error) {
-				console.log(error);
+		this.getAllGraduates();
+	}
+
+	async getAllGraduates(){
+		await GraduateService.GetGraduates()
+		.then(response => {
+			this.setState({ graduates: response.data.resultSet});
+		})
+		.catch(function(error) {
+			console.log(error);
 		});
 	}
 
+	async getFilteredGraduates() {
+		await FactoryFilter(this.state.filterCriteria)
+		.then(response=>{	
+			this.setState({graduates: response.data.resultSet})
+		}).catch(error => {
+			alert("There is an error with the Data Base.")
+		})
+	}
+	
 	listGraduates() {
-		if (this.state.filterCriteria === 'All')
-			return this.mapGraduatedList(this.state.graduates);
+		if (this.state.filterBy === 'All')
+			this.getAllGraduates();
 		else
-			return this.mapGraduatedList(this.factoryFilter())
+			this.getFilteredGraduates()
+		return this.mapGraduatedList(this.state.graduates);
 	}
 	
 	mapGraduatedList(graduatedList) {
@@ -43,30 +55,11 @@ class GraduatesList extends Component {
 		}));
 	}
 
-	factoryFilter() {
-		switch (this.state.filterBy) {
-			case 'ModuleCompleted':
-				return this.filterByModuleCompleted(this.state.filterCriteria.toLowerCase());				
-			default:
-				return this.state.graduates;
-		}
-	}
-	
-	filterByModuleCompleted(filterCriteria) {
-		const listFiltered = [];
-			this.state.graduates.forEach((graduated) => {
-				graduated.moduleCompleted.forEach((module) => {
-					if (module.course.toLowerCase() === filterCriteria)
-						listFiltered.push(graduated);
-			})
-		})
-		return listFiltered;
-	}
-
 	handleOnSelectOption = (event,data) => {
 		this.setState({
-			filterBy : data.filterby,
-			filterCriteria:data.value})
+			filterCriteria:data,
+			filterBy:data.value
+		})
 	}
 
 	render() {
