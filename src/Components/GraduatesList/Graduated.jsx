@@ -7,9 +7,9 @@ function Graduated(props) {
       <Table.Cell style={{ textAlign: "center" }}>
         <Checkbox />
       </Table.Cell>
-      <Table.Cell>{props.item.name}</Table.Cell>
-      <Table.Cell>{props.item.nodo}</Table.Cell>
-      <Table.Cell>{props.item.moduleCompleted[0].course}</Table.Cell>
+      <Table.Cell>{props.item.fullName}</Table.Cell>
+      <Table.Cell>{props.item.node}</Table.Cell>
+      <Table.Cell>{props.item.finishedCourses}</Table.Cell>
       <Table.Cell>{props.item.englishLevel}</Table.Cell>
       <Table.Cell style={{ textAlign: "center" }}></Table.Cell>
     </Table.Row>

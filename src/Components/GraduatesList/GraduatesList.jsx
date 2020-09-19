@@ -19,7 +19,7 @@ class GraduatesList extends Component {
 			.get(`${API_URL}/unemployes`)
 			.then(response => {
 				this.setState({
-					graduates: response.data
+					graduates: response.data.resultSet
 				});
 			})
 			.catch(function(error) {
