@@ -19,7 +19,7 @@ const BodyModal = ({ graduate, closeModal }) => {
       <Modal.Actions>
         <Button onClick={closeModal} basic>
           Atrás
-          </Button>
+        </Button>
         {graduate.linkedin ?
           <a
             href={graduate.linkedin}
@@ -29,12 +29,12 @@ const BodyModal = ({ graduate, closeModal }) => {
             <Button color='linkedin'>
               <Icon name='linkedin' />
                 LinkedIn
-              </Button>
+            </Button>
           </a>
           :
           <Button disabled color='linkedin'>
             <Icon name='linkedin' /> LinkedIn
-            </Button>
+          </Button>
         }
       </Modal.Actions>
     </>
