@@ -13,14 +13,14 @@ class OptionsModuleCompleted extends Component{
   async componentDidMount() {
     await FilterService.GetOptionsModulesCompleted()
     .then(response => {
-      this.ConstrucFilterOptions(response.data.resultSet);
+      this.ConstructFilterOptions(response.data.resultSet);
     })
     .catch(error => {
       alert("There is an error with the Data Base.")
     })
   }
 
-  AddDefulModuleCompleted(){
+  AddDefaultModuleCompleted(){
     const OptionModuleCompletedAll={
       id:0,
       key:0,
@@ -31,9 +31,9 @@ class OptionsModuleCompleted extends Component{
     return OptionModuleCompletedAll;
   }
 
-  ConstrucFilterOptions(response) {
+  ConstructFilterOptions(response) {
     const ListOptionModulesCompleted = []
-    ListOptionModulesCompleted.push(this.AddDefulModuleCompleted());
+    ListOptionModulesCompleted.push(this.AddDefaultModuleCompleted());
     response.forEach(OptionModuleCompleted => {
       OptionModuleCompleted={
         key: OptionModuleCompleted.id,

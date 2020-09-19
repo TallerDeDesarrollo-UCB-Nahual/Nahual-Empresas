@@ -24,7 +24,7 @@ class GraduatesList extends Component {
 	async getAllGraduates(){
 		await GraduateService.GetGraduates()
 		.then(response => {
-			this.setState({ graduates: response.data.resultSet});
+			this.setState({ graduates: response.data.resultSet });
 		})
 		.catch(function(error) {
 			console.log(error);
@@ -33,8 +33,8 @@ class GraduatesList extends Component {
 
 	async getFilteredGraduates() {
 		await FactoryFilter(this.state.filterCriteria)
-		.then(response=>{	
-			this.setState({graduates: response.data.resultSet})
+		.then(response => {
+			this.setState({ graduates: response.data.resultSet })
 		}).catch(error => {
 			alert("There is an error with the Data Base.")
 		})
