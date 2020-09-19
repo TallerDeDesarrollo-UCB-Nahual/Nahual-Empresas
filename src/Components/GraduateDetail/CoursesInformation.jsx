@@ -9,7 +9,7 @@ function CoursesInformation({ graduate }) {
         <Header as='h3'> <Icon name='graduation' />Cursos Realizados</Header>
         <Grid>
           <Grid.Row>
-            <Course graduate={graduate}/>
+            <Course graduate={graduate} />
           </Grid.Row>
         </Grid>
       </Grid.Column>
