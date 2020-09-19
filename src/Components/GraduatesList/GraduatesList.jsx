@@ -3,7 +3,7 @@ import { Checkbox, Input, Table } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import axios from "axios";
-import NahualLogo from "../../images/NahualLogo.png";
+import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -16,7 +16,7 @@ class GraduatesList extends Component {
 	componentDidMount() {
 		const API_URL = process.env.REACT_APP_API_URL;
 		axios
-			.get(`${API_URL}/unemployes`)
+			.get(`${API_URL}/graduates/unemployes`)
 			.then(response => {
 				this.setState({
 					graduates: response.data.resultSet
