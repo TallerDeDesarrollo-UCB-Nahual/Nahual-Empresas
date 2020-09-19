@@ -6,7 +6,7 @@ function FactoryFilter(filterCriteria) {
     case 'ModuleCompleted':
       return axios.get(`https://shielded-sands-50510.herokuapp.com/api/graduates/unemployes?module=${filterCriteria.value}`)
     case 'EnglishLevel':
-      return axios.get(`https://shielded-sands-50510.herokuapp.com/api/graduates/unemployes?english-levels=${filterCriteria.value}`)
+      return axios.get(`https://shielded-sands-50510.herokuapp.com/api/graduates/unemployes?englishLevel=${filterCriteria.value}`)
     case 'Node':
       return axios.get(`https://shielded-sands-50510.herokuapp.com/api/graduates/unemployes?nodes=${filterCriteria.value}`)
     default:
