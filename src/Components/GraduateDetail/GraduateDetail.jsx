@@ -1,31 +1,60 @@
-import React from 'react'
+import React, { Component } from "react";
 import { Button, Modal, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
 import BodyModal from './BodyModal';
+import axios from "axios";
 
-const GraduateDetail = ({ graduate }) => {
-  const [open, setOpen] = React.useState(false)
-  return (
-    <Modal
-      open={open}
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      size="small"
-      closeIcon
-      trigger={<Button icon='eye'/>}
-    >
-      {
-        graduate ?
-          <BodyModal graduate={graduate} closeModal = {()=> (setOpen(false))}/>
-          :
-          <Segment>
-            <Dimmer active inverted>
-              <Loader inverted>Cargando</Loader>
-            </Dimmer>
-            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-          </Segment>
-      }
-    </Modal>
-  )
+class GraduateDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
+
+  getGraduateAPI() {
+    const API_URL = process.env.REACT_APP_API_URL;
+    axios
+      .get(`${API_URL}/students/${this.props.id}`)
+      .then(response => {
+        this.setState({
+          graduate: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  showModal(state) {
+    this.setState({
+      open: state
+    });
+  }
+
+  render() {
+    return (
+      <Modal
+        open={this.state.open}
+        onClose={() => this.showModal(false)}
+        onOpen={() => this.showModal(true)}
+        size="small"
+        closeIcon
+        trigger={<Button onClick={() => (this.getGraduateAPI(this.props.id))} icon='eye' />}
+      >
+        {
+          this.state.graduate ?
+            <BodyModal graduate={this.state.graduate} closeModal={() => (this.showModal(false))} />
+            :
+            <Segment>
+              <Dimmer active inverted>
+                <Loader inverted>Cargando</Loader>
+              </Dimmer>
+              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+            </Segment>
+        }
+      </Modal>
+    )
+  }
 }
 
 export default GraduateDetail

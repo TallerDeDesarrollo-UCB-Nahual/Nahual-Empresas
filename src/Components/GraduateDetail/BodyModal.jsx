@@ -2,9 +2,9 @@ import React from 'react'
 import PersonalInformation from "./PersonalInformation";
 import CoursesInformation from "./CoursesInformation";
 import LogoNahual from '../../assets/logo-proyecto-nahual.webp'
-import { Button, Modal, Image,Icon, Grid } from 'semantic-ui-react'
+import { Button, Modal, Image, Icon, Grid } from 'semantic-ui-react'
 
-const BodyModal = ({graduate, closeModal}) => {
+const BodyModal = ({ graduate, closeModal }) => {
   return (
     <>
       <Modal.Header >
@@ -20,9 +20,9 @@ const BodyModal = ({graduate, closeModal}) => {
         <Button onClick={closeModal} basic>
           Atrás
           </Button>
-        {graduate.Linkedin ?
+        {graduate.linkedin ?
           <a
-            href={`https://www.linkedin.com${graduate.Linkedin}`}
+            href={graduate.linkedin}
             target="_blank"
             rel="noopener noreferrer"
           >

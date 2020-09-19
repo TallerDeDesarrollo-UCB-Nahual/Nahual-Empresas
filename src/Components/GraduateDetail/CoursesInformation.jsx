@@ -6,14 +6,10 @@ function CoursesInformation({ graduate }) {
   return (
     <Grid.Row>
       <Grid.Column>
-        <Header as='h3'> <Icon name='graduation'/>Cursos Realizados</Header>
+        <Header as='h3'> <Icon name='graduation' />Cursos Realizados</Header>
         <Grid>
           <Grid.Row>
-            {graduate.moduleCompleted && graduate.moduleCompleted.map(
-              (module, index) => (
-                <Course module={module} key={index}/>
-              )
-            )}
+            <Course graduate={graduate}/>
           </Grid.Row>
         </Grid>
       </Grid.Column>
