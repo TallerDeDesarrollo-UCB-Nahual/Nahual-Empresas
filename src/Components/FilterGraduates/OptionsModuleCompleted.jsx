@@ -13,7 +13,7 @@ class OptionsModuleCompleted extends Component{
   async componentDidMount() {
     await FilterService.GetOptionsModulesCompleted()
     .then(response => {
-      this.ConstructFilterOptions(response.data.resultSet);
+      this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
       alert("There is an error with the Data Base.")

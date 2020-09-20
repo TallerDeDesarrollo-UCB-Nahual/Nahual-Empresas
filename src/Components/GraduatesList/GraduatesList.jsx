@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Checkbox, Input, Table, Loader, Dimmer } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
-import axios from "axios";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
@@ -25,7 +24,7 @@ class GraduatesList extends Component {
 
 	getResponse(response){
 		this.setState({ 
-			graduates: response.data.resultSet,
+			graduates: response.data.response,
 			newFilterRequest: false,
 			displayLoader: false
 		});

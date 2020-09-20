@@ -17,7 +17,7 @@ class GraduateDetail extends Component {
       .get(`${API_URL}/students/${this.props.id}`)
       .then(response => {
         this.setState({
-          graduate: response.data
+          graduate: response.data.response
         });
       })
       .catch(function (error) {
