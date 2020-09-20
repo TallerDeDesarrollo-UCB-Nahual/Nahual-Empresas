@@ -14,6 +14,6 @@ function FactoryFilter(filterCriteria) {
     default:
       return GraduateService.GetGraduates();
   }
-}
+} 
 
 export default FactoryFilter;
