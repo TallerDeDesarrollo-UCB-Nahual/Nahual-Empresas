@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Input, Table } from "semantic-ui-react";
+import { Checkbox, Input, Table, Loader, Dimmer } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import axios from "axios";
@@ -14,7 +14,8 @@ class GraduatesList extends Component {
 			graduates: [],
 			filterBy: 'All',
 			filterCriteria: '',
-			NewRequestFilter: false
+			newRequestFilter: false,
+			displayLoader: true
 		};
 	}
 
@@ -22,40 +23,49 @@ class GraduatesList extends Component {
 		this.getAllGraduates();
 	}
 
+	getResponse(response){
+		this.setState({ 
+			graduates: response.data.resultSet,
+			newRequestFilter: false,
+			displayLoader: false
+		});
+	}
+
+	catchError(error){
+		this.setState({
+			newRequestFilter: false,
+			displayLoader: false
+		})
+		alert("There is an error with the data base. status: " + error.status)
+	}
+
 	async getAllGraduates(){
 		await GraduateService.GetGraduates()
 		.then(response => {
-			this.setState({ 
-				graduates: response.data.resultSet,
-				NewRequestFilter: false
-			});
-
+			this.getResponse(response);
 		})
-		.catch(function(error) {
-			console.log(error);
+		.catch(error => {
+			this.catchError(error);
 		});
 	}
 
 	async getFilteredGraduates() {
 		await FactoryFilter(this.state.filterCriteria)
 		.then(response => {
-			this.setState({ 
-				graduates: response.data.resultSet,
-				NewRequestFilter: false 
-			})
-		}).catch(error => {
-			alert("There is an error with the Data Base.")
+			this.getResponse(response);
 		})
+		.catch(error => {
+			this.catchError(error);
+		});
 	}
 
 	listGraduates() {
-		if (this.state.NewRequestFilter === true)
+		if (this.state.newRequestFilter)
 		{		
 			if (this.state.filterBy === 'All')	
 				this.getAllGraduates();
-			else{
+			else
 				this.getFilteredGraduates();
-			}
 		}
 		return this.mapGraduatedList(this.state.graduates);
 	}
@@ -71,13 +81,23 @@ class GraduatesList extends Component {
 		this.setState({
 			filterCriteria:data,
 			filterBy:data.value,
-			NewRequestFilter: true
+			newRequestFilter: true,
+			displayLoader: true
 		})
+	}
+
+	loadingIcon(){
+		return (
+			this.state.displayLoader === true &&
+			<Dimmer active inverted>
+					<Loader inverted>Cargando</Loader>
+			</Dimmer>
+		)
 	}
 
 	render() {
 		return (
-			<div>
+			<div className="container">
 				<img
 					src={NahualLogo}
 					width="150"
@@ -86,6 +106,7 @@ class GraduatesList extends Component {
 				/>
 				<h1>Lista Egresades</h1>
 				<div style={{ marginLeft: "150px", marginRight: "150px" }}>
+				{this.loadingIcon()}
 					<Table
 						style={{
 							borderCollapse: "collapse",
@@ -133,5 +154,5 @@ class GraduatesList extends Component {
 		);
 	}
 }
-
+							
 export default GraduatesList;

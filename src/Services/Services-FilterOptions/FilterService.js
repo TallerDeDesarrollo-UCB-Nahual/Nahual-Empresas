@@ -1,14 +1,16 @@
 import axios from "axios";
 
+const DATA_SERVICE_API_NAHUAL = process.env.REACT_APP_API_URL;
+
 const FilterService = {
-  GetOptionsModulesCompleted(){
-    return axios.get('https://shielded-sands-50510.herokuapp.com/api/modules')
+   GetOptionsModulesCompleted(){
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/modules`)
   },
   GetOptionsEnglishLevel(){
-    return axios.get('https://shielded-sands-50510.herokuapp.com/api/english-levels')
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/english-levels`)
   },
   GetOptionsNodes(){
-    return axios.get('https://shielded-sands-50510.herokuapp.com/api/nodes')
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/nodes`)
   }
 }
 
