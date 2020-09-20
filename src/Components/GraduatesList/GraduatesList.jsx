@@ -14,7 +14,7 @@ class GraduatesList extends Component {
 			graduates: [],
 			filterBy: 'All',
 			filterCriteria: '',
-			newRequestFilter: false,
+			newFilterRequest: false,
 			displayLoader: true
 		};
 	}
@@ -26,14 +26,14 @@ class GraduatesList extends Component {
 	getResponse(response){
 		this.setState({ 
 			graduates: response.data.resultSet,
-			newRequestFilter: false,
+			newFilterRequest: false,
 			displayLoader: false
 		});
 	}
 
 	catchError(error){
 		this.setState({
-			newRequestFilter: false,
+			newFilterRequest: false,
 			displayLoader: false
 		})
 		alert("There is an error with the data base. status: " + error.status)
@@ -60,7 +60,7 @@ class GraduatesList extends Component {
 	}
 
 	listGraduates() {
-		if (this.state.newRequestFilter)
+		if (this.state.newFilterRequest)
 		{		
 			if (this.state.filterBy === 'All')	
 				this.getAllGraduates();
@@ -81,7 +81,7 @@ class GraduatesList extends Component {
 		this.setState({
 			filterCriteria:data,
 			filterBy:data.value,
-			newRequestFilter: true,
+			newFilterRequest: true,
 			displayLoader: true
 		})
 	}
