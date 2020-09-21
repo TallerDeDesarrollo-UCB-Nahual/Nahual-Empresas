@@ -6,6 +6,7 @@ import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
 
+
 class GraduatesList extends Component {
 	constructor(props) {
 		super(props);
