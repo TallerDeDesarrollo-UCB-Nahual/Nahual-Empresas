@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
 import OptionsModuleCompleted from "../FilterGraduates/OptionsModuleCompleted";
-import ByEnglishLevel from "../FilterGraduates/ByEnglishLevel";
+import OptionsEnglishLevel from "../FilterGraduates/OptionsEnglishLevel";
 
 function FilterButton(props){
   return (
@@ -16,7 +16,7 @@ function FilterButton(props){
       <Dropdown.Menu style={{width:"165px"}}>
         <Menu.Item> Nodo </Menu.Item>
         <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
-        <ByEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
+        <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
       </Dropdown.Menu>
     </Dropdown>
     );
