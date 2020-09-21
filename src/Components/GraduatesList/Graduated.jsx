@@ -18,4 +18,5 @@ function Graduated(props) {
     </Table.Row>
   );
 }
+
 export default Graduated;
