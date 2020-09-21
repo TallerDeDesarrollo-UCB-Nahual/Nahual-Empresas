@@ -97,7 +97,7 @@ class GraduatesList extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div style={{paddingBottom: "5%" }}>
 				<img
 					src={NahualLogo}
 					width="150"
@@ -123,14 +123,14 @@ class GraduatesList extends Component {
 									<FilterButton handleOnSelectOption = {this.handleOnSelectOption}/>
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
-									<Input icon="search" iconPosition="left" className="search"/>
+									{/* <Input icon="search" iconPosition="left" className="search"/> */}
 								</Table.HeaderCell>
 							</Table.Row>
 						</Table.Header>
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row style={{ textAlign: "left" }}>
 								<Table.HeaderCell style={{ textAlign: "center" }}>
-									<Checkbox />
+									{/* <Checkbox /> */}
 								</Table.HeaderCell>
 								<Table.HeaderCell>NOMBRE</Table.HeaderCell>
 								<Table.HeaderCell>NODO</Table.HeaderCell>
