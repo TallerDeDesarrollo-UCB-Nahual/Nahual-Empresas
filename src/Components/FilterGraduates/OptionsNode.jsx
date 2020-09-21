@@ -6,6 +6,7 @@ class OptionsNode extends Component{
   constructor (props){
     super(props)
 		this.state = {
+      value: '',
       filterOptions: []
     };
   }
@@ -46,6 +47,11 @@ class OptionsNode extends Component{
     this.setState({filterOptions:ListOptionNode})
   }
 
+  handleSelected(option){
+    this.setState({ value: option.value });
+    this.props.handleOnSelectOption(option)
+  }
+
   render(){
     return  (
       <Dropdown
@@ -56,11 +62,12 @@ class OptionsNode extends Component{
         <Dropdown.Menu >
           {this.state.filterOptions.map((option) => (
             <Dropdown.Item 
+              active={option.value === this.state.value}
               key={option.key}
               value={option.value}
               text={option.text}
               {... option}
-              onClick={this.props.handleOnSelectOption}  
+              onClick={() => this.handleSelected(option)}
             />
           ))}
         </Dropdown.Menu>
