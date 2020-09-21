@@ -10,7 +10,7 @@ function FactoryFilter(filterCriteria) {
     case 'EnglishLevel':
       return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?englishLevel=${filterCriteria.value}`)
     case 'Node':
-      return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?nodes=${filterCriteria.value}`)
+      return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?nodeName=${filterCriteria.value}`)
     default:
       return GraduateService.GetGraduates();
   }
