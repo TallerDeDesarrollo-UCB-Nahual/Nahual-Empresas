@@ -13,7 +13,7 @@ class OptionsEnglishLevel extends Component{
   async componentDidMount() {
     await FilterService.GetOptionsEnglishLevel()
     .then(response => {
-      this.ConstructFilterOptions(response.data.resultSet);
+      this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
       alert("Data base error")
