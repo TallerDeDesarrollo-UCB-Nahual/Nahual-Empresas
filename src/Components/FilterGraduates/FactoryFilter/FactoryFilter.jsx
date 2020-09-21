@@ -4,7 +4,6 @@ const DATA_SERVICE_API_NAHUAL = process.env.REACT_APP_API_URL;
 let [FilterByModuleCompleted,FilterByEnglishLevel,FilterByNodeName,QueryFilter] = ['','','','']
 
 function FactoryFilter(filterCriteria) {
-  console.log(filterCriteria)
   SetLocalFilterVariables(filterCriteria)
   QueryFilter = BuildFilterQuery() 
   return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?${QueryFilter}`)

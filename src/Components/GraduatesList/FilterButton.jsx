@@ -8,7 +8,6 @@ import OptionsEnglishLevel from "../FilterGraduates/OptionsEnglishLevel";
 import OptionsNode from "../FilterGraduates/OptionsNode";
 
 function FilterButton(props){
-  
   return (
     <Dropdown 
       text= 'Filtrar'
