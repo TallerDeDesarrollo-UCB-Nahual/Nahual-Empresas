@@ -6,7 +6,7 @@ function Graduated(props) {
   return (
     <Table.Row style={{ border: "#81ce32 2px solid" }}>
       <Table.Cell style={{ textAlign: "center" }}>
-        <Checkbox />
+        {/* <Checkbox /> */}
       </Table.Cell>
       <Table.Cell>{props.item.fullName}</Table.Cell>
       <Table.Cell>{props.item.node}</Table.Cell>
