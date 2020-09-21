@@ -62,10 +62,7 @@ class GraduatesList extends Component {
 	listGraduates() {
 		if (this.state.newFilterRequest)
 		{		
-			if (this.state.filterBy === 'All')	
-				this.getAllGraduates();
-			else
-				this.getFilteredGraduates();
+			this.getFilteredGraduates();
 		}
 		return this.mapGraduatedList(this.state.graduates);
 	}
@@ -77,7 +74,7 @@ class GraduatesList extends Component {
 		}));
 	}
 
-	handleOnSelectOption = (event,data) => {
+	handleOnSelectOption = (data) => {
 		this.setState({
 			filterCriteria:data,
 			filterBy:data.value,

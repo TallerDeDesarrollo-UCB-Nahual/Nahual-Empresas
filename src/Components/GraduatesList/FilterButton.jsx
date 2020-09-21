@@ -8,6 +8,7 @@ import OptionsEnglishLevel from "../FilterGraduates/OptionsEnglishLevel";
 import OptionsNode from "../FilterGraduates/OptionsNode";
 
 function FilterButton(props){
+  
   return (
     <Dropdown 
       text= 'Filtrar'
@@ -17,8 +18,13 @@ function FilterButton(props){
       button
       className='icon'
     >
+<<<<<<< HEAD
       <Dropdown.Menu style={{width:"165px"}}>
         <OptionsNode handleOnSelectOption={props.handleOnSelectOption}/>
+=======
+      <Dropdown.Menu style={{width:"165px"}} >
+        <Menu.Item> Nodo </Menu.Item>
+>>>>>>> Added MultiFilter just for test
         <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
         <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
       </Dropdown.Menu>
