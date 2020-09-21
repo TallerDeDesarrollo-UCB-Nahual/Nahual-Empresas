@@ -1,7 +1,10 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import OptionsModuleCompleted from "../FilterGraduates/OptionsModuleCompleted";
+<<<<<<< HEAD
 import OptionsEnglishLevel from "../FilterGraduates/OptionsEnglishLevel";
+=======
+>>>>>>> Add OptionsNode to FilterButton and change url of filtered node
 import OptionsNode from "../FilterGraduates/OptionsNode";
 
 function FilterButton(props){
