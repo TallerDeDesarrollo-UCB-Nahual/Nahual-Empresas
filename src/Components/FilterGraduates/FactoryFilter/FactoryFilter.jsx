@@ -4,8 +4,9 @@ const DATA_SERVICE_API_NAHUAL = process.env.REACT_APP_API_URL;
 let [FilterByModuleCompleted,FilterByEnglishLevel,FilterByNodeName,QueryFilter] = ['','','','']
 
 function FactoryFilter(filterCriteria) {
+  console.log(filterCriteria)
   SetLocalFilterVariables(filterCriteria)
-  QueryFilter = BuildFilterQuery()  
+  QueryFilter = BuildFilterQuery() 
   return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?${QueryFilter}`)
 } 
 
@@ -24,15 +25,11 @@ function SetLocalFilterVariables(filterCriteria){
         FilterByEnglishLevel =`englishLevel=${filterCriteria.value}&`;
       break
     case 'Node':
-<<<<<<< HEAD
-      return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?nodeName=${filterCriteria.value}`)
-=======
       if (filterCriteria.value==='All')
         FilterByNodeName = ''
       else
         FilterByNodeName =`nodeName=${filterCriteria.value}&`;
       break
->>>>>>> Added MultiFilter just for test
     default:
   }
 }
