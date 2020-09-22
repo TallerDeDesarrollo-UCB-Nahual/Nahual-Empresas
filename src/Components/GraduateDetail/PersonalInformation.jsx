@@ -24,7 +24,7 @@ function PersonalInformation({ graduate }) {
             <p> <Icon name='call' /> <b>Teléfono: </b>{graduate.cellphone}</p>
             <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
             <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{graduate.englishLevel}</p>
-            <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p>
+            {/* <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p> */}
             <p> <Icon name='map outline' /><b>Nodo: </b>{graduate.nodeName}</p>
           </Item.Description>
           <Item.Extra> * Utilizar estos datos solo para fines laborales.</Item.Extra>
