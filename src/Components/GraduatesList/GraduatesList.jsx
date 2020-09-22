@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Input, Table, Loader, Dimmer } from "semantic-ui-react";
+import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
@@ -23,15 +23,15 @@ class GraduatesList extends Component {
 		this.getAllGraduates();
 	}
 
-	getResponse(response){
-		this.setState({ 
+	getResponse(response) {
+		this.setState({
 			graduates: response.data.response,
 			newFilterRequest: false,
 			displayLoader: false
 		});
 	}
 
-	catchError(error){
+	catchError(error) {
 		this.setState({
 			newFilterRequest: false,
 			displayLoader: false
@@ -39,62 +39,79 @@ class GraduatesList extends Component {
 		alert("There is an error with the data base. status: " + error.status)
 	}
 
-	async getAllGraduates(){
+	async getAllGraduates() {
 		await GraduateService.GetGraduates()
-		.then(response => {
-			this.getResponse(response);
-		})
-		.catch(error => {
-			this.catchError(error);
-		});
+			.then(response => {
+				this.getResponse(response);
+			})
+			.catch(error => {
+				this.catchError(error);
+			});
 	}
 
 	async getFilteredGraduates() {
 		await FactoryFilter(this.state.filterCriteria)
-		.then(response => {
-			this.getResponse(response);
-		})
-		.catch(error => {
-			this.catchError(error);
-		});
+			.then(response => {
+				this.getResponse(response);
+			})
+			.catch(error => {
+				this.catchError(error);
+			});
 	}
 
 	listGraduates() {
-		if (this.state.newFilterRequest)
-		{		
+		if (this.state.newFilterRequest) {
 			this.getFilteredGraduates();
 		}
 		return this.mapGraduatedList(this.state.graduates);
 	}
-	
+
 	mapGraduatedList(graduatedList) {
-		return(
+		return (
 			graduatedList.map((graduated, index) => {
 				return <Graduated item={graduated} key={index} />
-		}));
+			}));
 	}
 
 	handleOnSelectOption = (data) => {
 		this.setState({
-			filterCriteria:data,
-			filterBy:data.value,
+			filterCriteria: data,
+			filterBy: data.value,
 			newFilterRequest: true,
 			displayLoader: true
 		})
 	}
 
-	loadingIcon(){
+	loadingIcon() {
 		return (
 			this.state.displayLoader === true &&
 			<Dimmer active inverted>
-					<Loader inverted>Cargando</Loader>
+				<Loader inverted>Cargando</Loader>
 			</Dimmer>
+		)
+	}
+
+	emptyList() {
+		let messageHeader = "por el momento no tenemos egresades disponibles."
+		let messageContent = "Intenta mas tarde"
+		if (this.state.filterBy !== 'All') {
+			messageHeader = "no existen datos relacionados con su busqueda."
+			messageContent = "Intenta con otro filtro"
+		}
+		return (
+			this.state.graduates.length === 0 &&
+			<Message
+				icon='warning sign'
+				warning
+				header={`Lo sentimos, ${messageHeader}`}
+				content={`${messageContent}. Gracias`}
+			/>
 		)
 	}
 
 	render() {
 		return (
-			<div style={{paddingBottom: "5%" }}>
+			<div style={{ paddingBottom: "5%" }}>
 				<img
 					src={NahualLogo}
 					width="150"
@@ -103,7 +120,7 @@ class GraduatesList extends Component {
 				/>
 				<h1>Lista Egresades</h1>
 				<div style={{ marginLeft: "150px", marginRight: "150px" }}>
-				{this.loadingIcon()}
+					{this.loadingIcon()}
 					<Table
 						style={{
 							borderCollapse: "collapse",
@@ -117,7 +134,7 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption = {this.handleOnSelectOption}/>
+									<FilterButton handleOnSelectOption={this.handleOnSelectOption} />
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}
@@ -146,10 +163,11 @@ class GraduatesList extends Component {
 							{this.listGraduates()}
 						</Table.Body>
 					</Table>
+					{this.emptyList()}
 				</div>
 			</div>
 		);
 	}
 }
-							
+
 export default GraduatesList;
