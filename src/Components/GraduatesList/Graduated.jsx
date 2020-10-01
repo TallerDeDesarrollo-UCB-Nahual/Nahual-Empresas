@@ -1,12 +1,12 @@
 import React from "react";
-import { Checkbox, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import GraduateDetail from "../GraduateDetail/GraduateDetail.jsx";
 
 function Graduated(props) {
   return (
     <Table.Row style={{ border: "#81ce32 2px solid" }}>
       <Table.Cell style={{ textAlign: "center" }}>
-        {/* <Checkbox /> */}
+      <input type="checkbox" name="checkbox" style={{transform:"scale(1.4)"}}/>
       </Table.Cell>
       <Table.Cell>{props.item.fullName}</Table.Cell>
       <Table.Cell>{props.item.node}</Table.Cell>
