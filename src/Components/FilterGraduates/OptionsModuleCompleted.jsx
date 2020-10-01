@@ -2,54 +2,54 @@ import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/servicioDeFiltrado";
 
-class OptionsModuleCompleted extends Component{
+class opcionesDeModulosCompletados extends Component{
   constructor (props){
     super(props)
 		this.state = {
       value: '',
-      filterOptions: []
+      opcionesDeFiltrado: []
     };
   }
 
   async componentDidMount() {
     await servicioDeFiltrado.obtenerOpcionesDeModulosCompletados()
-    .then(response => {
-      this.ConstructFilterOptions(response.data.response);
+    .then(respuesta => {
+      this.agregarOpcionesDeFiltrado(respuesta.data.response);
     })
     .catch(error => {
-      alert("There is an error with the Data Base.")
+      alert("Error en la base de datos.")
     })
   }
 
-  AddDefaultModuleCompleted(){
-    const OptionModuleCompletedAll={
+  agregarModuloCompletadoPorDefecto(){
+    const moduloCompletadoTodos={
       id:0,
       key:0,
       text: "Todos",
       value: "All",
       filterby: "ModuleCompleted"
     }
-    return OptionModuleCompletedAll;
+    return moduloCompletadoTodos;
   }
 
-  ConstructFilterOptions(response) {
-    const ListOptionModulesCompleted = []
-    ListOptionModulesCompleted.push(this.AddDefaultModuleCompleted());
-    response.forEach(OptionModuleCompleted => {
-      OptionModuleCompleted={
-        key: OptionModuleCompleted.id,
-        text: OptionModuleCompleted.name,
-        value: OptionModuleCompleted.name,
+  agregarOpcionesDeFiltrado(respuesta) {
+    const opcionesDeModulosCompletados = []
+    opcionesDeModulosCompletados.push(this.agregarModuloCompletadoPorDefecto());
+    respuesta.forEach(opcionDeModuloCompletado => {
+      opcionDeModuloCompletado={
+        key: opcionDeModuloCompletado.id,
+        text: opcionDeModuloCompletado.name,
+        value: opcionDeModuloCompletado.name,
         filterby: "ModuleCompleted"
       }
-      ListOptionModulesCompleted.push(OptionModuleCompleted);
+      opcionesDeModulosCompletados.push(opcionDeModuloCompletado);
     });
-    this.setState({filterOptions:ListOptionModulesCompleted})
+    this.setState({opcionesDeFiltrado:opcionesDeModulosCompletados})
   }
 
-  handleSelected(option){
-    this.setState({ value: option.value });
-    this.props.handleOnSelectOption(option)
+  manejar(opcionSeleccionada){
+    this.setState({ value: opcionSeleccionada.value });
+    this.props.handleOnSelectOption(opcionSeleccionada)
   }
 
   render(){
@@ -60,14 +60,14 @@ class OptionsModuleCompleted extends Component{
         className='link item'
       >
         <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
+          {this.state.opcionesDeFiltrado.map((opcion) => (
             <Dropdown.Item 
-              active={option.value === this.state.value}
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={() => this.handleSelected(option)}
+              active={opcion.value === this.state.value}
+              key={opcion.key}
+              value={opcion.value}
+              text={opcion.text}
+              {... opcion}
+              onClick={() => this.manejar(opcion)}
             />
           ))}
         </Dropdown.Menu>
@@ -76,4 +76,4 @@ class OptionsModuleCompleted extends Component{
   }
 }
 
-export default OptionsModuleCompleted;
+export default opcionesDeModulosCompletados;
