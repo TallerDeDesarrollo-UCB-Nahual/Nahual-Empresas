@@ -2,53 +2,53 @@ import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/servicioDeFiltrado";
 
-class OptionsEnglishLevel extends Component{
+class opcionesDeNivelDeIngles extends Component{
   constructor (props){
     super(props)
 		this.state = {
-      filterOptions: []
+      opcionesDeFiltrado: []
     };
   }
 
   async componentDidMount() {
     await servicioDeFiltrado.obtenerOpcionesDeNivelesDeIngles()
-    .then(response => {
-      this.ConstructFilterOptions(response.data.response);
+    .then(respuesta => {
+      this.agregarOpcionesDeFiltrado(respuesta.data.response);
     })
     .catch(error => {
-      alert("Data base error")
+      alert("Error en la base de datos.")
     })
   }
 
-  AddDefaultEnglishLevel(){
-    const AllEnglishLevelOption={
+  agregarNivelDeInglesPorDefecto(){
+    const nivelDeInglesTodos={
       id:0,
       key:0,
       text: "Todos",
       value: "All",
       filterby: "EnglishLevel"
     }
-    return AllEnglishLevelOption;
+    return nivelDeInglesTodos;
   }
 
-  ConstructFilterOptions(response) {
-    const EnglishLevelOptions = []
-    EnglishLevelOptions.push(this.AddDefaultEnglishLevel());
-    response.forEach(EnglishLevelOption => {
-        EnglishLevelOption={
-        key: EnglishLevelOption.id,
-        text: EnglishLevelOption.name,
-        value: EnglishLevelOption.name,
+  agregarOpcionesDeFiltrado(respuesta) {
+    const opcionesDeNivelDeIngles = []
+    opcionesDeNivelDeIngles.push(this.agregarNivelDeInglesPorDefecto());
+    respuesta.forEach(opcionDeNivelDeIngles => {
+      opcionDeNivelDeIngles={
+        key: opcionDeNivelDeIngles.id,
+        text: opcionDeNivelDeIngles.name,
+        value: opcionDeNivelDeIngles.name,
         filterby: "EnglishLevel"
       }
-      EnglishLevelOptions.push(EnglishLevelOption);
+      opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);
     });
-    this.setState({filterOptions:EnglishLevelOptions})
+    this.setState({opcionesDeFiltrado:opcionesDeNivelDeIngles})
   }
 
-  handleSelected(option){
-    this.setState({ value: option.value });
-    this.props.handleOnSelectOption(option)
+  manejar(opcionSeleccionada){
+    this.setState({ value: opcionSeleccionada.value });
+    this.props.handleOnSelectOption(opcionSeleccionada)
   }
   
   render(){
@@ -59,14 +59,14 @@ class OptionsEnglishLevel extends Component{
         className='link item'
       >
         <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
+          {this.state.opcionesDeFiltrado.map((opcion) => (
             <Dropdown.Item 
-            active={option.value === this.state.value}
-            key={option.key}
-            value={option.value}
-            text={option.text}
-            {... option}
-            onClick={() => this.handleSelected(option)}
+            active={opcion.value === this.state.value}
+            key={opcion.key}
+            value={opcion.value}
+            text={opcion.text}
+            {... opcion}
+            onClick={() => this.manejar(opcion)}
             />
           ))}
         </Dropdown.Menu>
@@ -75,4 +75,4 @@ class OptionsEnglishLevel extends Component{
   }
 }
 
-export default OptionsEnglishLevel;
+export default opcionesDeNivelDeIngles;
