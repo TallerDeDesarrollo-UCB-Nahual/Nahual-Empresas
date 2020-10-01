@@ -4,7 +4,7 @@ import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
-import GraduateService from "../../Services/Services-Graduates/GraduateService";
+import servicioDeEgresades from "../../Services/Services-Graduates/servicioDeEgresades";
 
 
 class GraduatesList extends Component {
@@ -40,7 +40,7 @@ class GraduatesList extends Component {
 	}
 
 	async getAllGraduates() {
-		await GraduateService.GetGraduates()
+		await servicioDeEgresades.obtenerEgresades()
 			.then(response => {
 				this.getResponse(response);
 			})
