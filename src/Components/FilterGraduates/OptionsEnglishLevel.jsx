@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import servicioDeFiltrado from "../../Services/Services-FilterOptions/servicioDeFiltrado";
+import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/servicioDeFiltrado";
 
 class OptionsEnglishLevel extends Component{
   constructor (props){
