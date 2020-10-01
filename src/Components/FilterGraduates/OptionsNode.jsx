@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import FilterService from "../../Services/Services-FilterOptions/FilterService";
+import servicioDeFiltrado from "../../Services/Services-FilterOptions/servicioDeFiltrado";
 
 class OptionsNode extends Component{
   constructor (props){
@@ -12,7 +12,7 @@ class OptionsNode extends Component{
   }
 
   async componentDidMount() {
-    await FilterService.GetOptionsNodes()
+    await servicioDeFiltrado.obtenerOpcionesDeNodos()
     .then(response => {
       this.ConstructFilterOptions(response.data.response);
     })
