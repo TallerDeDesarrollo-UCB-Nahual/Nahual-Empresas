@@ -2,54 +2,54 @@ import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/servicioDeFiltrado";
 
-class OptionsNode extends Component{
+class opcionesDeNodo extends Component{
   constructor (props){
     super(props)
 		this.state = {
       value: '',
-      filterOptions: []
+      opcionesDeFiltrado: []
     };
   }
 
   async componentDidMount() {
     await servicioDeFiltrado.obtenerOpcionesDeNodos()
     .then(response => {
-      this.ConstructFilterOptions(response.data.response);
+      this.agregarOpcionesDeFiltrado(response.data.response);
     })
     .catch(error => {
-      alert("There is an error with the Data Base.")
+      alert("Error en la base de datos.")
     })
   }
 
-  AddDefaultNode(){
-    const OptionNodeAll={
+  agregarNodoPorDefecto(){
+    const nodoTodos={
       id:0,
       key:0,
       text: "Todos",
       value: "All",
       filterby: "Node"
     }
-    return OptionNodeAll;
+    return nodoTodos;
   }
 
-  ConstructFilterOptions(response) {
-    const ListOptionNode = []
-    ListOptionNode.push(this.AddDefaultNode());
-    response.forEach(OptionNode => {
-      OptionNode={
-        key: OptionNode.id,
-        text: OptionNode.name,
-        value: OptionNode.name,
+  agregarOpcionesDeFiltrado(respuesta) {
+    const opcionesDeNodo = []
+    opcionesDeNodo.push(this.agregarNodoPorDefecto());
+    respuesta.forEach(opcionNodo => {
+      opcionNodo={
+        key: opcionNodo.id,
+        text: opcionNodo.name,
+        value: opcionNodo.name,
         filterby: "Node"
       }
-      ListOptionNode.push(OptionNode);
+      opcionesDeNodo.push(opcionNodo);
     });
-    this.setState({filterOptions:ListOptionNode})
+    this.setState({opcionesDeFiltrado:opcionesDeNodo})
   }
 
-  handleSelected(option){
-    this.setState({ value: option.value });
-    this.props.handleOnSelectOption(option)
+  manejar(opcionSeleccionada){
+    this.setState({ value: opcionSeleccionada.value });
+    this.props.handleOnSelectOption(opcionSeleccionada)
   }
 
   render(){
@@ -60,14 +60,14 @@ class OptionsNode extends Component{
         className='link item'
       >
         <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
+          {this.state.opcionesDeFiltrado.map((opcion) => (
             <Dropdown.Item 
-              active={option.value === this.state.value}
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={() => this.handleSelected(option)}
+              active={opcion.value === this.state.value}
+              key={opcion.key}
+              value={opcion.value}
+              text={opcion.text}
+              {... opcion}
+              onClick={() => this.manejar(opcion)}
             />
           ))}
         </Dropdown.Menu>
@@ -76,4 +76,4 @@ class OptionsNode extends Component{
   }
 }
 
-export default OptionsNode;
+export default opcionesDeNodo;
