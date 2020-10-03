@@ -16,8 +16,9 @@ function FilterButton(props){
     >
       <Dropdown.Menu style={{width:"165px"}}>
         <OptionsNode handleOnSelectOption={props.handleOnSelectOption}/>
-        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
+        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption} value={props.value}/>
         <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
+        <Dropdown.Item > {props.value.value}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
+import { Checkbox, Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
@@ -15,7 +15,14 @@ class GraduatesList extends Component {
 			filterBy: 'All',
 			filterCriteria: '',
 			newFilterRequest: false,
-			displayLoader: true
+			displayLoader: true,
+			deshabilitarFiltro:{
+				value: 'Todos',
+				key: 0,
+				text:'Desahabilitar Filtro',
+				filterby: 'Todos',
+			},
+			desahabilitarBoton:false
 		};
 	}
 
@@ -73,13 +80,23 @@ class GraduatesList extends Component {
 			}));
 	}
 
-	handleOnSelectOption = (data) => {
+	enviarDatosAlEstado(data){
 		this.setState({
 			filterCriteria: data,
 			filterBy: data.value,
 			newFilterRequest: true,
 			displayLoader: true
 		})
+	}
+
+	handleOnSelectOption = (data) => {
+		this.enviarDatosAlEstado(data)
+		this.setState({desahabilitarBoton:true})
+	}
+
+	quitarFiltros (data){
+		this.enviarDatosAlEstado(data)
+		this.setState({desahabilitarBoton:false})
 	}
 
 	loadingIcon() {
@@ -109,6 +126,16 @@ class GraduatesList extends Component {
 		)
 	}
 
+	botonQuitarFiltro(){
+		return(
+			this.state.desahabilitarBoton === true &&
+			<Button color='red'
+			onClick={()=>this.quitarFiltros(this.state.deshabilitarFiltro)}
+			value={this.state.deshabilitarFiltro}
+			>Quitar Filtros </Button>
+		)
+	}
+
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -134,7 +161,8 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} />
+									<FilterButton handleOnSelectOption={this.handleOnSelectOption} value={this.state.desahabilitarBoton}/>
+									{this.botonQuitarFiltro()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}

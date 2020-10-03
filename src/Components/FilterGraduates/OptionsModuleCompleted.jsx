@@ -7,7 +7,8 @@ class OptionsModuleCompleted extends Component{
     super(props)
 		this.state = {
       value: '',
-      filterOptions: []
+      filterOptions: [],
+      desableButton: this.props.value
     };
   }
 
@@ -48,9 +49,36 @@ class OptionsModuleCompleted extends Component{
   }
 
   handleSelected(option){
+    if (this.state.desableButton === true)
+    {
+      this.setState({value: ''})
+    }
     this.setState({ value: option.value });
     this.props.handleOnSelectOption(option)
+  }  
+
+  opcionesDeFiltro(desable){
+    let value
+    if (desable===true)
+      value = this.state.value
+    else  
+      value = 'Todos'
+    return (
+      <Dropdown.Menu >
+        {this.state.filterOptions.map((option) => (
+          <Dropdown.Item 
+            active={option.value === value} 
+            key={option.key}
+            value={option.value}
+            text={option.text}
+            {... option}
+            onClick={() => this.handleSelected(option)}
+          />
+        ))}
+      </Dropdown.Menu>
+      )
   }
+
 
   render(){
     return  (
@@ -59,19 +87,8 @@ class OptionsModuleCompleted extends Component{
         pointing='left' 
         className='link item'
       >
-        <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
-            <Dropdown.Item 
-              active={option.value === this.state.value}
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={() => this.handleSelected(option)}
-            />
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+         {this.opcionesDeFiltro(this.props.value)}
+       </Dropdown>
     );
   }
 }
