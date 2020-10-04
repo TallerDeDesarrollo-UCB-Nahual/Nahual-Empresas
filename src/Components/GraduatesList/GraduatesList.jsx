@@ -235,9 +235,9 @@ class GraduatesList extends Component {
 							}}
 						>
 							{
-                (console.log(this.state.egresadesSeleccionados),
-                this.listGraduates())
-              }
+								(console.log(this.state.egresadesSeleccionados),
+								this.listGraduates())
+							}
 						</Table.Body>
 					</Table>
 					{this.emptyList()}
