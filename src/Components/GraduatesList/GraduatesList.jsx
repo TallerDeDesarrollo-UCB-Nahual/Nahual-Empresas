@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
+import { Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
@@ -18,7 +18,8 @@ class GraduatesList extends Component {
 			displayLoader: true,
 			deshabilitarFiltro:{
 				desactivarOpcion:false
-			}
+			},
+			egresadesSeleccionados: []
 		};
 	}
 
@@ -134,6 +135,16 @@ class GraduatesList extends Component {
 		)
 	}
 
+	seleccionarTodosEgresades() {
+    let checkboxes = Array.from(document.getElementsByName("checkbox"));
+    checkboxes.map((checkbox) => {
+      return (checkbox.checked = checkboxes[0].checked);
+    });
+    checkboxes[0].checked
+      ? this.setState({ egresadesSeleccionados: this.state.graduates })
+      : this.setState({ egresadesSeleccionados: [] });
+	}
+	
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -170,7 +181,12 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row style={{ textAlign: "left" }}>
 								<Table.HeaderCell style={{ textAlign: "center" }}>
-									{/* <Checkbox /> */}
+								<input
+                    type="checkbox"
+                    name="checkbox"
+                    onClick={() => this.seleccionarTodosEgresades()}
+                    style={{ transform: "scale(1.4)" }}
+                  />
 								</Table.HeaderCell>
 								<Table.HeaderCell>NOMBRE</Table.HeaderCell>
 								<Table.HeaderCell>NODO</Table.HeaderCell>
@@ -186,7 +202,10 @@ class GraduatesList extends Component {
 								textAlign: "left"
 							}}
 						>
-							{this.listGraduates()}
+							{
+                (console.log(this.state.egresadesSeleccionados),
+                this.listGraduates())
+              }
 						</Table.Body>
 					</Table>
 					{this.emptyList()}
