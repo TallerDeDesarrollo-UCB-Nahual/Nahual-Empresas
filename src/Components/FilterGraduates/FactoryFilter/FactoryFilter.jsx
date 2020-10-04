@@ -33,6 +33,7 @@ function SetLocalFilterVariables(filterCriteria){
         FilterByEnglishLevel = ''
         FilterByNodeName = ''
         FilterByModuleCompleted = ''
+      break
     default:
       break
   }
