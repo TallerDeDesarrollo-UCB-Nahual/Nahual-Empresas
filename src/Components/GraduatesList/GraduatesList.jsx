@@ -234,7 +234,10 @@ class GraduatesList extends Component {
 								textAlign: "left",
 							}}
 						>
-							{this.listGraduates()}
+							{
+                (console.log(this.state.egresadesSeleccionados),
+                this.listGraduates())
+              }
 						</Table.Body>
 					</Table>
 					{this.emptyList()}
