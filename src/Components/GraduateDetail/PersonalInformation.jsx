@@ -2,6 +2,7 @@ import React from "react";
 import { Icon, Item, Header } from "semantic-ui-react";
 import moment from 'moment';
 import 'moment/locale/es';
+import avatarGenerico from '../../assets/avatar-generico.png'
 
 function capitalize_Words(str) {
   return str.replace(/\b\w/g, l => l.toUpperCase())
@@ -13,9 +14,9 @@ function PersonalInformation({ graduate }) {
   return (
     <Item.Group>
       <Item>
-        <Item.Image
+        <Item.Image style={{ width: "200px", marginRight : "30px" }}
           size='medium'
-          src='https://react.semantic-ui.com/images/avatar/large/matthew.png'
+          src={avatarGenerico}
         />
         <Item.Content verticalAlign='middle'>
           <Header as='h1'> {capitalize_Words(graduate.nombreCompleto)} </Header><br />
