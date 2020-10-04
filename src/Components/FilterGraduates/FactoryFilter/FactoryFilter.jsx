@@ -1,41 +1,41 @@
 import axios from "axios";
 
-const DATA_SERVICE_API_NAHUAL = process.env.REACT_APP_API_URL;
-let [FilterByModuleCompleted,FilterByEnglishLevel,FilterByNodeName,QueryFilter] = ['','','','']
+const SERVICIO_DE_DATOS_API_NAHUAL = process.env.REACT_APP_API_URL;
+let [filtrarPorModuloCompletado, filtrarPorNivelDeIngles, filtrarPorNombreDeNodo, filtroDeConsulta] = ['','','','']
 
-function FactoryFilter(filterCriteria) {
-  SetLocalFilterVariables(filterCriteria)
-  QueryFilter = BuildFilterQuery() 
-  return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?${QueryFilter}`)
+function fabricaDeFiltros (criterioDeFiltrado) {
+  establecerVariablesDeFiltroLocal(criterioDeFiltrado)
+  filtroDeConsulta = construirFiltroDeConsulta() 
+  return axios.get(`${SERVICIO_DE_DATOS_API_NAHUAL}/graduates/unemployes?${filtroDeConsulta}`)
 } 
 
-function SetLocalFilterVariables(filterCriteria){
-  switch (filterCriteria.filterby) {
-    case 'ModuleCompleted':
-      if (filterCriteria.value==='All')
-        FilterByModuleCompleted = ''
+function establecerVariablesDeFiltroLocal(criterioDeFiltrado){
+  switch (criterioDeFiltrado.filterby) {
+    case 'moduloCompletado':
+      if (criterioDeFiltrado.value==='Todos')
+      filtrarPorModuloCompletado = ''
       else
-        FilterByModuleCompleted =`module=${filterCriteria.value}&`;
+      filtrarPorModuloCompletado =`module=${criterioDeFiltrado.value}&`;
       break
-    case 'EnglishLevel':
-      if (filterCriteria.value==='All')
-        FilterByEnglishLevel = ''
+    case 'nivelDeIngles':
+      if (criterioDeFiltrado.value==='Todos')
+      filtrarPorNivelDeIngles = ''
       else
-        FilterByEnglishLevel =`englishLevel=${filterCriteria.value}&`;
+      filtrarPorNivelDeIngles =`englishLevel=${criterioDeFiltrado.value}&`;
       break
-    case 'Node':
-      if (filterCriteria.value==='All')
-        FilterByNodeName = ''
+    case 'nodo':
+      if (criterioDeFiltrado.value==='Todos')
+      filtrarPorNombreDeNodo = ''
       else
-        FilterByNodeName =`nodeName=${filterCriteria.value}&`;
+      filtrarPorNombreDeNodo =`nodeName=${criterioDeFiltrado.value}&`;
       break
     default:
   }
 }
 
-function BuildFilterQuery(){
-  let Query = '';
-  return Query.concat(FilterByModuleCompleted,FilterByEnglishLevel,FilterByNodeName)
+function construirFiltroDeConsulta(){
+  let consulta = '';
+  return consulta.concat(filtrarPorModuloCompletado,filtrarPorNivelDeIngles,filtrarPorNombreDeNodo)
 }
 
-export default FactoryFilter;
+export default fabricaDeFiltros;

@@ -25,8 +25,8 @@ class opcionesDeNivelDeIngles extends Component{
       id:0,
       key:0,
       text: "Todos",
-      value: "All",
-      filterby: "EnglishLevel"
+      value: "Todos",
+      filterby: "nivelDeIngles"
     }
     return nivelDeInglesTodos;
   }
@@ -39,7 +39,7 @@ class opcionesDeNivelDeIngles extends Component{
         key: opcionDeNivelDeIngles.id,
         text: opcionDeNivelDeIngles.name,
         value: opcionDeNivelDeIngles.name,
-        filterby: "EnglishLevel"
+        filterby: "nivelDeIngles"
       }
       opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);
     });

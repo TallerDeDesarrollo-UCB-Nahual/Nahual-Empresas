@@ -26,8 +26,8 @@ class opcionesDeModulosCompletados extends Component{
       id:0,
       key:0,
       text: "Todos",
-      value: "All",
-      filterby: "ModuleCompleted"
+      value: "Todos",
+      filterby: "moduloCompletado"
     }
     return moduloCompletadoTodos;
   }
@@ -40,7 +40,7 @@ class opcionesDeModulosCompletados extends Component{
         key: opcionDeModuloCompletado.id,
         text: opcionDeModuloCompletado.name,
         value: opcionDeModuloCompletado.name,
-        filterby: "ModuleCompleted"
+        filterby: "moduloCompletado"
       }
       opcionesDeModulosCompletados.push(opcionDeModuloCompletado);
     });

@@ -26,8 +26,8 @@ class opcionesDeNodo extends Component{
       id:0,
       key:0,
       text: "Todos",
-      value: "All",
-      filterby: "Node"
+      value: "Todos",
+      filterby: "nodo"
     }
     return nodoTodos;
   }
@@ -40,7 +40,7 @@ class opcionesDeNodo extends Component{
         key: opcionNodo.id,
         text: opcionNodo.name,
         value: opcionNodo.name,
-        filterby: "Node"
+        filterby: "nodo"
       }
       opcionesDeNodo.push(opcionNodo);
     });
