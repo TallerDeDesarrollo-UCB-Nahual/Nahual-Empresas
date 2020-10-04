@@ -88,6 +88,7 @@ class GraduatesList extends Component {
 			filterBy: data.value,
 			newFilterRequest: true,
 			displayLoader: true,
+			egresadesSeleccionados:[],
 			deshabilitarFiltro: {			
 				value: 'Todos',
 				filterby: 'Todos',
@@ -153,17 +154,11 @@ class GraduatesList extends Component {
 	}
 
 	seleccionarEgresades = (graduado, checked) => {
-		console.log(checked);
 		if (checked) {
-			this.state.graduates.map((egresade) => {
-				return (
-					egresade.id === graduado.id &&
-					this.setState({
-						egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
-							graduado
-						),
-					})
-				);
+			this.setState({
+				egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
+					graduado
+				),
 			});
 		} else {
 			this.state.egresadesSeleccionados.map(() => {
