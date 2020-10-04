@@ -15,7 +15,7 @@ class GraduatesList extends Component {
 			filterCriteria: "",
 			newFilterRequest: false,
 			displayLoader: true,
-			selectedEgresades: []
+			selectedEgresades: [],
 		};
 	}
 
@@ -27,34 +27,34 @@ class GraduatesList extends Component {
 		this.setState({
 			graduates: response.data.response,
 			newFilterRequest: false,
-			displayLoader: false
+			displayLoader: false,
 		});
 	}
 
 	catchError(error) {
 		this.setState({
 			newFilterRequest: false,
-			displayLoader: false
+			displayLoader: false,
 		});
 		alert("There is an error with the data base. status: " + error.status);
 	}
 
 	async getAllGraduates() {
 		await GraduateService.GetGraduates()
-			.then(response => {
+			.then((response) => {
 				this.getResponse(response);
 			})
-			.catch(error => {
+			.catch((error) => {
 				this.catchError(error);
 			});
 	}
 
 	async getFilteredGraduates() {
 		await FactoryFilter(this.state.filterCriteria)
-			.then(response => {
+			.then((response) => {
 				this.getResponse(response);
 			})
-			.catch(error => {
+			.catch((error) => {
 				this.catchError(error);
 			});
 	}
@@ -78,12 +78,12 @@ class GraduatesList extends Component {
 		});
 	}
 
-	handleOnSelectOption = data => {
+	handleOnSelectOption = (data) => {
 		this.setState({
 			filterCriteria: data,
 			filterBy: data.value,
 			newFilterRequest: true,
-			displayLoader: true
+			displayLoader: true,
 		});
 	};
 
@@ -118,7 +118,7 @@ class GraduatesList extends Component {
 
 	selectAllEgresades() {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		checkboxes.map(checkbox => {
+		checkboxes.map((checkbox) => {
 			return (checkbox.checked = checkboxes[0].checked);
 		});
 		checkboxes[0].checked
@@ -129,18 +129,20 @@ class GraduatesList extends Component {
 	selectEgresades = (graduated, checked) => {
 		console.log(checked);
 		if (checked) {
-			this.state.graduates.map(egresade => {
-				return egresade.id === graduated.id &&
+			this.state.graduates.map((egresade) => {
+				return (
+					egresade.id === graduated.id &&
 					this.setState({
-						selectedEgresades: this.state.selectedEgresades.concat(graduated)
-					});
+						selectedEgresades: this.state.selectedEgresades.concat(graduated),
+					})
+				);
 			});
 		} else {
 			this.state.selectedEgresades.map(() => {
 				return this.setState({
 					selectedEgresades: this.state.selectedEgresades.filter(
-						e => e.id !== graduated.id
-					)
+						(e) => e.id !== graduated.id
+					),
 				});
 			});
 		}
@@ -161,7 +163,7 @@ class GraduatesList extends Component {
 					<Table
 						style={{
 							borderCollapse: "collapse",
-							border: "#81ce32 2px solid"
+							border: "#81ce32 2px solid",
 						}}
 						inverted
 						unstackable
@@ -201,7 +203,7 @@ class GraduatesList extends Component {
 							style={{
 								color: "black",
 								backgroundColor: "white",
-								textAlign: "left"
+								textAlign: "left",
 							}}
 						>
 							{
