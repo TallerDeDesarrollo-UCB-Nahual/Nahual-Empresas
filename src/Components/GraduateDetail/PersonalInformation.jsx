@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Item, Header } from "semantic-ui-react";
+import { Icon, Item, Header, Grid } from "semantic-ui-react";
 import moment from 'moment';
 import 'moment/locale/es';
 import avatarGenerico from '../../assets/avatar-generico.png'
