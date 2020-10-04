@@ -52,6 +52,32 @@ class OptionsNode extends Component{
     this.props.handleOnSelectOption(option)
   }
 
+  opcionesDeFiltro(opcionSeleccionada){
+     return (
+      <Dropdown.Menu >
+        {this.state.filterOptions.map((option) => (
+          <Dropdown.Item 
+            active={option.value === this.activarBoton(opcionSeleccionada)} 
+            key={option.key}
+            value={option.value}
+            text={option.text}
+            {... option}
+            onClick={() => this.handleSelected(option)}
+          />
+        ))}
+      </Dropdown.Menu>
+      )
+  }
+
+  activarBoton(opcionSeleccionada) {
+    let respuesta;
+    if (opcionSeleccionada.desactivarOpcion === true)
+      respuesta = this.state.value;
+    else
+      respuesta = opcionSeleccionada.value;
+    return respuesta;
+  }
+  
   render(){
     return  (
       <Dropdown
@@ -59,18 +85,7 @@ class OptionsNode extends Component{
         pointing='left' 
         className='link item'
       >
-        <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
-            <Dropdown.Item 
-              active={option.value === this.state.value}
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={() => this.handleSelected(option)}
-            />
-          ))}
-        </Dropdown.Menu>
+        {this.opcionesDeFiltro(this.props.value)}
       </Dropdown>
     );
   }
