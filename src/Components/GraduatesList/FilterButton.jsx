@@ -1,8 +1,8 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-import OptionsModuleCompleted from "../FilterGraduates/OptionsModuleCompleted";
-import OptionsEnglishLevel from "../FilterGraduates/OptionsEnglishLevel";
-import OptionsNode from "../FilterGraduates/OptionsNode";
+import OpcionesDeModulosCompletados from "../FilterGraduates/OpcionesDeModulosCompletados";
+import OpcionesDeNivelDeIngles from "../FilterGraduates/OpcionesDeNivelDeIngles";
+import OpcionesDeNodo from "../FilterGraduates/OpcionesDeNodo";
 
 function FilterButton(props){
   return (
@@ -15,9 +15,9 @@ function FilterButton(props){
       className='icon'
     >
       <Dropdown.Menu style={{width:"165px"}}>
-        <OptionsNode handleOnSelectOption={props.handleOnSelectOption}/>
-        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
-        <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
+        <OpcionesDeNodo handleOnSelectOption={props.handleOnSelectOption}/>
+        <OpcionesDeModulosCompletados handleOnSelectOption={props.handleOnSelectOption}/>
+        <OpcionesDeNivelDeIngles handleOnSelectOption={props.handleOnSelectOption}/>
       </Dropdown.Menu>
     </Dropdown>
     );

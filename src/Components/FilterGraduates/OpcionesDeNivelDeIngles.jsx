@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/ServicioDeFiltrado";
+import ServicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/ServicioDeFiltrado";
 
 class opcionesDeNivelDeIngles extends Component{
   constructor (props){
@@ -11,7 +11,7 @@ class opcionesDeNivelDeIngles extends Component{
   }
 
   async componentDidMount() {
-    await servicioDeFiltrado.obtenerOpcionesDeNivelesDeIngles()
+    await ServicioDeFiltrado.obtenerOpcionesDeNivelesDeIngles()
     .then(respuesta => {
       this.agregarOpcionesDeFiltrado(respuesta.data.response);
     })

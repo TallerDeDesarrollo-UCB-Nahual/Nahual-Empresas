@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import servicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/ServicioDeFiltrado";
+import ServicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/ServicioDeFiltrado";
 
-class opcionesDeNodo extends Component{
+class opcionesDeModulosCompletados extends Component{
   constructor (props){
     super(props)
 		this.state = {
@@ -12,39 +12,39 @@ class opcionesDeNodo extends Component{
   }
 
   async componentDidMount() {
-    await servicioDeFiltrado.obtenerOpcionesDeNodos()
-    .then(response => {
-      this.agregarOpcionesDeFiltrado(response.data.response);
+    await ServicioDeFiltrado.obtenerOpcionesDeModulosCompletados()
+    .then(respuesta => {
+      this.agregarOpcionesDeFiltrado(respuesta.data.response);
     })
     .catch(error => {
       alert("Error en la base de datos.")
     })
   }
 
-  agregarNodoPorDefecto(){
-    const nodoTodos={
+  agregarModuloCompletadoPorDefecto(){
+    const moduloCompletadoTodos={
       id:0,
       key:0,
       text: "Todos",
       value: "All",
-      filterby: "Node"
+      filterby: "ModuleCompleted"
     }
-    return nodoTodos;
+    return moduloCompletadoTodos;
   }
 
   agregarOpcionesDeFiltrado(respuesta) {
-    const opcionesDeNodo = []
-    opcionesDeNodo.push(this.agregarNodoPorDefecto());
-    respuesta.forEach(opcionNodo => {
-      opcionNodo={
-        key: opcionNodo.id,
-        text: opcionNodo.name,
-        value: opcionNodo.name,
-        filterby: "Node"
+    const opcionesDeModulosCompletados = []
+    opcionesDeModulosCompletados.push(this.agregarModuloCompletadoPorDefecto());
+    respuesta.forEach(opcionDeModuloCompletado => {
+      opcionDeModuloCompletado={
+        key: opcionDeModuloCompletado.id,
+        text: opcionDeModuloCompletado.name,
+        value: opcionDeModuloCompletado.name,
+        filterby: "ModuleCompleted"
       }
-      opcionesDeNodo.push(opcionNodo);
+      opcionesDeModulosCompletados.push(opcionDeModuloCompletado);
     });
-    this.setState({opcionesDeFiltrado:opcionesDeNodo})
+    this.setState({opcionesDeFiltrado:opcionesDeModulosCompletados})
   }
 
   manejar(opcionSeleccionada){
@@ -55,7 +55,7 @@ class opcionesDeNodo extends Component{
   render(){
     return  (
       <Dropdown
-        text='Nodo' 
+        text='Modulo Cursado' 
         pointing='left' 
         className='link item'
       >
@@ -76,4 +76,4 @@ class opcionesDeNodo extends Component{
   }
 }
 
-export default opcionesDeNodo;
+export default opcionesDeModulosCompletados;
