@@ -1,17 +1,17 @@
 import React from 'react'
 import { Icon, Grid } from "semantic-ui-react";
 
-const Course = ({ graduate }) => {
+const Curso = ({ egresade }) => {
   return (
     <>
       <Grid.Column floated="right" width={11}>
-        <Icon color='green' name='check' />{graduate.module}
+        <Icon color='green' name='check' />{egresade.modulo}
       </Grid.Column>
       <Grid.Column floated="left" width={4}>
-        {graduate.graduationYear}
+        {egresade.añoDeEgreso}
       </Grid.Column>
     </>
   )
 }
 
-export default Course
+export default Curso;

@@ -3,13 +3,13 @@ import { Icon, Item, Header } from "semantic-ui-react";
 import moment from 'moment';
 import 'moment/locale/es';
 
-function capitalize_Words(str) {
+function convertirAMayusculas(str) {
   return str.replace(/\b\w/g, l => l.toUpperCase())
 }
 
-function PersonalInformation({ graduate }) {
+function informacionPersonal({ egresade }) {
   moment.locale('es');
-  const fecha_convertida = moment(graduate.birthDate).format('LL');
+  const fecha_convertida = moment(egresade.birthDate).format('LL');
   return (
     <Item.Group>
       <Item>
@@ -18,14 +18,14 @@ function PersonalInformation({ graduate }) {
           src='https://react.semantic-ui.com/images/avatar/large/matthew.png'
         />
         <Item.Content verticalAlign='middle'>
-          <Header as='h1'> {capitalize_Words(graduate.fullName)} </Header><br />
+          <Header as='h1'> {convertirAMayusculas(egresade.fullName)} </Header><br />
           <Item.Description>
-            <p> <Icon name='mail outline' /> <b>Correo: </b>{graduate.mail}</p>
-            <p> <Icon name='call' /> <b>Teléfono: </b>{graduate.cellphone}</p>
+            <p> <Icon name='mail outline' /> <b>Correo: </b>{egresade.mail}</p>
+            <p> <Icon name='call' /> <b>Teléfono: </b>{egresade.cellphone}</p>
             <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
-            <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{graduate.englishLevel}</p>
-            {/* <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p> */}
-            <p> <Icon name='map outline' /><b>Nodo: </b>{graduate.nodeName}</p>
+            <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{egresade.englishLevel}</p>
+            {/* <p> <Icon name='home' /><b>Sede: </b>{egresade.campus}</p> */}
+            <p> <Icon name='map outline' /><b>Nodo: </b>{egresade.nodeName}</p>
           </Item.Description>
           <Item.Extra> * Utilizar estos datos solo para fines laborales.</Item.Extra>
         </Item.Content>
@@ -34,4 +34,4 @@ function PersonalInformation({ graduate }) {
   );
 }
 
-export default PersonalInformation;
+export default informacionPersonal;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Checkbox, Table } from "semantic-ui-react";
-import GraduateDetail from "../GraduateDetail/GraduateDetail.jsx";
+import DetalleDeEgresade from "../GraduateDetail/DetalleDeEgresade.jsx";
 
 function Graduated(props) {
   return (
@@ -13,7 +13,7 @@ function Graduated(props) {
       <Table.Cell>{props.item.finishedCourses}</Table.Cell>
       <Table.Cell>{props.item.englishLevel}</Table.Cell>
       <Table.Cell style={{ textAlign: "center" }}>
-				<GraduateDetail id={props.item.id}></GraduateDetail>
+				<DetalleDeEgresade id={props.item.id}></DetalleDeEgresade>
 			</Table.Cell>
     </Table.Row>
   );

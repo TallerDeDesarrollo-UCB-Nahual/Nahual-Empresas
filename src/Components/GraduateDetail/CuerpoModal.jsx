@@ -1,10 +1,10 @@
 import React from 'react'
-import PersonalInformation from "./PersonalInformation";
-import CoursesInformation from "./CoursesInformation";
+import PersonalInformation from "./InformacionPersonal";
+import CoursesInformation from "./InformacionDeCursos";
 import LogoNahual from '../../assets/logo-proyecto-nahual.webp'
 import { Button, Modal, Image, Icon, Grid } from 'semantic-ui-react'
 
-const BodyModal = ({ graduate, closeModal }) => {
+const CuerpoModal = ({ egresade, cerrarModal }) => {
   return (
     <>
       <Modal.Header >
@@ -12,17 +12,17 @@ const BodyModal = ({ graduate, closeModal }) => {
       </Modal.Header>
       <Modal.Content scrolling>
         <Grid divided='vertically'>
-          <PersonalInformation graduate={graduate} />
-          <CoursesInformation graduate={graduate} />
+          <PersonalInformation egresade={egresade} />
+          <CoursesInformation egresade={egresade} />
         </Grid>
       </Modal.Content>
       <Modal.Actions>
-        <Button negative onClick={closeModal} >
+        <Button negative onClick={cerrarModal} >
           Cerrar
         </Button>
-        {graduate.linkedin ?
+        {egresade.linkedin ?
           <a
-            href={graduate.linkedin}
+            href={egresade.linkedin}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -41,4 +41,4 @@ const BodyModal = ({ graduate, closeModal }) => {
   )
 }
 
-export default BodyModal
+export default CuerpoModal;

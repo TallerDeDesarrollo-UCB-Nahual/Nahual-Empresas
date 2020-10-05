@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { Button, Modal, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
-import BodyModal from './BodyModal';
+import CuerpoModal from './CuerpoModal';
 import axios from "axios";
 
-class GraduateDetail extends Component {
+class detalleDeEgresade extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      abierto: false
     };
   }
 
-  getGraduateAPI() {
+  obtenerAPIDeEgresade() {
     const API_URL = process.env.REACT_APP_API_URL;
     axios
       .get(`${API_URL}/students/${this.props.id}`)
-      .then(response => {
+      .then(respuesta => {
         this.setState({
-          graduate: response.data.response
+          egresade: respuesta.data.response
         });
       })
       .catch(function (error) {
@@ -25,25 +25,25 @@ class GraduateDetail extends Component {
       });
   }
 
-  showModal(state) {
+  mostrarModal(state) {
     this.setState({
-      open: state
+      abierto: state
     });
   }
 
   render() {
     return (
       <Modal
-        open={this.state.open}
-        onClose={() => this.showModal(false)}
-        onOpen={() => this.showModal(true)}
+        abierto={this.state.abierto}
+        onClose={() => this.mostrarModal(false)}
+        onabierto={() => this.mostrarModal(true)}
         size="small"
         closeIcon
-        trigger={<Button onClick={() => (this.getGraduateAPI(this.props.id))} icon='eye' />}
+        trigger={<Button onClick={() => (this.obtenerAPIDeEgresade(this.props.id))} icon='eye' />}
       >
         {
-          this.state.graduate ?
-            <BodyModal graduate={this.state.graduate} closeModal={() => (this.showModal(false))} />
+          this.state.egresade ?
+            <CuerpoModal egresade={this.state.egresade} closeModal={() => (this.mostrarModal(false))} />
             :
             <Segment>
               <Dimmer active inverted>
@@ -57,4 +57,4 @@ class GraduateDetail extends Component {
   }
 }
 
-export default GraduateDetail
+export default detalleDeEgresade;
