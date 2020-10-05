@@ -46,6 +46,11 @@ class OptionsEnglishLevel extends Component{
     this.setState({filterOptions:EnglishLevelOptions})
   }
 
+  handleSelected(option){
+    this.setState({ value: option.value });
+    this.props.handleOnSelectOption(option)
+  }
+  
   render(){
     return  (
       <Dropdown
@@ -56,11 +61,12 @@ class OptionsEnglishLevel extends Component{
         <Dropdown.Menu >
           {this.state.filterOptions.map((option) => (
             <Dropdown.Item 
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={this.props.handleOnSelectOption}  
+            active={option.value === this.state.value}
+            key={option.key}
+            value={option.value}
+            text={option.text}
+            {... option}
+            onClick={() => this.handleSelected(option)}
             />
           ))}
         </Dropdown.Menu>
