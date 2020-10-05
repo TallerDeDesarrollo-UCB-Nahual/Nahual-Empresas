@@ -74,7 +74,7 @@ class GraduatesList extends Component {
 			return (
 				<Graduated
 					item={graduated}
-					key={index}
+					key={graduated.id}
 					seleccionarEgresades={this.seleccionarEgresades}
 					numeracion={index + 1}
 				/>
@@ -94,6 +94,7 @@ class GraduatesList extends Component {
 				filterby: 'Todos',
 				desactivarOpcion: estado
 		}})
+		this.cambiarCheckedDeCheckbox(true);
 	}
 
 	handleOnSelectOption = (data) => {
@@ -144,10 +145,7 @@ class GraduatesList extends Component {
 	}
 
 	seleccionarTodosEgresades() {
-		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		checkboxes.map((checkbox) => {
-			return (checkbox.checked = checkboxes[0].checked);
-		});
+		let checkboxes = this.cambiarCheckedDeCheckbox(false);
 		checkboxes[0].checked
 			? this.setState({ egresadesSeleccionados: this.state.graduates })
 			: this.setState({ egresadesSeleccionados: [] });
@@ -170,7 +168,15 @@ class GraduatesList extends Component {
 			});
 		}
 	};
-
+	cambiarCheckedDeCheckbox(filtro) {
+		let checkboxes = Array.from(document.getElementsByName("checkbox"));
+		 checkboxes.map((checkbox) => {
+			return filtro
+				? (checkbox.checked = false)
+				: (checkbox.checked = checkboxes[0].checked);
+		});
+		return checkboxes;
+	}
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
