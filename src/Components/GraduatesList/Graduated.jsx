@@ -1,6 +1,6 @@
 import React from "react";
 import { Checkbox, Table } from "semantic-ui-react";
-import DetalleDeEgresade from "../GraduateDetail/DetalleDeEgresade.jsx";
+import DetalleDeEgresade from "../DetalleDeEgresade/DetalleDeEgresade.jsx";
 
 function Graduated(props) {
   return (
