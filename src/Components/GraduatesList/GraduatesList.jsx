@@ -3,8 +3,8 @@ import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-rea
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
-import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
-import servicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
+import FabricaDeFiltros from "../FilterGraduates/FactoryFilter/FabricaDeFiltros";
+import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 
 
 class GraduatesList extends Component {
@@ -12,7 +12,7 @@ class GraduatesList extends Component {
 		super(props);
 		this.state = {
 			graduates: [],
-			filterBy: 'All',
+			filterBy: 'Todos',
 			filterCriteria: '',
 			newFilterRequest: false,
 			displayLoader: true
@@ -40,7 +40,7 @@ class GraduatesList extends Component {
 	}
 
 	async getAllGraduates() {
-		await servicioDeEgresades.obtenerEgresades()
+		await ServicioDeEgresades.obtenerEgresades()
 			.then(response => {
 				this.getResponse(response);
 			})
@@ -50,7 +50,7 @@ class GraduatesList extends Component {
 	}
 
 	async getFilteredGraduates() {
-		await FactoryFilter(this.state.filterCriteria)
+		await FabricaDeFiltros(this.state.filterCriteria)
 			.then(response => {
 				this.getResponse(response);
 			})
@@ -94,7 +94,7 @@ class GraduatesList extends Component {
 	emptyList() {
 		let messageHeader = "por el momento no tenemos egresades disponibles."
 		let messageContent = "Intenta mas tarde"
-		if (this.state.filterBy !== 'All') {
+		if (this.state.filterBy !== 'Todos') {
 			messageHeader = "no existen datos relacionados con su busqueda."
 			messageContent = "Intenta con otro filtro"
 		}
