@@ -6,7 +6,7 @@ class OptionsNode extends Component{
   constructor (props){
     super(props)
 		this.state = {
-      value: '',
+      valor: '',
       filterOptions: []
     };
   }
@@ -48,7 +48,7 @@ class OptionsNode extends Component{
   }
 
   handleSelected(option){
-    this.setState({ value: option.value });
+    this.setState({ valor: option.value });
     this.props.handleOnSelectOption(option)
   }
 
@@ -72,7 +72,7 @@ class OptionsNode extends Component{
   activarBoton(opcionSeleccionada) {
     let respuesta;
     if (opcionSeleccionada.desactivarOpcion === true)
-      respuesta = this.state.value;
+      respuesta = this.state.valor;
     else
       respuesta = opcionSeleccionada.value;
     return respuesta;
@@ -85,7 +85,7 @@ class OptionsNode extends Component{
         pointing='left' 
         className='link item'
       >
-        {this.opcionesDeFiltro(this.props.value)}
+        {this.opcionesDeFiltro(this.props.valor)}
       </Dropdown>
     );
   }

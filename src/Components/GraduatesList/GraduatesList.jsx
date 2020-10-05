@@ -17,10 +17,6 @@ class GraduatesList extends Component {
 			newFilterRequest: false,
 			displayLoader: true,
 			deshabilitarFiltro:{
-				value: 'Todos',
-				key: 0,
-				text:'Deshabilitar Filtro',
-				filterby: 'Todos',
 				desactivarOpcion:false
 			}
 		};
@@ -80,23 +76,25 @@ class GraduatesList extends Component {
 			}));
 	}
 
-	enviarDatosAlEstado(data){
+	enviarDatosAlEstado(data, estado){
 		this.setState({
 			filterCriteria: data,
 			filterBy: data.value,
 			newFilterRequest: true,
-			displayLoader: true
-		})
+			displayLoader: true,
+			deshabilitarFiltro: {			
+				value: 'Todos',
+				filterby: 'Todos',
+				desactivarOpcion: estado
+		}})
 	}
 
 	handleOnSelectOption = (data) => {
-		this.enviarDatosAlEstado(data)
-		this.setState({deshabilitarFiltro: {desactivarOpcion:true}})
+		this.enviarDatosAlEstado(data, true)
 	}
 
 	quitarFiltros (data){
-		this.enviarDatosAlEstado(data)
-		this.setState({deshabilitarFiltro: {desactivarOpcion:false}})
+		this.enviarDatosAlEstado(data, false)
 	}
 
 	loadingIcon() {
@@ -131,7 +129,7 @@ class GraduatesList extends Component {
 			this.state.deshabilitarFiltro.desactivarOpcion === true &&
 			<Button color='red'
 			onClick={()=>this.quitarFiltros(this.state.deshabilitarFiltro)}
-			value={this.state.deshabilitarFiltro}
+			valor={this.state.deshabilitarFiltro}
 			>Remover Filtros </Button>
 		)
 	}
@@ -161,7 +159,7 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} value={this.state.deshabilitarFiltro}/>
+									<FilterButton handleOnSelectOption={this.handleOnSelectOption} valor={this.state.deshabilitarFiltro}/>
 									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
