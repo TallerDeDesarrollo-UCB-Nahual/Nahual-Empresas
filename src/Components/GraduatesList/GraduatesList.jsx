@@ -6,6 +6,7 @@ import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
 import BotonExportar from "./BotonExportar";
+import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -175,6 +176,7 @@ class GraduatesList extends Component {
 			});
 		}
 	};
+
 	cambiarEstadoDeCheckbox(filtro) {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
 		checkboxes.map((checkbox) => {
@@ -184,6 +186,7 @@ class GraduatesList extends Component {
 		});
 		return checkboxes;
 	}
+	
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -213,9 +216,9 @@ class GraduatesList extends Component {
 									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
-									{/* <Input icon="search" iconPosition="left" className="search"/> */}
+									<OpcionesDeQuitarFiltro opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
 								</Table.HeaderCell>
-							</Table.Row>
+					</Table.Row>
 						</Table.Header>
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row style={{ textAlign: "left" }}>
