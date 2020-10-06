@@ -187,6 +187,16 @@ class GraduatesList extends Component {
 		return checkboxes;
 	}
 	
+	quitarUnFiltro(data){
+	/*	if (data===false)
+		this.setState({deshabilitarFiltro: {			
+			value: 'Todos',
+			filterby: 'Todos',
+			desactivarOpcion: data
+		}})*/
+		console.log(data)
+	}
+
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -212,11 +222,11 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} valor={this.state.deshabilitarFiltro}/>
+									<FilterButton handleOnSelectOption={this.handleOnSelectOption} valor={this.state.deshabilitarFiltro} />
 									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
-									<OpcionesDeQuitarFiltro opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
+									<OpcionesDeQuitarFiltro  quitarFiltro={this.quitarUnFiltro} opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
 								</Table.HeaderCell>
 					</Table.Row>
 						</Table.Header>
