@@ -170,7 +170,7 @@ class GraduatesList extends Component {
 	};
 	cambiarCheckedDeCheckbox(filtro) {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		 checkboxes.map((checkbox) => {
+		checkboxes.map((checkbox) => {
 			return filtro
 				? (checkbox.checked = false)
 				: (checkbox.checked = checkboxes[0].checked);
@@ -234,10 +234,7 @@ class GraduatesList extends Component {
 								textAlign: "left",
 							}}
 						>
-							{
-								(console.log(this.state.egresadesSeleccionados),
-								this.listGraduates())
-							}
+							{this.listGraduates()}
 						</Table.Body>
 					</Table>
 					{this.emptyList()}
