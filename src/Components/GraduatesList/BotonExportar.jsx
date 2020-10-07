@@ -1,18 +1,37 @@
-import React from 'react'
-import ReactExport from 'react-export-excel';
-import moment from 'moment';
-import 'moment/locale/es';
+import React from "react";
+import ReactExport from "react-export-excel";
+import moment from "moment";
+import "moment/locale/es";
+import { Button } from "semantic-ui-react";
 
 const ArchivoExcel = ReactExport.ExcelFile;
 const HojaExcel = ReactExport.ExcelFile.ExcelSheet;
 const ColumnaExcel = ReactExport.ExcelFile.ExcelColumn;
 
+const Boton = ({ cantidad }) => {
+  return (
+    <Button
+      color="green"
+      content="Exportar"
+      icon="download"
+      label={{
+        basic: true,
+        color: "green",
+        pointing: "left",
+        content: cantidad,
+      }}
+    />
+  );
+};
 const BotonDescargar = ({ seleccionados }) => {
-  moment.locale('es');
-  const fecha_descarga = moment(Date.now()).format('LL');
+  moment.locale("es");
+  const fecha_descarga = moment(Date.now()).format("LL");
   return (
     <div>
-      <ArchivoExcel filename={`Graduades Exportados - ${fecha_descarga}`}>
+      <ArchivoExcel
+        filename={`Graduades Exportados - ${fecha_descarga}`}
+        element={<Boton cantidad={seleccionados.length} />}
+      >
         <HojaExcel data={seleccionados} name="Graduades">
           <ColumnaExcel label="Nombre" value="fullName" />
           <ColumnaExcel label="Correo" value="mail" />
@@ -27,7 +46,7 @@ const BotonDescargar = ({ seleccionados }) => {
         </HojaExcel>
       </ArchivoExcel>
     </div>
-  )
-}
+  );
+};
 
-export default BotonDescargar
+export default BotonDescargar;
