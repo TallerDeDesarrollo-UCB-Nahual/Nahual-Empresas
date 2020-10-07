@@ -9,10 +9,11 @@
     "axios": "^0.20.0",
     "moment": "^2.28.0",
     "react": "^16.13.1",
+    "react-data-export": "^0.6.0",
     "react-dom": "^16.13.1",
-    "react-export-excel": "^0.5.3",
     "react-scripts": "^3.4.3",
-    "semantic-ui-react": "^1.2.1"
+    "semantic-ui-react": "^1.2.1",
+    "xlsx": "^0.16.8"
   },
   "scripts": {
     "start": "craco start",
