@@ -26,7 +26,7 @@ class OpcionesDeQuitarFiltro extends Component{
         mostrarBoton: false,
         texto: '',
         value: "All"
-      }
+      },      
     };
   }
 
@@ -37,67 +37,91 @@ class OpcionesDeQuitarFiltro extends Component{
       mostrarBoton:false
     },nivelDeIngles: {
       mostrarBoton:false
-    }})
+    }});
   }
 
   validarTodosLosFiltrosRemovidos(){
     if (this.state.moduloCompletado.mostrarBoton === false &&
       this.state.nodo.mostrarBoton===false &&
-      this.state.nivelDeIngles.mostrarBoton===false)  
-      this.props.quitarFiltro(false)
+      this.state.nivelDeIngles.mostrarBoton===false) 
+      {
+        this.ocultarBotones();
+        this.props.esUltimoFiltro(false); 
+      }
+    }
+
+  enviarEstadosModuloCompletado(valor,filtroPor,objeto){
+    if (valor==='All'){
+      this.setState({moduloCompletado: {
+          mostrarBoton: false,
+      }},()=>{
+        this.validarTodosLosFiltrosRemovidos();
+        this.props.quitarFiltro(objeto)  
+      })
+    }
+    else
+      this.setState({moduloCompletado: {
+        mostrarBoton: true,
+        texto: valor,
+        filtro: 'Modulo Completado',
+        value: "All",
+        filterby: filtroPor,
+    }})
+  }
+
+  enviarEstadosNivelDeIngles(valor,filtroPor,objeto){
+    if (valor==='All'){
+      this.setState({nivelDeIngles: {
+          mostrarBoton: false,
+      }},()=>{
+        this.validarTodosLosFiltrosRemovidos();
+        this.props.quitarFiltro(objeto)  
+      })
+    }
+    else
+    this.setState({nivelDeIngles: {
+      mostrarBoton: true,
+      texto: valor,
+      filtro: 'Nivel de Ingles',
+      value: "All",
+      filterby: filtroPor,
+    }})
+  }
+  
+  enviarEstadosNodo(valor,filtroPor,objeto) {
+    if (valor==='All'){
+      this.setState({nodo: {
+          mostrarBoton: false,
+      }},()=>{
+        this.validarTodosLosFiltrosRemovidos();
+        this.props.quitarFiltro(objeto)  
+      })
+    }
+    else
+      this.setState({nodo: {
+        mostrarBoton: true,
+        texto: valor,
+        filtro: 'Nodo',
+        value: "All",
+        filterby: filtroPor
+    }})
   }
 
   opciones(opcionSeleccionada){
     switch (opcionSeleccionada.filterby) {
       case 'ModuleCompleted':
-        if (opcionSeleccionada.value==='All')
-          this.setState({moduloCompletado: {
-            mostrarBoton:false,
-          }})
-        else
-          this.setState({moduloCompletado: {
-            mostrarBoton:true,
-            texto: opcionSeleccionada.value,
-            filtro: 'Modulo Completado',
-            value: "All",
-            filterby: opcionSeleccionada.filterby
-          }})
+          this.enviarEstadosModuloCompletado(opcionSeleccionada.value,opcionSeleccionada.filterby,opcionSeleccionada);
         break
       case 'EnglishLevel':
-          if (opcionSeleccionada.value==='All')
-          this.setState({nivelDeIngles: {
-            mostrarBoton:false,
-          }})
-          else
-            this.setState({nivelDeIngles: {
-              mostrarBoton:true,
-              texto: opcionSeleccionada.value,
-              filtro: 'Nivel de Ingles',
-              value: "All",
-              filterby: opcionSeleccionada.filterby
-            }})
+          this.enviarEstadosNivelDeIngles(opcionSeleccionada.value,opcionSeleccionada.filterby,opcionSeleccionada);
          break
       case 'Node':
-          if (opcionSeleccionada.value==='All')
-          this.setState({nodo: {
-            mostrarBoton:false,
-          }})
-          else
-            this.setState({nodo: {
-              mostrarBoton:true,
-              texto: opcionSeleccionada.value,
-              filtro: 'Nodo',
-              value: "All",
-              filterby: opcionSeleccionada.filterby
-            }})
+          this.enviarEstadosNodo(opcionSeleccionada.value,opcionSeleccionada.filterby,opcionSeleccionada);
          break
       case 'Todos':
-            this.validarTodosLosFiltrosRemovidos();
           this.ocultarBotones();
         break
-      default:          
-      this.validarTodosLosFiltrosRemovidos();
-          this.ocultarBotones();
+      default:       
         break
     }
   }
@@ -105,10 +129,9 @@ class OpcionesDeQuitarFiltro extends Component{
   componentWillReceiveProps(newProps){
     this.opciones(newProps.opcion)
   }
-  
-  gato(opcionSeleccionada){
+
+  alHacerClick(opcionSeleccionada){
     this.opciones(opcionSeleccionada)
-    this.props.quitarFiltro(opcionSeleccionada)
   }
   
   render(){
@@ -118,7 +141,7 @@ class OpcionesDeQuitarFiltro extends Component{
           this.state.nodo.mostrarBoton === true &&
           <Label image >								
             {this.state.nodo.filtro}
-            <Icon name='delete' link onClick={()=>this.gato(this.state.nodo)}/>
+            <Icon name='delete' link onClick={()=>this.alHacerClick(this.state.nodo)}/>
             <Label.Detail>{this.state.nodo.texto}</Label.Detail>
           </Label>
         }
@@ -127,7 +150,7 @@ class OpcionesDeQuitarFiltro extends Component{
           this.state.moduloCompletado.mostrarBoton === true &&
           <Label image>								
             {this.state.moduloCompletado.filtro}
-            <Icon name='delete' link onClick={()=>this.gato(this.state.moduloCompletado)}/>
+            <Icon name='delete' link onClick={()=>this.alHacerClick(this.state.moduloCompletado)}/>
             <Label.Detail>{this.state.moduloCompletado.texto}</Label.Detail>
           </Label>
         }
@@ -136,7 +159,7 @@ class OpcionesDeQuitarFiltro extends Component{
           this.state.nivelDeIngles.mostrarBoton === true &&
           <Label image>								
             {this.state.nivelDeIngles.filtro}
-            <Icon name='delete' link onClick={()=>this.gato(this.state.nivelDeIngles)}/>
+            <Icon name='delete' link onClick={()=>this.alHacerClick(this.state.nivelDeIngles)}/>
             <Label.Detail>{this.state.nivelDeIngles.texto}</Label.Detail>
           </Label>
         }

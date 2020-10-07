@@ -15,9 +15,21 @@ function FilterButton(props){
       className='icon'
     >
       <Dropdown.Menu style={{width:"165px"}}>
-        <OptionsNode handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
-        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
-        <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
+        <OptionsNode 
+          handleOnSelectOption={props.handleOnSelectOption} 
+          valor={props.valor}
+          quitarUnFiltro={props.quitarUnFiltro} 
+        />
+        <OptionsModuleCompleted 
+          handleOnSelectOption={props.handleOnSelectOption} 
+          valor={props.valor}
+          quitarUnFiltro={props.quitarUnFiltro} 
+        />
+        <OptionsEnglishLevel           
+          handleOnSelectOption={props.handleOnSelectOption} 
+          valor={props.valor}
+          quitarUnFiltro={props.quitarUnFiltro} 
+        />
       </Dropdown.Menu>
     </Dropdown>
     );

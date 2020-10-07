@@ -9,6 +9,25 @@ function FactoryFilter(filterCriteria) {
   return axios.get(`${DATA_SERVICE_API_NAHUAL}/egresades/desempleados?${QueryFilter}`)
 } 
 
+function removerUnFiltro(filtro){
+  switch (filtro.value) {
+    case 'ModuleCompleted':
+        FilterByModuleCompleted = ''
+      break
+    case 'EnglishLevel':
+        FilterByEnglishLevel = ''
+      break
+    case 'Node':
+        FilterByNodeName = ''
+      break
+    default:
+        FilterByEnglishLevel = ''
+        FilterByNodeName = ''
+        FilterByModuleCompleted = ''
+      break
+  }
+}
+
 function SetLocalFilterVariables(filterCriteria){
   switch (filterCriteria.filterby) {
     case 'ModuleCompleted':
@@ -33,6 +52,9 @@ function SetLocalFilterVariables(filterCriteria){
         FilterByEnglishLevel = ''
         FilterByNodeName = ''
         FilterByModuleCompleted = ''
+      break
+    case 'SinFiltros':
+        removerUnFiltro(filterCriteria);
       break
     default:
       break

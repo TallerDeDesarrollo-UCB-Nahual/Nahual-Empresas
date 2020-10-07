@@ -21,20 +21,8 @@ class OptionsNode extends Component{
     })
   }
 
-  AddDefaultNode(){
-    const OptionNodeAll={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "All",
-      filterby: "Node"
-    }
-    return OptionNodeAll;
-  }
-
   ConstructFilterOptions(response) {
     const ListOptionNode = []
-    ListOptionNode.push(this.AddDefaultNode());
     response.forEach(OptionNode => {
       OptionNode={
         key: OptionNode.id,
@@ -70,7 +58,7 @@ class OptionsNode extends Component{
   }
 
   componentWillReceiveProps(newProps){
-    if (newProps.valor.desactivarOpcion === false)
+    if (newProps.valor.desactivarOpcion === false || newProps.quitarUnFiltro.filterby === 'Node')
        this.setState({valor:'All'})
   }
 

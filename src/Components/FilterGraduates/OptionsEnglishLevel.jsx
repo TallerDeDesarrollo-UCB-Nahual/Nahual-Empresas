@@ -17,24 +17,12 @@ class OptionsEnglishLevel extends Component{
       this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
-      alert("Data base error")
+      alert("Data base error");
     })
   }
 
-  AddDefaultEnglishLevel(){
-    const AllEnglishLevelOption={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "All",
-      filterby: "EnglishLevel"
-    }
-    return AllEnglishLevelOption;
-  }
-
   ConstructFilterOptions(response) {
-    const EnglishLevelOptions = []
-    EnglishLevelOptions.push(this.AddDefaultEnglishLevel());
+    const EnglishLevelOptions = [];
     response.forEach(EnglishLevelOption => {
         EnglishLevelOption={
         key: EnglishLevelOption.id,
@@ -44,7 +32,7 @@ class OptionsEnglishLevel extends Component{
       }
       EnglishLevelOptions.push(EnglishLevelOption);
     });
-    this.setState({filterOptions:EnglishLevelOptions})
+    this.setState({filterOptions:EnglishLevelOptions});
   }
 
   handleSelected(option){
@@ -70,7 +58,7 @@ class OptionsEnglishLevel extends Component{
   }
 
   componentWillReceiveProps(newProps){
-    if (newProps.valor.desactivarOpcion === false)
+    if (newProps.valor.desactivarOpcion === false || newProps.quitarUnFiltro.filterby === 'EnglishLevel')
       this.setState({valor:'All'})
   }
   
