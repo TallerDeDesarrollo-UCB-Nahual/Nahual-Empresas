@@ -9,11 +9,17 @@ const HojaExcel = ReactExport.ExcelFile.ExcelSheet;
 const ColumnaExcel = ReactExport.ExcelFile.ExcelColumn;
 
 const Boton = ({ cantidad }) => {
+  let habilitado = false;
+  if (cantidad === 0) habilitado = true;
   return (
     <Button
+      floated="left"
       color="green"
+      style={{ backgroundColor: "#81ce32" }}
+
       content="Exportar"
       icon="download"
+      disabled={habilitado}
       label={{
         basic: true,
         color: "green",
@@ -28,23 +34,27 @@ const BotonDescargar = ({ seleccionados }) => {
   const fecha_descarga = moment(Date.now()).format("LL");
   return (
     <div>
-      <ArchivoExcel
-        filename={`Graduades Exportados - ${fecha_descarga}`}
-        element={<Boton cantidad={seleccionados.length} />}
-      >
-        <HojaExcel data={seleccionados} name="Graduades">
-          <ColumnaExcel label="Nombre" value="fullName" />
-          <ColumnaExcel label="Correo" value="mail" />
-          <ColumnaExcel label="Teléfono" value="cellphone" />
-          <ColumnaExcel label="Fecha de nacimiento" value="birthDate" />
-          <ColumnaExcel label="Nivel de inglés" value="englishLevel" />
-          <ColumnaExcel label="Nodo:" value="node" />
-          <ColumnaExcel label="Sede" value="nodeName" />
-          <ColumnaExcel label="Linkedin" value="linkedin" />
-          <ColumnaExcel label="Curso Realizádo" value="finishedCourses" />
-          <ColumnaExcel label="Año" value="graduationYear" />
-        </HojaExcel>
-      </ArchivoExcel>
+      {seleccionados.length ? (
+        <ArchivoExcel
+          filename={`Graduades Exportados - ${fecha_descarga}`}
+          element={<Boton cantidad={seleccionados.length} />}
+        >
+          <HojaExcel data={seleccionados} name="Graduades">
+            <ColumnaExcel label="Nombre" value="fullName" />
+            <ColumnaExcel label="Correo" value="mail" />
+            <ColumnaExcel label="Teléfono" value="cellphone" />
+            <ColumnaExcel label="Fecha de nacimiento" value="birthDate" />
+            <ColumnaExcel label="Nivel de inglés" value="englishLevel" />
+            <ColumnaExcel label="Nodo:" value="node" />
+            <ColumnaExcel label="Sede" value="nodeName" />
+            <ColumnaExcel label="Linkedin" value="linkedin" />
+            <ColumnaExcel label="Curso Realizádo" value="finishedCourses" />
+            <ColumnaExcel label="Año" value="graduationYear" />
+          </HojaExcel>
+        </ArchivoExcel>
+      ) : (
+        <Boton cantidad={seleccionados.length} />
+      )}
     </div>
   );
 };
