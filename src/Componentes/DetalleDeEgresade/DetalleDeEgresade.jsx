@@ -43,7 +43,7 @@ class detalleDeEgresade extends Component {
       >
         {
           this.state.egresade ?
-            <CuerpoModal egresade={this.state.egresade} closeModal={() => (this.mostrarModal(false))} />
+            <CuerpoModal egresade={this.state.egresade} cerrarModal={() => (this.mostrarModal(false))} />
             :
             <Segment>
               <Dimmer active inverted>

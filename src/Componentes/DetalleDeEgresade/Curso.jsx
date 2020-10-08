@@ -5,10 +5,10 @@ const Curso = ({ egresade }) => {
   return (
     <>
       <Grid.Column floated="right" width={11}>
-        <Icon color='green' name='check' />{egresade.modulo}
+        <Icon color='green' name='check' />{egresade.module}
       </Grid.Column>
       <Grid.Column floated="left" width={4}>
-        {egresade.añoDeEgreso}
+        {egresade.graduationYear}
       </Grid.Column>
     </>
   )
