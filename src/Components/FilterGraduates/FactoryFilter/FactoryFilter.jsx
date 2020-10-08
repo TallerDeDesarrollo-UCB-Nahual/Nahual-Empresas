@@ -29,7 +29,13 @@ function SetLocalFilterVariables(filterCriteria){
       else
         FilterByNodeName =`nodeName=${filterCriteria.value}&`;
       break
+    case 'Todos':
+        FilterByEnglishLevel = ''
+        FilterByNodeName = ''
+        FilterByModuleCompleted = ''
+      break
     default:
+      break
   }
 }
 

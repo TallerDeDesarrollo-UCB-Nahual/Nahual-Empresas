@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
+import { Checkbox, Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
@@ -15,7 +15,10 @@ class GraduatesList extends Component {
 			filterBy: 'All',
 			filterCriteria: '',
 			newFilterRequest: false,
-			displayLoader: true
+			displayLoader: true,
+			deshabilitarFiltro:{
+				desactivarOpcion:false
+			}
 		};
 	}
 
@@ -73,13 +76,25 @@ class GraduatesList extends Component {
 			}));
 	}
 
-	handleOnSelectOption = (data) => {
+	enviarDatosAlEstado(data, estado){
 		this.setState({
 			filterCriteria: data,
 			filterBy: data.value,
 			newFilterRequest: true,
-			displayLoader: true
-		})
+			displayLoader: true,
+			deshabilitarFiltro: {			
+				value: 'Todos',
+				filterby: 'Todos',
+				desactivarOpcion: estado
+		}})
+	}
+
+	handleOnSelectOption = (data) => {
+		this.enviarDatosAlEstado(data, true)
+	}
+
+	quitarFiltros (data){
+		this.enviarDatosAlEstado(data, false)
 	}
 
 	loadingIcon() {
@@ -109,6 +124,16 @@ class GraduatesList extends Component {
 		)
 	}
 
+	removerFiltros(){
+		return(
+			this.state.deshabilitarFiltro.desactivarOpcion === true &&
+			<Button color='red'
+			onClick={()=>this.quitarFiltros(this.state.deshabilitarFiltro)}
+			valor={this.state.deshabilitarFiltro}
+			>Remover Filtros </Button>
+		)
+	}
+
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -134,7 +159,8 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} />
+									<FilterButton handleOnSelectOption={this.handleOnSelectOption} valor={this.state.deshabilitarFiltro}/>
+									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}
