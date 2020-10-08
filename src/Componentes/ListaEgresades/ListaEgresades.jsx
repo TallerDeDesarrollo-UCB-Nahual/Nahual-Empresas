@@ -1,110 +1,110 @@
 import React, { Component } from "react";
 import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
 import FilterButton from "./BotonDeFiltrado";
-import Graduated from "./Egresade";
+import Egresade from "./Egresade";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/servicioDeEgresades";
 
 
-class GraduatesList extends Component {
+class ListaEgresades extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			graduates: [],
-			filterBy: 'Todos',
-			filterCriteria: '',
-			newFilterRequest: false,
-			displayLoader: true
+			egresades: [],
+			filtrarPor: 'Todos',
+			criterioDeFiltrado: '',
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: true
 		};
 	}
 
 	componentDidMount() {
-		this.getAllGraduates();
+		this.obtenerTodesLosEgresades();
 	}
 
-	getResponse(response) {
+	obtenerRespuesta(respuesta) {
 		this.setState({
-			graduates: response.data.response,
-			newFilterRequest: false,
-			displayLoader: false
+			egresades: respuesta.data.response,
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: false
 		});
 	}
 
-	catchError(error) {
+	errorDeCaptura(error) {
 		this.setState({
-			newFilterRequest: false,
-			displayLoader: false
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: false
 		})
-		alert("There is an error with the data base. status: " + error.status)
+		alert("Hay un error en la base de datos, status: " + error.status)
 	}
 
-	async getAllGraduates() {
+	async obtenerTodesLosEgresades() {
 		await ServicioDeEgresades.obtenerEgresades()
-			.then(response => {
-				this.getResponse(response);
+			.then(respuesta => {
+				this.obtenerRespuesta(respuesta);
 			})
 			.catch(error => {
-				this.catchError(error);
+				this.errorDeCaptura(error);
 			});
 	}
 
-	async getFilteredGraduates() {
-		await FabricaDeFiltros(this.state.filterCriteria)
-			.then(response => {
-				this.getResponse(response);
+	async obtenerEgresadesFiltrados() {
+		await FabricaDeFiltros(this.state.criterioDeFiltrado)
+			.then(respuesta => {
+				this.obtenerRespuesta(respuesta);
 			})
 			.catch(error => {
-				this.catchError(error);
+				this.errorDeCaptura(error);
 			});
 	}
 
-	listGraduates() {
-		if (this.state.newFilterRequest) {
-			this.getFilteredGraduates();
+	listaEgresades() {
+		if (this.state.nuevaPeticionDeFiltrado) {
+			this.obtenerEgresadesFiltrados();
 		}
-		return this.mapGraduatedList(this.state.graduates);
+		return this.mapeoListaEgresades(this.state.egresades);
 	}
 
-	mapGraduatedList(graduatedList) {
+	mapeoListaEgresades(listaEgresades) {
 		return (
-			graduatedList.map((graduated, index) => {
-				return <Graduated item={graduated} key={index} />
+			listaEgresades.map((egresade, indice) => {
+				return <Egresade item={egresade} key={indice} />
 			}));
 	}
 
 	manejar = (opcionSeleccionada) => {
 		this.setState({
-			filterCriteria: opcionSeleccionada,
-			filterBy: opcionSeleccionada.value,
-			newFilterRequest: true,
-			displayLoader: true
+			criterioDeFiltrado: opcionSeleccionada,
+			filtrarPor: opcionSeleccionada.value,
+			nuevaPeticionDeFiltrado: true,
+			mostrarBotonDeCarga: true
 		})
 	}
 
-	loadingIcon() {
+	iconoDeCarga() {
 		return (
-			this.state.displayLoader === true &&
+			this.state.mostrarBotonDeCarga === true &&
 			<Dimmer active inverted>
 				<Loader inverted>Cargando</Loader>
 			</Dimmer>
 		)
 	}
 
-	emptyList() {
-		let messageHeader = "por el momento no tenemos egresades disponibles."
-		let messageContent = "Intenta mas tarde"
-		if (this.state.filterBy !== 'Todos') {
-			messageHeader = "no existen datos relacionados con su busqueda."
-			messageContent = "Intenta con otro filtro"
+	listaVacia() {
+		let cabeceraDelMensaje = "por el momento no tenemos egresades disponibles."
+		let contenidoDelMensaje = "Intenta mas tarde"
+		if (this.state.filtrarPor !== 'Todos') {
+			cabeceraDelMensaje = "no existen datos relacionados con su busqueda."
+			contenidoDelMensaje = "Intenta con otro filtro"
 		}
 		return (
-			this.state.graduates.length === 0 &&
+			this.state.egresades.length === 0 &&
 			<Message
 				icon='warning sign'
 				warning
-				header={`Lo sentimos, ${messageHeader}`}
-				content={`${messageContent}. Gracias`}
+				header={`Lo sentimos, ${cabeceraDelMensaje}`}
+				content={`${contenidoDelMensaje}. Gracias`}
 			/>
 		)
 	}
@@ -120,7 +120,7 @@ class GraduatesList extends Component {
 				/>
 				<h1>Lista Egresades</h1>
 				<div style={{ marginLeft: "150px", marginRight: "150px" }}>
-					{this.loadingIcon()}
+					{this.iconoDeCarga()}
 					<Table
 						style={{
 							borderCollapse: "collapse",
@@ -160,14 +160,14 @@ class GraduatesList extends Component {
 								textAlign: "left"
 							}}
 						>
-							{this.listGraduates()}
+							{this.listaEgresades()}
 						</Table.Body>
 					</Table>
-					{this.emptyList()}
+					{this.listaVacia()}
 				</div>
 			</div>
 		);
 	}
 }
 
-export default GraduatesList;
+export default ListaEgresades;
