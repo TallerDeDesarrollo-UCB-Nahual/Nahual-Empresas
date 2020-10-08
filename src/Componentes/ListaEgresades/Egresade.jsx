@@ -2,7 +2,7 @@ import React from "react";
 import { Checkbox, Table } from "semantic-ui-react";
 import DetalleDeEgresade from "../DetalleDeEgresade/DetalleDeEgresade.jsx";
 
-function Graduated(props) {
+function Egresade(props) {
   return (
     <Table.Row style={{ border: "#81ce32 2px solid" }}>
       <Table.Cell style={{ textAlign: "center" }}>
@@ -19,4 +19,4 @@ function Graduated(props) {
   );
 }
 
-export default Graduated;
+export default Egresade;
