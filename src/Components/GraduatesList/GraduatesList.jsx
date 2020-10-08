@@ -94,7 +94,7 @@ class GraduatesList extends Component {
 				filterby: 'Todos',
 				desactivarOpcion: estado
 		}})
-		this.cambiarCheckedDeCheckbox(true);
+		this.cambiarEstadoDeCheckbox(true);
 	}
 
 	handleOnSelectOption = (data) => {
@@ -145,30 +145,30 @@ class GraduatesList extends Component {
 	}
 
 	seleccionarTodosEgresades() {
-		let checkboxes = this.cambiarCheckedDeCheckbox(false);
+		let checkboxes = this.cambiarEstadoDeCheckbox(false);
 		checkboxes[0].checked
 			? this.setState({ egresadesSeleccionados: this.state.graduates })
 			: this.setState({ egresadesSeleccionados: [] });
 	}
 
-	seleccionarEgresades = (graduado, checked) => {
+	seleccionarEgresades = (egresade, checked) => {
 		if (checked) {
 			this.setState({
 				egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
-					graduado
+					egresade
 				),
 			});
 		} else {
 			this.state.egresadesSeleccionados.map(() => {
 				return this.setState({
 					egresadesSeleccionados: this.state.egresadesSeleccionados.filter(
-						(e) => e.id !== graduado.id
+						(e) => e.id !== egresade.id
 					),
 				});
 			});
 		}
 	};
-	cambiarCheckedDeCheckbox(filtro) {
+	cambiarEstadoDeCheckbox(filtro) {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
 		checkboxes.map((checkbox) => {
 			return filtro

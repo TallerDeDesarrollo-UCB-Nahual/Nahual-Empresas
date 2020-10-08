@@ -3,9 +3,9 @@ import { Table } from "semantic-ui-react";
 import GraduateDetail from "../GraduateDetail/GraduateDetail.jsx";
 
 function Graduated(props) {
-	const seleccionarEgresade = (graduated) => {
+	const seleccionarEgresade = (egresade) => {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		props.seleccionarEgresades(graduated, checkboxes[props.numeracion].checked);
+		props.seleccionarEgresades(egresade, checkboxes[props.numeracion].checked);
 	};
 	return (
 		<Table.Row style={{ border: "#81ce32 2px solid" }}>
