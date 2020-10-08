@@ -23,173 +23,75 @@ const Boton = ({ cantidad }) => {
     />
   );
 };
+const estilos = {
+  fill: { fgColor: { rgb: "81ce32" } },
+  font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
+  alignment: { vertical: "center", horizontal: "center" },
+  border: {
+    top: { style: "medium", color: { rgb: "66a527" } },
+    bottom: { style: "medium", color: { rgb: "66a527" } },
+    left: { style: "medium", color: { rgb: "66a527" } },
+    right: { style: "medium", color: { rgb: "66a527" } },
+  },
+};
+
 const conjuntoDeDatos = [
   {
     columns: [
       {
         title: "Nro.",
         width: { wpx: 40 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Nombre",
         width: { wpx: 200 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Correo",
         width: { wpx: 200 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Teléfono",
         width: { wpx: 110 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Fecha de nacimiento",
         width: { wpx: 180 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Nivel de Inglés",
         width: { wpx: 130 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Nodo",
         width: { wpx: 90 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Sede",
         width: { wpx: 90 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Linkedin",
         width: { wpx: 200 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Curso",
         width: { wpx: 200 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
       {
         title: "Año",
         width: { wpx: 90 },
-        style: {
-          fill: { fgColor: { rgb: "81ce32" } },
-          font: { bold: true, sz: 14, color: { rgb: "ffffff" } },
-          alignment: { vertical: "center", horizontal: "center" },
-          border: {
-            top: { style: "medium", color: { rgb: "66a527" } },
-            bottom: { style: "medium", color: { rgb: "66a527" } },
-            left: { style: "medium", color: { rgb: "66a527" } },
-            right: { style: "medium", color: { rgb: "66a527" } },
-          },
-        },
+        style: estilos,
       },
     ],
     data: [],
