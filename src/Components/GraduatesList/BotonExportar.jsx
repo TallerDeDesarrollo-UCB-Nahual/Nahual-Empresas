@@ -99,21 +99,21 @@ const conjuntoDeDatos = [
 ];
 
 const generarFila = (egresade, numero) => {
-  const fechaDeNacimiento = egresade.birthDate
-    ? moment(egresade.birthDate).format("L")
+  const fechaDeNacimiento = egresade.fechaNacimiento
+    ? moment(egresade.fechaNacimiento).format("L")
     : "";
   return [
     numero + 1,
-    egresade.fullName,
-    egresade.mail,
-    egresade.cellphone,
+    egresade.nombreCompleto,
+    egresade.correo,
+    egresade.celular,
     fechaDeNacimiento,
-    egresade.englishLevel,
-    egresade.node,
+    egresade.nivelIngles,
+    egresade.nombreNodo,
     egresade.sede,
     egresade.linkedin,
-    egresade.finishedCourses,
-    egresade.graduationYear,
+    egresade.modulo,
+    egresade.añoGraduacion,
   ];
 };
 
