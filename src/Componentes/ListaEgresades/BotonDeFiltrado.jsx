@@ -4,7 +4,7 @@ import OpcionesDeModulosCompletados from "../FiltradoEgresades/OpcionesDeModulos
 import OpcionesDeNivelDeIngles from "../FiltradoEgresades/OpcionesDeNivelDeIngles";
 import OpcionesDeNodo from "../FiltradoEgresades/OpcionesDeNodo";
 
-function FilterButton(props){
+function BotonDeFiltrado(props){
   return (
     <Dropdown 
       text= 'Filtrar'
@@ -23,4 +23,4 @@ function FilterButton(props){
     );
   }
 
-export default FilterButton;
+export default BotonDeFiltrado;

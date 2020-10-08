@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
-import FilterButton from "./FilterButton";
+import FilterButton from "./BotonDeFiltrado";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoEgresades/FabricaDeFiltros/FabricaDeFiltros";
