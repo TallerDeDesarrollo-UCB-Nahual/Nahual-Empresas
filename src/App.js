@@ -1,5 +1,5 @@
 import React from "react";
-import GraduatesList from "./Components/GraduatesList/GraduatesList.jsx";
+import GraduatesList from "./Componentes/GraduatesList/GraduatesList";
 import "./App.css";
 
 function App() {

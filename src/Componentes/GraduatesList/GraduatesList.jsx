@@ -3,7 +3,7 @@ import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-rea
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
-import FabricaDeFiltros from "../FilterGraduates/FabricaDeFiltros/FabricaDeFiltros";
+import FabricaDeFiltros from "../FiltradoEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/servicioDeEgresades";
 
 

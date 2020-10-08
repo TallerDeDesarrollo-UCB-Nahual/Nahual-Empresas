@@ -1,8 +1,8 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-import OpcionesDeModulosCompletados from "../FilterGraduates/OpcionesDeModulosCompletados";
-import OpcionesDeNivelDeIngles from "../FilterGraduates/OpcionesDeNivelDeIngles";
-import OpcionesDeNodo from "../FilterGraduates/OpcionesDeNodo";
+import OpcionesDeModulosCompletados from "../FiltradoEgresades/OpcionesDeModulosCompletados";
+import OpcionesDeNivelDeIngles from "../FiltradoEgresades/OpcionesDeNivelDeIngles";
+import OpcionesDeNodo from "../FiltradoEgresades/OpcionesDeNodo";
 
 function FilterButton(props){
   return (

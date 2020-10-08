@@ -13,8 +13,8 @@ class opcionesDeNodo extends Component{
 
   async componentDidMount() {
     await ServicioDeFiltrado.obtenerOpcionesDeNodos()
-    .then(response => {
-      this.agregarOpcionesDeFiltrado(response.data.response);
+    .then(respuesta => {
+      this.agregarOpcionesDeFiltrado(respuesta.data.response);
     })
     .catch(error => {
       alert("Error en la base de datos.")
