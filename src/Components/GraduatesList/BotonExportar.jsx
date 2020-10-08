@@ -98,13 +98,17 @@ const conjuntoDeDatos = [
   },
 ];
 
+function PrimeraLetraEnMayuscula(str) {
+  return str.replace(/\b\w/g, l => l.toUpperCase())
+}
+
 const generarFila = (egresade, numero) => {
   const fechaDeNacimiento = egresade.fechaNacimiento
     ? moment(egresade.fechaNacimiento).format("L")
     : "";
   return [
     numero + 1,
-    egresade.nombreCompleto,
+    PrimeraLetraEnMayuscula(egresade.nombreCompleto),
     egresade.correo,
     egresade.celular,
     fechaDeNacimiento,
