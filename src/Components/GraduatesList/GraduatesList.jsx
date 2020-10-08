@@ -4,7 +4,7 @@ import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FilterGraduates/FabricaDeFiltros/FabricaDeFiltros";
-import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
+import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/servicioDeEgresades";
 
 
 class GraduatesList extends Component {
