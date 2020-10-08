@@ -73,10 +73,10 @@ class GraduatesList extends Component {
 			}));
 	}
 
-	handleOnSelectOption = (data) => {
+	manejar = (opcionSeleccionada) => {
 		this.setState({
-			filterCriteria: data,
-			filterBy: data.value,
+			filterCriteria: opcionSeleccionada,
+			filterBy: opcionSeleccionada.value,
 			newFilterRequest: true,
 			displayLoader: true
 		})
@@ -134,7 +134,7 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} />
+									<FilterButton manejar={this.manejar} />
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}

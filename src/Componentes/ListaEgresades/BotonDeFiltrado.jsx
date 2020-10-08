@@ -15,9 +15,9 @@ function BotonDeFiltrado(props){
       className='icon'
     >
       <Dropdown.Menu style={{width:"165px"}}>
-        <OpcionesDeNodo handleOnSelectOption={props.handleOnSelectOption}/>
-        <OpcionesDeModulosCompletados handleOnSelectOption={props.handleOnSelectOption}/>
-        <OpcionesDeNivelDeIngles handleOnSelectOption={props.handleOnSelectOption}/>
+        <OpcionesDeNodo manejar={props.manejar}/>
+        <OpcionesDeModulosCompletados manejar={props.manejar}/>
+        <OpcionesDeNivelDeIngles manejar={props.manejar}/>
       </Dropdown.Menu>
     </Dropdown>
     );

@@ -48,7 +48,7 @@ class opcionesDeNivelDeIngles extends Component{
 
   manejar(opcionSeleccionada){
     this.setState({ value: opcionSeleccionada.value });
-    this.props.handleOnSelectOption(opcionSeleccionada)
+    this.props.manejar(opcionSeleccionada)
   }
   
   render(){
