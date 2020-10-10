@@ -17,10 +17,10 @@ function Graduated(props) {
 					onClick={() => seleccionarEgresade(props.item)}
 				/>
 			</Table.Cell>
-			<Table.Cell>{props.item.fullName}</Table.Cell>
-			<Table.Cell>{props.item.node}</Table.Cell>
-			<Table.Cell>{props.item.finishedCourses}</Table.Cell>
-			<Table.Cell>{props.item.englishLevel}</Table.Cell>
+			<Table.Cell>{props.item.nombreCompleto}</Table.Cell>
+			<Table.Cell>{props.item.nombreNodo}</Table.Cell>
+			<Table.Cell>{props.item.modulo}</Table.Cell>
+			<Table.Cell>{props.item.nivelIngles}</Table.Cell>
 			<Table.Cell style={{ textAlign: "center" }}>
 				<GraduateDetail id={props.item.id}></GraduateDetail>
 			</Table.Cell>

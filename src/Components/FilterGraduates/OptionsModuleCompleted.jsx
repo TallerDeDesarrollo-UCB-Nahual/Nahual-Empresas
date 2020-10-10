@@ -38,8 +38,8 @@ class OptionsModuleCompleted extends Component{
     response.forEach(OptionModuleCompleted => {
       OptionModuleCompleted={
         key: OptionModuleCompleted.id,
-        text: OptionModuleCompleted.name,
-        value: OptionModuleCompleted.name,
+        text: OptionModuleCompleted.nombre,
+        value: OptionModuleCompleted.nombre,
         filterby: "ModuleCompleted"
       }
       ListOptionModulesCompleted.push(OptionModuleCompleted);

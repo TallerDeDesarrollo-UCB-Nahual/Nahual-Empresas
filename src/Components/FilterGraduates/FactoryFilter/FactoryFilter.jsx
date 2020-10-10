@@ -6,7 +6,7 @@ let [FilterByModuleCompleted,FilterByEnglishLevel,FilterByNodeName,QueryFilter] 
 function FactoryFilter(filterCriteria) {
   SetLocalFilterVariables(filterCriteria)
   QueryFilter = BuildFilterQuery() 
-  return axios.get(`${DATA_SERVICE_API_NAHUAL}/graduates/unemployes?${QueryFilter}`)
+  return axios.get(`${DATA_SERVICE_API_NAHUAL}/egresades/desempleados?${QueryFilter}`)
 } 
 
 function SetLocalFilterVariables(filterCriteria){
@@ -15,19 +15,19 @@ function SetLocalFilterVariables(filterCriteria){
       if (filterCriteria.value==='All')
         FilterByModuleCompleted = ''
       else
-        FilterByModuleCompleted =`module=${filterCriteria.value}&`;
+        FilterByModuleCompleted =`modulo=${filterCriteria.value}&`;
       break
     case 'EnglishLevel':
       if (filterCriteria.value==='All')
         FilterByEnglishLevel = ''
       else
-        FilterByEnglishLevel =`englishLevel=${filterCriteria.value}&`;
+        FilterByEnglishLevel =`nivelIngles=${filterCriteria.value}&`;
       break
     case 'Node':
       if (filterCriteria.value==='All')
         FilterByNodeName = ''
       else
-        FilterByNodeName =`nodeName=${filterCriteria.value}&`;
+        FilterByNodeName =`nombreNodo=${filterCriteria.value}&`;
       break
     case 'Todos':
         FilterByEnglishLevel = ''
