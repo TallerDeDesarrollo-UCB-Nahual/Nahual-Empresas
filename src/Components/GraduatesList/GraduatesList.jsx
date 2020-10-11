@@ -131,7 +131,13 @@ class GraduatesList extends Component {
         content={`${messageContent}. Gracias`}
       />
     ) : (
-      <BotonExportar seleccionados={this.state.egresadesSeleccionados} />
+      <BotonExportar
+        seleccionados={this.state.egresadesSeleccionados}
+        deseleccionarEgresades={() => {
+          this.cambiarEstadoDeCheckbox(true);
+          this.setState({ egresadesSeleccionados: [] });
+        }}
+      />
     );
 	}
 

@@ -4,11 +4,12 @@ import moment from "moment";
 import "moment/locale/es";
 import { Button } from "semantic-ui-react";
 
-const Boton = ({ cantidad }) => {
+const Boton = ({ cantidad, deseleccionarEgresades }) => {
   let desHabilitado = false;
   if (cantidad === 0) desHabilitado = true;
   return (
     <Button
+      onClick={deseleccionarEgresades}
       floated="left"
       color="green"
       content="Exportar"
@@ -121,7 +122,7 @@ const generarFila = (egresade, numero) => {
   ];
 };
 
-const BotonExportar = ({ seleccionados }) => {
+const BotonExportar = ({ seleccionados, deseleccionarEgresades }) => {
   moment.locale("es");
   const fecha_descarga = moment(Date.now()).format("LL");
   const filas = seleccionados.map((egresade, index) => {
@@ -136,7 +137,12 @@ const BotonExportar = ({ seleccionados }) => {
       {seleccionados.length ? (
         <ArchivoExcel
           filename={`Egresades Exportados - ${fecha_descarga}`}
-          element={<Boton cantidad={seleccionados.length} />}
+          element={
+            <Boton
+              cantidad={seleccionados.length}
+              deseleccionarEgresades={deseleccionarEgresades}
+            />
+          }
         >
           <HojaExcel dataSet={conjuntoDeDatos} name="Egresades"></HojaExcel>
         </ArchivoExcel>
