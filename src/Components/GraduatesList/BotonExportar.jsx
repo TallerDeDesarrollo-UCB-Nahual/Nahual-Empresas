@@ -121,7 +121,7 @@ const generarFila = (egresade, numero) => {
   ];
 };
 
-const BotonDescargar = ({ seleccionados }) => {
+const BotonExportar = ({ seleccionados }) => {
   moment.locale("es");
   const fecha_descarga = moment(Date.now()).format("LL");
   const filas = seleccionados.map((egresade, index) => {
@@ -147,4 +147,4 @@ const BotonDescargar = ({ seleccionados }) => {
   );
 };
 
-export default BotonDescargar;
+export default BotonExportar;

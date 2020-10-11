@@ -5,7 +5,7 @@ import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
-import BotonDescargar from "./BotonExportar";
+import BotonExportar from "./BotonExportar";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -241,7 +241,7 @@ class GraduatesList extends Component {
 							}
 						</Table.Body>
 					</Table>
-					<BotonDescargar	seleccionados={this.state.egresadesSeleccionados}/>
+					<BotonExportar seleccionados={this.state.egresadesSeleccionados}/>
 					{this.emptyList()}
 				</div>
 			</div>
