@@ -90,8 +90,8 @@ const conjuntoDeDatos = [
         style: estilos
       },
       {
-        title: "Año",
-        width: { wpx: 90 },
+        title: "Año de Egreso",
+        width: { wpx: 125 },
         style: estilos
       }
     ],
