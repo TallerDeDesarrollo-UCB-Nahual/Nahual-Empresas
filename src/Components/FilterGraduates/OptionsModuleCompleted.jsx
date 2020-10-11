@@ -6,7 +6,7 @@ class OptionsModuleCompleted extends Component{
   constructor (props){
     super(props)
 		this.state = {
-      value: '',
+      valor: '',
       filterOptions: []
     };
   }
@@ -38,8 +38,8 @@ class OptionsModuleCompleted extends Component{
     response.forEach(OptionModuleCompleted => {
       OptionModuleCompleted={
         key: OptionModuleCompleted.id,
-        text: OptionModuleCompleted.name,
-        value: OptionModuleCompleted.name,
+        text: OptionModuleCompleted.nombre,
+        value: OptionModuleCompleted.nombre,
         filterby: "ModuleCompleted"
       }
       ListOptionModulesCompleted.push(OptionModuleCompleted);
@@ -48,8 +48,30 @@ class OptionsModuleCompleted extends Component{
   }
 
   handleSelected(option){
-    this.setState({ value: option.value });
+    this.setState({ valor: option.value });
     this.props.handleOnSelectOption(option)
+  }  
+
+  opcionesDeFiltro(){
+     return (
+      <Dropdown.Menu >
+        {this.state.filterOptions.map((option) => (
+          <Dropdown.Item 
+            active={option.value === this.state.valor}
+            key={option.key}
+            value={option.value}
+            text={option.text}
+            {... option}
+            onClick={() => this.handleSelected(option)}
+          />
+        ))}
+      </Dropdown.Menu>
+      )
+  }
+
+  componentWillReceiveProps(newProps){
+    if (newProps.valor.desactivarOpcion === false)
+      this.setState({valor:'All'})
   }
 
   render(){
@@ -59,19 +81,8 @@ class OptionsModuleCompleted extends Component{
         pointing='left' 
         className='link item'
       >
-        <Dropdown.Menu >
-          {this.state.filterOptions.map((option) => (
-            <Dropdown.Item 
-              active={option.value === this.state.value}
-              key={option.key}
-              value={option.value}
-              text={option.text}
-              {... option}
-              onClick={() => this.handleSelected(option)}
-            />
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+         {this.opcionesDeFiltro()}
+       </Dropdown>
     );
   }
 }

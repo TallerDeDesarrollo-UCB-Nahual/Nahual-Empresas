@@ -15,9 +15,9 @@ function FilterButton(props){
       className='icon'
     >
       <Dropdown.Menu style={{width:"165px"}}>
-        <OptionsNode handleOnSelectOption={props.handleOnSelectOption}/>
-        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption}/>
-        <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption}/>
+        <OptionsNode handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
+        <OptionsModuleCompleted handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
+        <OptionsEnglishLevel handleOnSelectOption={props.handleOnSelectOption} valor={props.valor}/>
       </Dropdown.Menu>
     </Dropdown>
     );

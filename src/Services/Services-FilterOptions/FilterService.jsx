@@ -4,13 +4,13 @@ const DATA_SERVICE_API_NAHUAL = process.env.REACT_APP_API_URL;
 
 const FilterService = {
    GetOptionsModulesCompleted(){
-    return axios.get(`${DATA_SERVICE_API_NAHUAL}/modules`)
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/modulos`)
   },
   GetOptionsEnglishLevel(){
-    return axios.get(`${DATA_SERVICE_API_NAHUAL}/english-levels`)
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/nivel-ingles`)
   },
   GetOptionsNodes(){
-    return axios.get(`${DATA_SERVICE_API_NAHUAL}/nodes`)
+    return axios.get(`${DATA_SERVICE_API_NAHUAL}/nodos`)
   }
 }
 
