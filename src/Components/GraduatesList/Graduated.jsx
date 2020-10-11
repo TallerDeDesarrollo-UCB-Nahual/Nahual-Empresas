@@ -17,6 +17,7 @@ function Graduated(props) {
 					onClick={() => seleccionarEgresade(props.item)}
 				/>
 			</Table.Cell>
+			<Table.Cell>{props.numeracion}</Table.Cell>
 			<Table.Cell>{props.item.nombreCompleto}</Table.Cell>
 			<Table.Cell>{props.item.nombreNodo}</Table.Cell>
 			<Table.Cell>{props.item.modulo}</Table.Cell>
