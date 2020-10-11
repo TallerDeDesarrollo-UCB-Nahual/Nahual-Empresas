@@ -47,9 +47,9 @@ class OpcionesDeModulosCompletados extends Component{
     this.setState({opcionesDeFiltrado:opcionesDeModulosCompletados})
   }
 
-  manejar(opcionSeleccionada){
+  manejarEvento(opcionSeleccionada){
     this.setState({ value: opcionSeleccionada.value });
-    this.props.manejar(opcionSeleccionada)
+    this.props.manejarEvento(opcionSeleccionada)
   }
 
   render(){
@@ -67,7 +67,7 @@ class OpcionesDeModulosCompletados extends Component{
               value={opcion.value}
               text={opcion.text}
               {... opcion}
-              onClick={() => this.manejar(opcion)}
+              onClick={() => this.manejarEvento(opcion)}
             />
           ))}
         </Dropdown.Menu>

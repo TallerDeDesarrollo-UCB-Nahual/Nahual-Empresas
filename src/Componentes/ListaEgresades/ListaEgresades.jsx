@@ -73,7 +73,7 @@ class ListaEgresades extends Component {
 			}));
 	}
 
-	manejar = (opcionSeleccionada) => {
+	manejarEvento = (opcionSeleccionada) => {
 		this.setState({
 			criterioDeFiltrado: opcionSeleccionada,
 			filtrarPor: opcionSeleccionada.value,
@@ -134,7 +134,7 @@ class ListaEgresades extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<BotonDeFiltrado manejar={this.manejar} />
+									<BotonDeFiltrado manejarEvento={this.manejarEvento} />
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}
