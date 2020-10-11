@@ -103,12 +103,12 @@ function PrimeraLetraEnMayuscula(str) {
   return str.replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
-const generarFila = (egresade, numero) => {
+const generarFila = (egresade, numeroDeFila) => {
   const fechaDeNacimiento = egresade.fechaNacimiento
     ? moment(egresade.fechaNacimiento).format("L")
     : "";
   return [
-    numero + 1,
+    numeroDeFila + 1,
     PrimeraLetraEnMayuscula(egresade.nombreCompleto),
     egresade.correo,
     egresade.celular,
