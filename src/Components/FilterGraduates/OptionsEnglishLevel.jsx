@@ -38,8 +38,8 @@ class OptionsEnglishLevel extends Component{
     response.forEach(EnglishLevelOption => {
         EnglishLevelOption={
         key: EnglishLevelOption.id,
-        text: EnglishLevelOption.name,
-        value: EnglishLevelOption.name,
+        text: EnglishLevelOption.nombre,
+        value: EnglishLevelOption.nombre,
         filterby: "EnglishLevel"
       }
       EnglishLevelOptions.push(EnglishLevelOption);

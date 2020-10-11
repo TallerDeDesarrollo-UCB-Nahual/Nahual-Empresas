@@ -14,7 +14,7 @@ class GraduateDetail extends Component {
   getGraduateAPI() {
     const API_URL = process.env.REACT_APP_API_URL;
     axios
-      .get(`${API_URL}/students/${this.props.id}`)
+      .get(`${API_URL}/estudiantes/${this.props.id}`)
       .then(response => {
         this.setState({
           graduate: response.data.response

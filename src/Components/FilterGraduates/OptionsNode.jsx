@@ -38,8 +38,8 @@ class OptionsNode extends Component{
     response.forEach(OptionNode => {
       OptionNode={
         key: OptionNode.id,
-        text: OptionNode.name,
-        value: OptionNode.name,
+        text: OptionNode.nombre,
+        value: OptionNode.nombre,
         filterby: "Node"
       }
       ListOptionNode.push(OptionNode);
