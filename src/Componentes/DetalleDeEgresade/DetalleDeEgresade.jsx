@@ -3,7 +3,7 @@ import { Button, Modal, Image, Segment, Loader, Dimmer } from 'semantic-ui-react
 import CuerpoModal from './CuerpoModal';
 import axios from "axios";
 
-class detalleDeEgresade extends Component {
+class DetalleDeEgresade extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,4 +57,4 @@ class detalleDeEgresade extends Component {
   }
 }
 
-export default detalleDeEgresade;
+export default DetalleDeEgresade;

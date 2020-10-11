@@ -7,9 +7,9 @@ function convertirAMayusculas(str) {
   return str.replace(/\b\w/g, l => l.toUpperCase())
 }
 
-function informacionPersonal({ egresade }) {
+function InformacionPersonal({ egresade }) {
   moment.locale('es');
-  const fecha_convertida = moment(egresade.birthDate).format('LL');
+  const fechaConvertida = moment(egresade.birthDate).format('LL');
   return (
     <Item.Group>
       <Item>
@@ -22,7 +22,7 @@ function informacionPersonal({ egresade }) {
           <Item.Description>
             <p> <Icon name='mail outline' /> <b>Correo: </b>{egresade.mail}</p>
             <p> <Icon name='call' /> <b>Teléfono: </b>{egresade.cellphone}</p>
-            <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
+            <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fechaConvertida}</p>
             <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{egresade.englishLevel}</p>
             {/* <p> <Icon name='home' /><b>Sede: </b>{egresade.campus}</p> */}
             <p> <Icon name='map outline' /><b>Nodo: </b>{egresade.nodeName}</p>
@@ -34,4 +34,4 @@ function informacionPersonal({ egresade }) {
   );
 }
 
-export default informacionPersonal;
+export default InformacionPersonal;

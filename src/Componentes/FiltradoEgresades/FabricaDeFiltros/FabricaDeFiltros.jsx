@@ -3,7 +3,7 @@ import axios from "axios";
 const SERVICIO_DE_DATOS_API_NAHUAL = process.env.REACT_APP_API_URL;
 let [filtrarPorModuloCompletado, filtrarPorNivelDeIngles, filtrarPorNombreDeNodo, filtroDeConsulta] = ['','','','']
 
-function fabricaDeFiltros (criterioDeFiltrado) {
+function FabricaDeFiltros (criterioDeFiltrado) {
   establecerVariablesDeFiltroLocal(criterioDeFiltrado)
   filtroDeConsulta = construirFiltroDeConsulta() 
   return axios.get(`${SERVICIO_DE_DATOS_API_NAHUAL}/graduates/unemployes?${filtroDeConsulta}`)
@@ -13,21 +13,21 @@ function establecerVariablesDeFiltroLocal(criterioDeFiltrado){
   switch (criterioDeFiltrado.filterby) {
     case 'moduloCompletado':
       if (criterioDeFiltrado.value==='Todos')
-      filtrarPorModuloCompletado = ''
+        filtrarPorModuloCompletado = ''
       else
-      filtrarPorModuloCompletado =`module=${criterioDeFiltrado.value}&`;
+        filtrarPorModuloCompletado =`module=${criterioDeFiltrado.value}&`;
       break
     case 'nivelDeIngles':
       if (criterioDeFiltrado.value==='Todos')
-      filtrarPorNivelDeIngles = ''
+        filtrarPorNivelDeIngles = ''
       else
-      filtrarPorNivelDeIngles =`englishLevel=${criterioDeFiltrado.value}&`;
+        filtrarPorNivelDeIngles =`englishLevel=${criterioDeFiltrado.value}&`;
       break
     case 'nodo':
       if (criterioDeFiltrado.value==='Todos')
-      filtrarPorNombreDeNodo = ''
+        filtrarPorNombreDeNodo = ''
       else
-      filtrarPorNombreDeNodo =`nodeName=${criterioDeFiltrado.value}&`;
+        filtrarPorNombreDeNodo =`nodeName=${criterioDeFiltrado.value}&`;
       break
     default:
   }
@@ -38,4 +38,4 @@ function construirFiltroDeConsulta(){
   return consulta.concat(filtrarPorModuloCompletado,filtrarPorNivelDeIngles,filtrarPorNombreDeNodo)
 }
 
-export default fabricaDeFiltros;
+export default FabricaDeFiltros;

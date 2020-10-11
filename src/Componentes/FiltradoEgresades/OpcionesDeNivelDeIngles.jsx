@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 import ServicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/servicioDeFiltrado";
 
-class opcionesDeNivelDeIngles extends Component{
+class OpcionesDeNivelDeIngles extends Component{
   constructor (props){
     super(props)
 		this.state = {
@@ -75,4 +75,4 @@ class opcionesDeNivelDeIngles extends Component{
   }
 }
 
-export default opcionesDeNivelDeIngles;
+export default OpcionesDeNivelDeIngles;
