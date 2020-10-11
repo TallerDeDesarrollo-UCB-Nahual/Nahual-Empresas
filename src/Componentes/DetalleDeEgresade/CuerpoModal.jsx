@@ -1,6 +1,6 @@
 import React from 'react'
-import PersonalInformation from "./InformacionPersonal";
-import CoursesInformation from "./InformacionDeCursos";
+import InformacionPersonal from "./InformacionPersonal";
+import InformacionDeCursos from "./InformacionDeCursos";
 import LogoNahual from '../../assets/logo-proyecto-nahual.webp'
 import { Button, Modal, Image, Icon, Grid } from 'semantic-ui-react'
 
@@ -12,8 +12,8 @@ const CuerpoModal = ({ egresade, cerrarModal }) => {
       </Modal.Header>
       <Modal.Content scrolling>
         <Grid divided='vertically'>
-          <PersonalInformation egresade={egresade} />
-          <CoursesInformation egresade={egresade} />
+          <InformacionPersonal egresade={egresade} />
+          <InformacionDeCursos egresade={egresade} />
         </Grid>
       </Modal.Content>
       <Modal.Actions>

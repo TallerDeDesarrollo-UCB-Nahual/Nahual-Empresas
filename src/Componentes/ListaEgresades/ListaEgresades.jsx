@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Checkbox, Input, Table, Loader, Dimmer, Message } from "semantic-ui-react";
-import FilterButton from "./BotonDeFiltrado";
+import BotonDeFiltrado from "./BotonDeFiltrado";
 import Egresade from "./Egresade";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoEgresades/FabricaDeFiltros/FabricaDeFiltros";
@@ -134,7 +134,7 @@ class ListaEgresades extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton manejar={this.manejar} />
+									<BotonDeFiltrado manejar={this.manejar} />
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
 									{/* <Input icon="search" iconPosition="left" className="search"/> */}
