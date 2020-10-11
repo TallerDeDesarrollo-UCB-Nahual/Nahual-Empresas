@@ -123,16 +123,16 @@ class GraduatesList extends Component {
 			messageHeader = "no existen datos relacionados con su busqueda.";
 			messageContent = "Intenta con otro filtro";
 		}
-		return (
-			this.state.graduates.length === 0 && (
-				<Message
-					icon="warning sign"
-					warning
-					header={`Lo sentimos, ${messageHeader}`}
-					content={`${messageContent}. Gracias`}
-				/>
-			)
-		);
+		return this.state.graduates.length === 0 ? (
+      <Message
+        icon="warning sign"
+        warning
+        header={`Lo sentimos, ${messageHeader}`}
+        content={`${messageContent}. Gracias`}
+      />
+    ) : (
+      <BotonExportar seleccionados={this.state.egresadesSeleccionados} />
+    );
 	}
 
 	removerFiltros(){
@@ -241,7 +241,6 @@ class GraduatesList extends Component {
 							}
 						</Table.Body>
 					</Table>
-					<BotonExportar seleccionados={this.state.egresadesSeleccionados}/>
 					{this.emptyList()}
 				</div>
 			</div>
