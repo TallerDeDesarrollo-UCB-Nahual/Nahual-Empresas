@@ -22,12 +22,12 @@ function PersonalInformation({ graduate }) {
             <div style={{ textAlign: "left" }}>
               <Header as='h1'> {capitalize_Words(graduate.nombreCompleto)} </Header><br />
               <Item.Description>
-                  <p> <Icon name='mail outline' /> <b>Correo: </b>{graduate.correo}</p>
-                  <p> <Icon name='call' /> <b>Teléfono: </b>{graduate.celular}</p>
-                  <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
-                  <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{graduate.nivelIngles}</p>
-                  {/* <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p> */}
-                  <p> <Icon name='map outline' /><b>Nodo: </b>{graduate.nombreNodo}</p>
+                <p> <Icon name='mail outline' /> <b>Correo: </b>{graduate.correo}</p>
+                <p> <Icon name='call' /> <b>Teléfono: </b>{graduate.celular}</p>
+                <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
+                <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{graduate.nivelIngles}</p>
+                {/* <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p> */}
+                <p> <Icon name='map outline' /><b>Nodo: </b>{graduate.nombreNodo}</p>
               </Item.Description>
             </div>
           <Item.Extra> * Utilizar estos datos solo para fines laborales.</Item.Extra>
