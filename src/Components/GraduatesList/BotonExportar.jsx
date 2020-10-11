@@ -18,7 +18,7 @@ const Boton = ({ cantidad }) => {
         basic: true,
         color: "green",
         pointing: "left",
-        content: cantidad,
+        content: cantidad
       }}
     />
   );
@@ -31,8 +31,8 @@ const estilos = {
     top: { style: "medium", color: { rgb: "66a527" } },
     bottom: { style: "medium", color: { rgb: "66a527" } },
     left: { style: "medium", color: { rgb: "66a527" } },
-    right: { style: "medium", color: { rgb: "66a527" } },
-  },
+    right: { style: "medium", color: { rgb: "66a527" } }
+  }
 };
 
 const conjuntoDeDatos = [
@@ -41,65 +41,65 @@ const conjuntoDeDatos = [
       {
         title: "Nro.",
         width: { wpx: 40 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Nombre",
         width: { wpx: 200 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Correo",
         width: { wpx: 200 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Teléfono",
         width: { wpx: 110 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Fecha de nacimiento",
         width: { wpx: 180 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Nivel de Inglés",
         width: { wpx: 130 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Nodo",
         width: { wpx: 90 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Sede",
         width: { wpx: 90 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Linkedin",
         width: { wpx: 200 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Curso",
         width: { wpx: 200 },
-        style: estilos,
+        style: estilos
       },
       {
         title: "Año",
         width: { wpx: 90 },
-        style: estilos,
-      },
+        style: estilos
+      }
     ],
-    data: [],
-  },
+    data: []
+  }
 ];
 
 function PrimeraLetraEnMayuscula(str) {
-  return str.replace(/\b\w/g, l => l.toUpperCase())
+  return str.replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
 const generarFila = (egresade, numero) => {
@@ -117,7 +117,7 @@ const generarFila = (egresade, numero) => {
     egresade.sede,
     egresade.linkedin,
     egresade.modulo,
-    egresade.añoGraduacion,
+    egresade.añoGraduacion
   ];
 };
 
