@@ -4,7 +4,7 @@ import FilterButton from "./BotonDeFiltrado";
 import Egresade from "./Egresade";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoEgresades/FabricaDeFiltros/FabricaDeFiltros";
-import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/servicioDeEgresades";
+import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 
 
 class ListaEgresades extends Component {
