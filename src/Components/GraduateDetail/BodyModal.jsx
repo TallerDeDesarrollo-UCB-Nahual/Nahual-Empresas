@@ -11,7 +11,7 @@ const BodyModal = ({ graduate, closeModal }) => {
         <Image src={LogoNahual} size='small' />
       </Modal.Header>
       <Modal.Content scrolling>
-        <Grid divided='vertically'>
+        <Grid divided='vertically' centered>
           <PersonalInformation graduate={graduate} />
           <CoursesInformation graduate={graduate} />
         </Grid>
