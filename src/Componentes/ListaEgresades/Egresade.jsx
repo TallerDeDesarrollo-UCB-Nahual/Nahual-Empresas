@@ -1,8 +1,8 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import GraduateDetail from "../DetalleDeEgresade/GraduateDetail.jsx";
+import DetalleDeEgresade from "../DetalleDeEgresade/GraduateDetail.jsx";
 
-function Graduated(props) {
+function Egresade(props) {
 	const seleccionarEgresade = (egresade) => {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
 		props.seleccionarEgresades(egresade, checkboxes[props.numeracion].checked);
@@ -27,10 +27,10 @@ function Graduated(props) {
 			<Table.Cell>{props.item.modulo}</Table.Cell>
 			<Table.Cell>{props.item.nivelIngles}</Table.Cell>
 			<Table.Cell textAlign='center'>
-				<GraduateDetail id={props.item.id}></GraduateDetail>
+				<DetalleDeEgresade id={props.item.id}></DetalleDeEgresade>
 			</Table.Cell>
 		</Table.Row>
 	);
 }
 
-export default Graduated;
+export default Egresade;

@@ -49,7 +49,7 @@ class OpcionesDeNodo extends Component{
 
   manejarEvento(opcionSeleccionada){
     this.setState({ valor: opcionSeleccionada.value });
-    this.props.handleOnSelectOption(opcionSeleccionada)
+    this.props.manejarEvento(opcionSeleccionada)
   }
 
   opcionesDeFiltro(){
