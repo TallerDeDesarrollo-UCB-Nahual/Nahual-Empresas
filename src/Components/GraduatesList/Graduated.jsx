@@ -8,8 +8,8 @@ function Graduated(props) {
 		props.seleccionarEgresades(egresade, checkboxes[props.numeracion].checked);
 	};
 	return (
-		<Table.Row style={{ border: "#81ce32 2px solid" }}>
-			<Table.Cell style={{ textAlign: "center" }}>
+		<Table.Row >
+			<Table.Cell >
 				<input
 					type="checkbox"
 					name="checkbox"

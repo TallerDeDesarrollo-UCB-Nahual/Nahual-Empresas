@@ -210,27 +210,20 @@ class GraduatesList extends Component {
 
 	render() {
 		return (
-			<div style={{ paddingBottom: "5%" }}>
+			<>
 				<img
 					src={NahualLogo}
 					width="150"
-					style={{ marginTop: 20 }}
 					alt="Nahual"
 				/>
 				<h1>Lista Egresades</h1>
-				<div style={{ marginLeft: "150px", marginRight: "150px" }}>
+				<div >
 					{this.loadingIcon()}
 					<Table
-						style={{
-							borderCollapse: "collapse",
-							border: "#81ce32 2px solid",
-						}}
-						inverted
-						unstackable
 						verticalAlign="middle"
 						celled
 					>
-						<Table.Header style={{ backgroundColor: "#81ce32" }}>
+						<Table.Header >
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
 									<FilterButton 
@@ -247,9 +240,9 @@ class GraduatesList extends Component {
 								</Table.HeaderCell>
 					</Table.Row>
 						</Table.Header>
-						<Table.Header style={{ backgroundColor: "#81ce32" }}>
-							<Table.Row style={{ textAlign: "left" }}>
-								<Table.HeaderCell style={{ textAlign: "center" }}>
+						<Table.Header>
+							<Table.Row >
+								<Table.HeaderCell >
 									<input
 										type="checkbox"
 										name="checkbox"
@@ -265,18 +258,13 @@ class GraduatesList extends Component {
 							</Table.Row>
 						</Table.Header>
 						<Table.Body
-							style={{
-								color: "black",
-								backgroundColor: "white",
-								textAlign: "left",
-							}}
 						>
 							{this.listGraduates()}
 						</Table.Body>
 					</Table>
 					{this.emptyList()}
 				</div>
-			</div>
+			</>
 		);
 	}
 }
