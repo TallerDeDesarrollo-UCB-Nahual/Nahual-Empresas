@@ -65,7 +65,7 @@ class OpcionesDeQuitarFiltro extends Component{
         texto: valor,
         filtro: 'Modulo Completado',
         value: "All",
-        filterby: filtroPor,
+        filterby: filtroPor
     }})
   }
 

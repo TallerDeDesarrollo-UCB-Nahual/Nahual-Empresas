@@ -44,7 +44,7 @@ class GraduatesList extends Component {
 			newFilterRequest: false,
 			displayLoader: false,
 		});
-		alert("There is an error with the data base. status: " + error.status);
+		alert("Parece haber un error con la base de datos." + error.status);
 	}
 
 	async getAllGraduates() {

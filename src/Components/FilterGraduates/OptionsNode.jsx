@@ -17,7 +17,7 @@ class OptionsNode extends Component{
       this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
-      alert("There is an error with the Data Base.")
+      alert("Parece haber un error con la base de datos.");
     })
   }
 

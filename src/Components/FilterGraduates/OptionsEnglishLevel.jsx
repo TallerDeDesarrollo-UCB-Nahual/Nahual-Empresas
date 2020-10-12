@@ -17,7 +17,7 @@ class OptionsEnglishLevel extends Component{
       this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
-      alert("Data base error");
+      alert("Error con la base de datos.");
     })
   }
 
