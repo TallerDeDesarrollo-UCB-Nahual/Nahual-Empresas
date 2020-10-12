@@ -3,7 +3,7 @@ import GraduatesList from "./Components/GraduatesList/GraduatesList.jsx";
 
 function App() {
   return (
-    <div className="App">
+    <div className="ui container">
       <GraduatesList />
     </div>
   );
