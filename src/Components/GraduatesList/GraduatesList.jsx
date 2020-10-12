@@ -11,7 +11,7 @@ import {
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
-import GraduateService from "../../Services/Services-Graduates/GraduateService";
+import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
 import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
 
@@ -55,7 +55,7 @@ class GraduatesList extends Component {
 	}
 
 	async getAllGraduates() {
-		await GraduateService.GetGraduates()
+		await ServicioDeEgresades.obtenerEgresades()
 			.then((response) => {
 				this.getResponse(response);
 			})

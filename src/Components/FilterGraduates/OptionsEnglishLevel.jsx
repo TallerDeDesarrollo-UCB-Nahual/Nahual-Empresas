@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import FilterService from "../../Services/Services-FilterOptions/FilterService";
+import ServicioDeFiltrado from "../../Servicios/Servicios-OpcionesDeFiltrado/ServicioDeFiltrado";
 
 class OptionsEnglishLevel extends Component{
   constructor (props){
@@ -12,7 +12,7 @@ class OptionsEnglishLevel extends Component{
   }
 
   async componentDidMount() {
-    await FilterService.GetOptionsEnglishLevel()
+    await ServicioDeFiltrado.obtenerOpcionesDeNivelDeIngles()
     .then(response => {
       this.ConstructFilterOptions(response.data.response);
     })
