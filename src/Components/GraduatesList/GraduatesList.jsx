@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
+import {
+  Table,
+  Loader,
+  Dimmer,
+  Message,
+  Label,
+  Header,
+  Icon,
+  Segment
+} from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
-import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
 import BotonExportar from "./BotonExportar";
@@ -149,13 +157,15 @@ class GraduatesList extends Component {
   removerFiltros() {
     return (
       this.state.deshabilitarFiltro.desactivarOpcion === true && (
-        <Button
-          color="red"
+        <Label
+          pointing="left"
+          as="a"
           onClick={() => this.quitarFiltros(this.state.deshabilitarFiltro)}
           valor={this.state.deshabilitarFiltro}
         >
-          Remover Filtros{" "}
-        </Button>
+          Quitar Todos
+          <Icon name="delete" />
+        </Label>
       )
     );
   }
@@ -214,14 +224,18 @@ class GraduatesList extends Component {
   render() {
     return (
       <>
-        <img src={NahualLogo} width="150" alt="Nahual" />
-        <h1>Lista Egresades</h1>
+        <Header as="h1" icon textAlign="center" color="green">
+          <Icon name="graduation" />
+          <Header.Content>Lista Egresades</Header.Content>
+        </Header>
         {this.loadingIcon()}
-        <FilterButton
-          handleOnSelectOption={this.handleOnSelectOption}
-          valor={this.state.deshabilitarFiltro}
-        />
-        {this.removerFiltros()}
+        <Segment color="green">
+          <FilterButton
+            handleOnSelectOption={this.handleOnSelectOption}
+            valor={this.state.deshabilitarFiltro}
+          />
+          {this.removerFiltros()}
+        </Segment>
         <div style={{ overflowX: "auto" }}>
           <Table singleLine selectable striped unstackable>
             {/* <Table.Header >
