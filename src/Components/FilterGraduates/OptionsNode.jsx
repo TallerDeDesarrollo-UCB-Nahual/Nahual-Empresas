@@ -17,24 +17,12 @@ class OptionsNode extends Component{
       this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
-      alert("There is an error with the Data Base.")
+      alert("Parece haber un error con la base de datos.");
     })
-  }
-
-  AddDefaultNode(){
-    const OptionNodeAll={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "All",
-      filterby: "Node"
-    }
-    return OptionNodeAll;
   }
 
   ConstructFilterOptions(response) {
     const ListOptionNode = []
-    ListOptionNode.push(this.AddDefaultNode());
     response.forEach(OptionNode => {
       OptionNode={
         key: OptionNode.id,
@@ -70,7 +58,7 @@ class OptionsNode extends Component{
   }
 
   componentWillReceiveProps(newProps){
-    if (newProps.valor.desactivarOpcion === false)
+    if (newProps.valor.desactivarOpcion === false || newProps.quitarUnFiltro.filterby === 'Node')
        this.setState({valor:'All'})
   }
 

@@ -6,6 +6,7 @@ import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
 import BotonExportar from "./BotonExportar";
+import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -16,7 +17,10 @@ class GraduatesList extends Component {
 			filterCriteria: "",
 			newFilterRequest: false,
 			displayLoader: true,
-			deshabilitarFiltro:{
+			quitarUnFiltro: '',
+			deshabilitarFiltro:{				
+				value: 'Todos',
+				filterby: 'Todos',
 				desactivarOpcion:false
 			},
 			egresadesSeleccionados: []
@@ -40,7 +44,7 @@ class GraduatesList extends Component {
 			newFilterRequest: false,
 			displayLoader: false,
 		});
-		alert("There is an error with the data base. status: " + error.status);
+		alert("Parece haber un error con la base de datos." + error.status);
 	}
 
 	async getAllGraduates() {
@@ -90,6 +94,7 @@ class GraduatesList extends Component {
 			newFilterRequest: true,
 			displayLoader: true,
 			egresadesSeleccionados:[],
+			quitarUnFiltro: '',
 			deshabilitarFiltro: {			
 				value: 'Todos',
 				filterby: 'Todos',
@@ -175,6 +180,7 @@ class GraduatesList extends Component {
 			});
 		}
 	};
+
 	cambiarEstadoDeCheckbox(filtro) {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
 		checkboxes.map((checkbox) => {
@@ -184,6 +190,24 @@ class GraduatesList extends Component {
 		});
 		return checkboxes;
 	}
+	
+	quitarUnFiltro = (data) => {
+		this.setState({
+			filterCriteria: {			
+				value: data.filterby,
+				filterby: 'SinFiltros',
+			},
+			quitarUnFiltro:data,
+			newFilterRequest: true,
+			displayLoader: true,
+		})
+	}
+	
+	verificarSiEraUltimoBoton=(data)=>{
+		if (data===false)
+			this.quitarFiltros(this.state.deshabilitarFiltro)
+	}
+
 	render() {
 		return (
 			<div style={{ paddingBottom: "5%" }}>
@@ -209,13 +233,19 @@ class GraduatesList extends Component {
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
-									<FilterButton handleOnSelectOption={this.handleOnSelectOption} valor={this.state.deshabilitarFiltro}/>
+									<FilterButton 
+										handleOnSelectOption={this.handleOnSelectOption} 
+										valor={this.state.deshabilitarFiltro}
+										quitarUnFiltro={this.state.quitarUnFiltro} />
 									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
-									{/* <Input icon="search" iconPosition="left" className="search"/> */}
+									<OpcionesDeQuitarFiltro  
+										quitarFiltro={this.quitarUnFiltro} 
+										esUltimoFiltro={this.verificarSiEraUltimoBoton}
+										opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
 								</Table.HeaderCell>
-							</Table.Row>
+					</Table.Row>
 						</Table.Header>
 						<Table.Header style={{ backgroundColor: "#81ce32" }}>
 							<Table.Row style={{ textAlign: "left" }}>

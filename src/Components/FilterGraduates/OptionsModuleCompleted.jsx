@@ -17,24 +17,12 @@ class OptionsModuleCompleted extends Component{
       this.ConstructFilterOptions(response.data.response);
     })
     .catch(error => {
-      alert("There is an error with the Data Base.")
+      alert("Parece haber un error con la base de datos.");
     })
-  }
-
-  AddDefaultModuleCompleted(){
-    const OptionModuleCompletedAll={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "All",
-      filterby: "ModuleCompleted"
-    }
-    return OptionModuleCompletedAll;
   }
 
   ConstructFilterOptions(response) {
     const ListOptionModulesCompleted = []
-    ListOptionModulesCompleted.push(this.AddDefaultModuleCompleted());
     response.forEach(OptionModuleCompleted => {
       OptionModuleCompleted={
         key: OptionModuleCompleted.id,
@@ -70,7 +58,7 @@ class OptionsModuleCompleted extends Component{
   }
 
   componentWillReceiveProps(newProps){
-    if (newProps.valor.desactivarOpcion === false)
+    if (newProps.valor.desactivarOpcion === false || newProps.quitarUnFiltro.filterby === 'ModuleCompleted')
       this.setState({valor:'All'})
   }
 
