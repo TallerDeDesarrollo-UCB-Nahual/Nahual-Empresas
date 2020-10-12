@@ -5,4 +5,4 @@
 @textColor: @white;
 @hoverBackgroundColor: #9ADE55;
 @downBackgroundColor: #68AA25;
-@activeBackgroundColor: #EFFFDF;
+@activeBackgroundColor: @green;

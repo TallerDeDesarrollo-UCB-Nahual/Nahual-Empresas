@@ -262,9 +262,9 @@ class GraduatesList extends Component {
                     style={{ transform: "scale(1.4)" }}
                   />
                 </Table.HeaderCell>
-                <Table.HeaderCell>NOMBRE</Table.HeaderCell>
+                <Table.HeaderCell>NOMBRE Y APELLIDO</Table.HeaderCell>
                 <Table.HeaderCell>NODO</Table.HeaderCell>
-                <Table.HeaderCell>MODULOS CURSADOS</Table.HeaderCell>
+                <Table.HeaderCell>MÓDULOS CURSADOS</Table.HeaderCell>
                 <Table.HeaderCell>NIVEL DE INGLES</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center"></Table.HeaderCell>
               </Table.Row>

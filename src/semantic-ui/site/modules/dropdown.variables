@@ -1,5 +1,5 @@
 /*******************************
     User Variable Overrides
 *******************************/
-@menuBackground: #EFFFDF;
+@menuBackground: @white;
 @menuBorderColor: @green;
