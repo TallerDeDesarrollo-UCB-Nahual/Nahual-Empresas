@@ -232,26 +232,18 @@ class GraduatesList extends Component {
         <Segment color="green">
           <FilterButton
             handleOnSelectOption={this.handleOnSelectOption}
-            valor={this.state.deshabilitarFiltro}
+						valor={this.state.deshabilitarFiltro}
+						quitarUnFiltro={this.state.quitarUnFiltro} 
           />
+					<OpcionesDeQuitarFiltro  
+						quitarFiltro={this.quitarUnFiltro} 
+						esUltimoFiltro={this.verificarSiEraUltimoBoton}
+						opcion={this.state.filterCriteria}
+					/>
           {this.removerFiltros()}
         </Segment>
         <div style={{ overflowX: "auto" }}>
           <Table singleLine selectable striped unstackable>
-            {/* <Table.Header >
-							<Table.Row>
-								<Table.HeaderCell colSpan="2">
-									<FilterButton 
-										handleOnSelectOption={this.handleOnSelectOption} 
-										valor={this.state.deshabilitarFiltro}
-										quitarUnFiltro={this.state.quitarUnFiltro} />
-									{this.removerFiltros()}
-								</Table.HeaderCell>
-								<Table.HeaderCell colSpan="4">
-									{/* <Input icon="search" iconPosition="left" className="search"/> 
-								</Table.HeaderCell>
-							</Table.Row>
-						</Table.Header> */}
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell textAlign="center">
