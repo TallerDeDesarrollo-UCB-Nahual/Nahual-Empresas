@@ -9,7 +9,7 @@ function Graduated(props) {
 	};
 	return (
 		<Table.Row >
-			<Table.Cell >
+			<Table.Cell textAlign='center' >
 				<input
 					type="checkbox"
 					name="checkbox"
@@ -21,7 +21,7 @@ function Graduated(props) {
 			<Table.Cell>{props.item.nombreNodo}</Table.Cell>
 			<Table.Cell>{props.item.modulo}</Table.Cell>
 			<Table.Cell>{props.item.nivelIngles}</Table.Cell>
-			<Table.Cell style={{ textAlign: "center" }}>
+			<Table.Cell textAlign='center'>
 				<GraduateDetail id={props.item.id}></GraduateDetail>
 			</Table.Cell>
 		</Table.Row>

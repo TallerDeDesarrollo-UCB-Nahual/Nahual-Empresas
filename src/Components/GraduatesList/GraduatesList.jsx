@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
+import { Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
@@ -144,51 +144,54 @@ class GraduatesList extends Component {
         }}
       />
     );
-	}
+  }
 
-	removerFiltros(){
-		return(
-			this.state.deshabilitarFiltro.desactivarOpcion === true &&
-			<Button color='red'
-			onClick={()=>this.quitarFiltros(this.state.deshabilitarFiltro)}
-			valor={this.state.deshabilitarFiltro}
-			>Remover Filtros </Button>
-		)
-	}
+  removerFiltros() {
+    return (
+      this.state.deshabilitarFiltro.desactivarOpcion === true && (
+        <Button
+          color="red"
+          onClick={() => this.quitarFiltros(this.state.deshabilitarFiltro)}
+          valor={this.state.deshabilitarFiltro}
+        >
+          Remover Filtros{" "}
+        </Button>
+      )
+    );
+  }
 
-	seleccionarTodosEgresades() {
-		let checkboxes = this.cambiarEstadoDeCheckbox(false);
-		checkboxes[0].checked
-			? this.setState({ egresadesSeleccionados: this.state.graduates })
-			: this.setState({ egresadesSeleccionados: [] });
-	}
+  seleccionarTodosEgresades() {
+    let checkboxes = this.cambiarEstadoDeCheckbox(false);
+    checkboxes[0].checked
+      ? this.setState({ egresadesSeleccionados: this.state.graduates })
+      : this.setState({ egresadesSeleccionados: [] });
+  }
 
-	seleccionarEgresades = (egresade, checked) => {
-		if (checked) {
-			this.setState({
-				egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
-					egresade
-				),
-			});
-		} else {
-			this.state.egresadesSeleccionados.map(() => {
-				return this.setState({
-					egresadesSeleccionados: this.state.egresadesSeleccionados.filter(
-						(e) => e.id !== egresade.id
-					),
-				});
-			});
-		}
-	};
-
-	cambiarEstadoDeCheckbox(filtro) {
-		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		checkboxes.map((checkbox) => {
-			return filtro
-				? (checkbox.checked = false)
-				: (checkbox.checked = checkboxes[0].checked);
-		});
-		return checkboxes;
+  seleccionarEgresades = (egresade, checked) => {
+    if (checked) {
+      this.setState({
+        egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
+          egresade
+        )
+      });
+    } else {
+      this.state.egresadesSeleccionados.map(() => {
+        return this.setState({
+          egresadesSeleccionados: this.state.egresadesSeleccionados.filter(
+            (e) => e.id !== egresade.id
+          )
+        });
+      });
+    }
+  };
+  cambiarEstadoDeCheckbox(filtro) {
+    let checkboxes = Array.from(document.getElementsByName("checkbox"));
+    checkboxes.map((checkbox) => {
+      return filtro
+        ? (checkbox.checked = false)
+        : (checkbox.checked = checkboxes[0].checked);
+    });
+    return checkboxes;
 	}
 	
 	quitarUnFiltro = (data) => {
@@ -208,22 +211,20 @@ class GraduatesList extends Component {
 			this.quitarFiltros(this.state.deshabilitarFiltro)
 	}
 
-	render() {
-		return (
-			<>
-				<img
-					src={NahualLogo}
-					width="150"
-					alt="Nahual"
-				/>
-				<h1>Lista Egresades</h1>
-				<div >
-					{this.loadingIcon()}
-					<Table
-						verticalAlign="middle"
-						celled
-					>
-						<Table.Header >
+  render() {
+    return (
+      <>
+        <img src={NahualLogo} width="150" alt="Nahual" />
+        <h1>Lista Egresades</h1>
+        {this.loadingIcon()}
+        <FilterButton
+          handleOnSelectOption={this.handleOnSelectOption}
+          valor={this.state.deshabilitarFiltro}
+        />
+        {this.removerFiltros()}
+        <div style={{ overflowX: "auto" }}>
+          <Table singleLine selectable striped unstackable>
+            {/* <Table.Header >
 							<Table.Row>
 								<Table.HeaderCell colSpan="2">
 									<FilterButton 
@@ -233,40 +234,35 @@ class GraduatesList extends Component {
 									{this.removerFiltros()}
 								</Table.HeaderCell>
 								<Table.HeaderCell colSpan="4">
-									<OpcionesDeQuitarFiltro  
-										quitarFiltro={this.quitarUnFiltro} 
-										esUltimoFiltro={this.verificarSiEraUltimoBoton}
-										opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
+									{/* <Input icon="search" iconPosition="left" className="search"/> 
 								</Table.HeaderCell>
-					</Table.Row>
-						</Table.Header>
-						<Table.Header>
-							<Table.Row >
-								<Table.HeaderCell >
-									<input
-										type="checkbox"
-										name="checkbox"
-										onClick={() => this.seleccionarTodosEgresades()}
-										style={{ transform: "scale(1.4)" }}
-									/>
-								</Table.HeaderCell>
-								<Table.HeaderCell>NOMBRE</Table.HeaderCell>
-								<Table.HeaderCell>NODO</Table.HeaderCell>
-								<Table.HeaderCell>MODULOS CURSADOS</Table.HeaderCell>
-								<Table.HeaderCell>NIVEL DE INGLES</Table.HeaderCell>
-								<Table.HeaderCell></Table.HeaderCell>
 							</Table.Row>
-						</Table.Header>
-						<Table.Body
-						>
-							{this.listGraduates()}
-						</Table.Body>
-					</Table>
-					{this.emptyList()}
-				</div>
-			</>
-		);
-	}
+						</Table.Header> */}
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center">
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    onClick={() => this.seleccionarTodosEgresades()}
+                    style={{ transform: "scale(1.4)" }}
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>NOMBRE</Table.HeaderCell>
+                <Table.HeaderCell>NODO</Table.HeaderCell>
+                <Table.HeaderCell>MODULOS CURSADOS</Table.HeaderCell>
+                <Table.HeaderCell>NIVEL DE INGLES</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"></Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>{this.listGraduates()}</Table.Body>
+          </Table>
+        </div>
+
+        {this.emptyList()}
+      </>
+    );
+  }
 }
 
 export default GraduatesList;
