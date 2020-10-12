@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import GraduateDetail from "../GraduateDetail/GraduateDetail.jsx";
+import GraduateDetail from "../DetalleDeEgresade/GraduateDetail.jsx";
 
 function Graduated(props) {
 	const seleccionarEgresade = (egresade) => {

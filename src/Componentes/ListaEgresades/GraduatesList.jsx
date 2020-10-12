@@ -10,7 +10,8 @@ import {
 } from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
-import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
+import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
+import FabricaDeFiltros from "../FiltradoDeEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
 import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
@@ -65,7 +66,7 @@ class GraduatesList extends Component {
 	}
 
 	async getFilteredGraduates() {
-		await FactoryFilter(this.state.filterCriteria)
+		await FabricaDeFiltros(this.state.filterCriteria)
 			.then((response) => {
 				this.getResponse(response);
 			})

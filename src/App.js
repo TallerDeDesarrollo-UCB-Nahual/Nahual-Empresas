@@ -1,5 +1,5 @@
 import React from "react";
-import GraduatesList from "./Components/GraduatesList/GraduatesList.jsx";
+import GraduatesList from "./Componentes/ListaEgresades/GraduatesList.jsx";
 import Encabezado from "./Components/Layouts/Encabezado.jsx";
 import PieDePagina from "./Components/Layouts/PieDePagina.jsx";
 
