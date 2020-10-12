@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import DetalleDeEgresade from "../DetalleDeEgresade/GraduateDetail.jsx";
+import DetalleDeEgresade from "../DetalleDeEgresade/DetalleDeEgresade.jsx";
 
 function Egresade(props) {
 	const seleccionarEgresade = (egresade) => {
