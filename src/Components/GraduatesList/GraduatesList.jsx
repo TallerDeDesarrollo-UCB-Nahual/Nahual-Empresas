@@ -5,6 +5,7 @@ import Graduated from "./Graduated";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
+import BotonExportar from "./BotonExportar";
 
 class GraduatesList extends Component {
 	constructor(props) {
@@ -122,16 +123,22 @@ class GraduatesList extends Component {
 			messageHeader = "no existen datos relacionados con su busqueda.";
 			messageContent = "Intenta con otro filtro";
 		}
-		return (
-			this.state.graduates.length === 0 && (
-				<Message
-					icon="warning sign"
-					warning
-					header={`Lo sentimos, ${messageHeader}`}
-					content={`${messageContent}. Gracias`}
-				/>
-			)
-		);
+		return this.state.graduates.length === 0 ? (
+      <Message
+        icon="warning sign"
+        warning
+        header={`Lo sentimos, ${messageHeader}`}
+        content={`${messageContent}. Gracias`}
+      />
+    ) : (
+      <BotonExportar
+        seleccionados={this.state.egresadesSeleccionados}
+        deseleccionarEgresades={() => {
+          this.cambiarEstadoDeCheckbox(true);
+          this.setState({ egresadesSeleccionados: [] });
+        }}
+      />
+    );
 	}
 
 	removerFiltros(){
