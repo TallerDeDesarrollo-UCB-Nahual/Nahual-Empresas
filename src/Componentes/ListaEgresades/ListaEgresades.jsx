@@ -9,7 +9,6 @@ import {
   Segment
 } from "semantic-ui-react";
 import Egresade from "./Egresade";
-import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoDeEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
@@ -224,7 +223,6 @@ class ListaEgresades extends Component {
   render() {
     return (
       <>
-      
         {this.iconoDeCarga()}
         <Segment>
           <BotonDeFiltrado
