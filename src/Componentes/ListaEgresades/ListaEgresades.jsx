@@ -8,24 +8,25 @@ import {
   Icon,
   Segment
 } from "semantic-ui-react";
-import FilterButton from "./FilterButton";
-import Graduated from "./Graduated";
-import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
-import GraduateService from "../../Services/Services-Graduates/GraduateService";
+import Egresade from "./Egresade";
+import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
+import FabricaDeFiltros from "../FiltradoDeEgresades/FabricaDeFiltros/FabricaDeFiltros";
+import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
-import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
+import OpcionesDeQuitarFiltro from "../FiltradoDeEgresades/OpcionesDeQuitarFiltro"
+import BotonDeFiltrado from "./BotonDeFiltrado";
 
-class GraduatesList extends Component {
+class ListaEgresades extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			graduates: [],
-			filterBy: "All",
-			filterCriteria: "",
-			newFilterRequest: false,
-			displayLoader: true,
+			egresades: [],
+			filterBy: "Todos",
+			criterioDeFiltrado: "",
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: true,
 			quitarUnFiltro: '',
-			deshabilitarFiltro:{				
+			deshabilitarFiltro:{
 				value: 'Todos',
 				filterby: 'Todos',
 				desactivarOpcion:false
@@ -35,58 +36,58 @@ class GraduatesList extends Component {
 	}
 
 	componentDidMount() {
-		this.getAllGraduates();
+		this.obtenerTodesLosEgresades();
 	}
 
-	getResponse(response) {
+	obtenerRespuesta(respuesta) {
 		this.setState({
-			graduates: response.data.response,
-			newFilterRequest: false,
-			displayLoader: false,
+			egresades: respuesta.data.response,
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: false,
 		});
 	}
 
-	catchError(error) {
+	errorDeCaptura(error) {
 		this.setState({
-			newFilterRequest: false,
-			displayLoader: false,
+			nuevaPeticionDeFiltrado: false,
+			mostrarBotonDeCarga: false,
 		});
-		alert("Parece haber un error con la base de datos." + error.status);
+		alert("Hay un error en la base de datos, status: " + error.status);
 	}
 
-	async getAllGraduates() {
-		await GraduateService.GetGraduates()
-			.then((response) => {
-				this.getResponse(response);
+	async obtenerTodesLosEgresades() {
+		await ServicioDeEgresades.obtenerEgresades()
+			.then((respuesta) => {
+				this.obtenerRespuesta(respuesta);
 			})
 			.catch((error) => {
-				this.catchError(error);
+				this.errorDeCaptura(error);
 			});
 	}
 
-	async getFilteredGraduates() {
-		await FactoryFilter(this.state.filterCriteria)
-			.then((response) => {
-				this.getResponse(response);
+	async obtenerEgresadesFiltrados() {
+		await FabricaDeFiltros(this.state.criterioDeFiltrado)
+			.then((respuesta) => {
+				this.obtenerRespuesta(respuesta);
 			})
 			.catch((error) => {
-				this.catchError(error);
+				this.errorDeCaptura(error);
 			});
 	}
 
-	listGraduates() {
-		if (this.state.newFilterRequest) {
-			this.getFilteredGraduates();
+	listaEgresades() {
+		if (this.state.nuevaPeticionDeFiltrado) {
+			this.obtenerEgresadesFiltrados();
 		}
-		return this.mapGraduatedList(this.state.graduates);
+		return this.mapeoListaEgresades(this.state.egresades);
 	}
 
-	mapGraduatedList(graduatedList) {
-		return graduatedList.map((graduated, index) => {
+	mapeoListaEgresades(listaEgresades) {
+		return listaEgresades.map((egresade, index) => {
 			return (
-				<Graduated
-					item={graduated}
-					key={graduated.id}
+				<Egresade
+					item={egresade}
+					key={egresade.id}
 					seleccionarEgresades={this.seleccionarEgresades}
 					numeracion={index + 1}
 				/>
@@ -96,10 +97,10 @@ class GraduatesList extends Component {
 
 	enviarDatosAlEstado(data, estado){
 		this.setState({
-			filterCriteria: data,
+			criterioDeFiltrado: data,
 			filterBy: data.value,
-			newFilterRequest: true,
-			displayLoader: true,
+			nuevaPeticionDeFiltrado: true,
+			mostrarBotonDeCarga: true,
 			egresadesSeleccionados:[],
 			quitarUnFiltro: '',
 			deshabilitarFiltro: {			
@@ -110,7 +111,7 @@ class GraduatesList extends Component {
 		this.cambiarEstadoDeCheckbox(true);
 	}
 
-	handleOnSelectOption = (data) => {
+	manejarEvento = (data) => {
 		this.enviarDatosAlEstado(data, true)
 	}
 
@@ -118,9 +119,9 @@ class GraduatesList extends Component {
 		this.enviarDatosAlEstado(data, false)
 	}
 
-	loadingIcon() {
+	iconoDeCarga() {
 		return (
-			this.state.displayLoader === true && (
+			this.state.mostrarBotonDeCarga === true && (
 				<Dimmer active inverted>
 					<Loader inverted>Cargando</Loader>
 				</Dimmer>
@@ -128,19 +129,19 @@ class GraduatesList extends Component {
 		);
 	}
 
-	emptyList() {
-		let messageHeader = "por el momento no tenemos egresades disponibles.";
-		let messageContent = "Intenta mas tarde";
-		if (this.state.filterBy !== "All") {
-			messageHeader = "no existen datos relacionados con su busqueda.";
-			messageContent = "Intenta con otro filtro";
+	listaVacia() {
+		let cabeceraDelMensaje = "por el momento no tenemos egresades disponibles.";
+		let contenidoDelMensaje = "Intenta mas tarde";
+		if (this.state.filterBy !== "Todos") {
+			cabeceraDelMensaje = "no existen datos relacionados con su busqueda.";
+			contenidoDelMensaje = "Intenta con otro filtro";
 		}
-		return this.state.graduates.length === 0 ? (
+		return this.state.egresades.length === 0 ? (
       <Message
         icon="warning sign"
         warning
-        header={`Lo sentimos, ${messageHeader}`}
-        content={`${messageContent}. Gracias`}
+        header={`Lo sentimos, ${cabeceraDelMensaje}`}
+        content={`${contenidoDelMensaje}. Gracias`}
       />
     ) : (
       <BotonExportar
@@ -169,12 +170,12 @@ class GraduatesList extends Component {
     );
   }
 
-  seleccionarTodosEgresades() {
-    let checkboxes = this.cambiarEstadoDeCheckbox(false);
-    checkboxes[0].checked
-      ? this.setState({ egresadesSeleccionados: this.state.graduates })
-      : this.setState({ egresadesSeleccionados: [] });
-  }
+	seleccionarTodosEgresades() {
+		let checkboxes = this.cambiarEstadoDeCheckbox(false);
+		checkboxes[0].checked
+			? this.setState({ egresadesSeleccionados: this.state.egresades })
+			: this.setState({ egresadesSeleccionados: [] });
+	}
 
   seleccionarEgresades = (egresade, checked) => {
     if (checked) {
@@ -205,13 +206,13 @@ class GraduatesList extends Component {
 	
 	quitarUnFiltro = (data) => {
 		this.setState({
-			filterCriteria: {			
+			criterioDeFiltrado: {			
 				value: data.filterby,
 				filterby: 'SinFiltros',
 			},
 			quitarUnFiltro:data,
-			newFilterRequest: true,
-			displayLoader: true,
+			nuevaPeticionDeFiltrado: true,
+			mostrarBotonDeCarga: true,
 		})
 	}
 	
@@ -224,10 +225,10 @@ class GraduatesList extends Component {
     return (
       <>
       
-        {this.loadingIcon()}
+        {this.iconoDeCarga()}
         <Segment>
-          <FilterButton
-            handleOnSelectOption={this.handleOnSelectOption}
+          <BotonDeFiltrado
+            manejarEvento={this.manejarEvento}
 						valor={this.state.deshabilitarFiltro}
 						quitarUnFiltro={this.state.quitarUnFiltro} 
           />
@@ -235,7 +236,7 @@ class GraduatesList extends Component {
 					<OpcionesDeQuitarFiltro  
 						quitarFiltro={this.quitarUnFiltro} 
 						esUltimoFiltro={this.verificarSiEraUltimoBoton}
-						opcion={this.state.filterCriteria}
+						opcion={this.state.criterioDeFiltrado}
 					/>
         </Segment>
         <div style={{ overflowX: "auto" }}>
@@ -257,14 +258,13 @@ class GraduatesList extends Component {
                 <Table.HeaderCell textAlign="center"></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>{this.listGraduates()}</Table.Body>
+            <Table.Body>{this.listaEgresades()}</Table.Body>
           </Table>
         </div>
-
-        {this.emptyList()}
+				{this.listaVacia()}
       </>
     );
   }
 }
 
-export default GraduatesList;
+export default ListaEgresades;

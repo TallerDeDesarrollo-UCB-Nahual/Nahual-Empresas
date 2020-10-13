@@ -4,13 +4,13 @@ import moment from 'moment';
 import 'moment/locale/es';
 import avatarGenerico from '../../assets/avatar-generico.png'
 
-function capitalize_Words(str) {
+function convertirAMayusculas(str) {
   return str.replace(/\b\w/g, l => l.toUpperCase())
 }
 
-function PersonalInformation({ graduate }) {
+function InformacionPersonal({ egresade }) {
   moment.locale('es');
-  const fecha_convertida = moment(graduate.fechaNacimiento).format('LL');
+  const fecha_convertida = moment(egresade.fechaNacimiento).format('LL');
   return (
     <Item.Group>
       <Item>
@@ -20,14 +20,14 @@ function PersonalInformation({ graduate }) {
         />
         <Item.Content verticalAlign='middle'>
             <div style={{ textAlign: "left" }}>
-              <Header as='h1'> {capitalize_Words(graduate.nombreCompleto)} </Header><br />
+              <Header as='h1'> {convertirAMayusculas(egresade.nombreCompleto)} </Header><br />
               <Item.Description>
-                <p> <Icon name='mail outline' /> <b>Correo: </b>{graduate.correo}</p>
-                <p> <Icon name='call' /> <b>Teléfono: </b>{graduate.celular}</p>
+                <p> <Icon name='mail outline' /> <b>Correo: </b>{egresade.correo}</p>
+                <p> <Icon name='call' /> <b>Teléfono: </b>{egresade.celular}</p>
                 <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>
-                <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{graduate.nivelIngles}</p>
-                {/* <p> <Icon name='home' /><b>Sede: </b>{graduate.campus}</p> */}
-                <p> <Icon name='map outline' /><b>Nodo: </b>{graduate.nombreNodo}</p>
+                <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{egresade.nivelIngles}</p>
+                {/* <p> <Icon name='home' /><b>Sede: </b>{egresade.campus}</p> */}
+                <p> <Icon name='map outline' /><b>Nodo: </b>{egresade.nombreNodo}</p>
               </Item.Description>
             </div>
           <Item.Extra> * Utilizar estos datos solo para fines laborales.</Item.Extra>
@@ -37,4 +37,4 @@ function PersonalInformation({ graduate }) {
   );
 }
 
-export default PersonalInformation;
+export default InformacionPersonal;
