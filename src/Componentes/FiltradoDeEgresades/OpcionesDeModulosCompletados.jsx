@@ -21,20 +21,8 @@ class OpcionesDeModulosCompletados extends Component{
     })
   }
 
-  agregarModuloCompletadoPorDefecto(){
-    const moduloCompletadoTodos={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "Todos",
-      filterby: "moduloCompletado"
-    }
-    return moduloCompletadoTodos;
-  }
-
   agregarOpcionesDeFiltrado(respuesta) {
     const opcionesDeModulosCompletados = []
-    opcionesDeModulosCompletados.push(this.agregarModuloCompletadoPorDefecto());
     respuesta.forEach(opcionDeModuloCompletado => {
       opcionDeModuloCompletado={
         key: opcionDeModuloCompletado.id,
@@ -69,8 +57,8 @@ class OpcionesDeModulosCompletados extends Component{
       )
   }
 
-  recibirProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false)
+  componentWillReceiveProps(nuevasProps){
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filterby === 'moduloCompletado')
       this.setState({valor:'Todos'})
   }
 

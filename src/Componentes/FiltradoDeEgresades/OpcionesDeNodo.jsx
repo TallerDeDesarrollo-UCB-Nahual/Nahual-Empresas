@@ -21,20 +21,8 @@ class OpcionesDeNodo extends Component{
     })
   }
 
-  agregarNodoPorDefecto(){
-    const nodoTodos={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "Todos",
-      filterby: "nodo"
-    }
-    return nodoTodos;
-  }
-
   agregarOpcionesDeFiltrado(respuesta) {
     const opcionesDeNodo = []
-    opcionesDeNodo.push(this.agregarNodoPorDefecto());
     respuesta.forEach(opcionNodo => {
       opcionNodo={
         key: opcionNodo.id,
@@ -69,8 +57,8 @@ class OpcionesDeNodo extends Component{
       )
   }
 
-  recibirProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false)
+  componentWillReceiveProps(nuevasProps){
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filterby === 'nodo')
       this.setState({valor:'Todos'})
   }
 

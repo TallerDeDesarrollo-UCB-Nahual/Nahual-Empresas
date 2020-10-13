@@ -15,9 +15,9 @@ function BotonDeFiltrado(props){
       className='icon'
     >
       <Dropdown.Menu style={{width:"165px"}}>
-        <OpcionesDeNodo manejarEvento={props.manejarEvento} valor={props.valor}/>
-        <OpcionesDeModulosCompletados manejarEvento={props.manejarEvento} valor={props.valor}/>
-        <OpcionesDeNivelDeIngles manejarEvento={props.manejarEvento} valor={props.valor}/>
+        <OpcionesDeNodo manejarEvento={props.manejarEvento} valor={props.valor} quitarUnFiltro={props.quitarUnFiltro} />
+        <OpcionesDeModulosCompletados manejarEvento={props.manejarEvento} valor={props.valor} quitarUnFiltro={props.quitarUnFiltro} />
+        <OpcionesDeNivelDeIngles manejarEvento={props.manejarEvento} valor={props.valor} quitarUnFiltro={props.quitarUnFiltro} />
       </Dropdown.Menu>
     </Dropdown>
     );

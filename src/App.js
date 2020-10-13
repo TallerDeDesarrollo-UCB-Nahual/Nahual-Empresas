@@ -1,5 +1,5 @@
 import React from "react";
-import GraduatesList from "./Componentes/ListaEgresades/GraduatesList.jsx";
+import ListaEgresades from "./Componentes/ListaEgresades/ListaEgresades.jsx"
 import Encabezado from "./Components/Layouts/Encabezado.jsx";
 import PieDePagina from "./Components/Layouts/PieDePagina.jsx";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Encabezado />
       <div className="ui container">
-        <GraduatesList />
+        <ListaEgresades />
       </div>
       <PieDePagina/>
     </>

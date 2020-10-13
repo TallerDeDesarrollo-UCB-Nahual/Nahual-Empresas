@@ -9,23 +9,23 @@ class OpcionesDeQuitarFiltro extends Component {
         id: 0,
         key: 0,
         text: "Todos",
-        value: "All",
+        value: "Todos",
         filterby: "Todos",
       },
       moduloCompletado: {
         mostrarBoton: false,
         texto: "",
-        value: "All",
+        value: "Todos",
       },
       nivelDeIngles: {
         mostrarBoton: false,
         texto: "",
-        value: "All",
+        value: "Todos",
       },
       nodo: {
         mostrarBoton: false,
         texto: "",
-        value: "All",
+        value: "Todos",
       },
     };
   }
@@ -56,7 +56,7 @@ class OpcionesDeQuitarFiltro extends Component {
   }
 
   enviarEstadosModuloCompletado(valor, filtroPor, objeto) {
-    if (valor === "All") {
+    if (valor === "Todos") {
       this.setState(
         {
           moduloCompletado: {
@@ -74,14 +74,14 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: valor,
           filtro: "Modulo Completado",
-          value: "All",
+          value: "Todos",
           filterby: filtroPor,
         },
       });
   }
 
   enviarEstadosNivelDeIngles(valor, filtroPor, objeto) {
-    if (valor === "All") {
+    if (valor === "Todos") {
       this.setState(
         {
           nivelDeIngles: {
@@ -99,14 +99,14 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: valor,
           filtro: "Nivel de Ingles",
-          value: "All",
+          value: "Todos",
           filterby: filtroPor,
         },
       });
   }
 
   enviarEstadosNodo(valor, filtroPor, objeto) {
-    if (valor === "All") {
+    if (valor === "Todos") {
       this.setState(
         {
           nodo: {
@@ -124,7 +124,7 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: valor,
           filtro: "Nodo",
-          value: "All",
+          value: "Todos",
           filterby: filtroPor,
         },
       });
@@ -132,21 +132,21 @@ class OpcionesDeQuitarFiltro extends Component {
 
   opciones(opcionSeleccionada) {
     switch (opcionSeleccionada.filterby) {
-      case "ModuleCompleted":
+      case "moduloCompletado":
         this.enviarEstadosModuloCompletado(
           opcionSeleccionada.value,
           opcionSeleccionada.filterby,
           opcionSeleccionada
         );
         break;
-      case "EnglishLevel":
+      case "nivelDeIngles":
         this.enviarEstadosNivelDeIngles(
           opcionSeleccionada.value,
           opcionSeleccionada.filterby,
           opcionSeleccionada
         );
         break;
-      case "Node":
+      case "nodo":
         this.enviarEstadosNodo(
           opcionSeleccionada.value,
           opcionSeleccionada.filterby,

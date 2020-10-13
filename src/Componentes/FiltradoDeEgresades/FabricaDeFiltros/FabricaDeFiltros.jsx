@@ -1,47 +1,79 @@
 import axios from "axios";
 
-const SERVICIO_DE_DATOS_API_NAHUAL  = process.env.REACT_APP_API_URL;
-let [filtrarPorModuloCompletado ,filtrarPorNivelDeIngles,filtrarPorNombreDeNodo,filtroDeConsulta] = ['','','','']
+const SERVICIO_DE_DATOS_API_NAHUAL = process.env.REACT_APP_API_URL;
+let [
+  filtrarPorModuloCompletado,
+  filtrarPorNivelDeIngles,
+  filtrarPorNombreDeNodo,
+  filtroDeConsulta,
+] = ["", "", "", ""];
 
-function FabricaDeFiltros (criterioDeFiltrado) {
-  establecerVariablesDeFiltroLocal(criterioDeFiltrado)
-  filtroDeConsulta = construirFiltroDeConsulta() 
-  return axios.get(`${SERVICIO_DE_DATOS_API_NAHUAL }/egresades/desempleados?${filtroDeConsulta}`)
-} 
+function FabricaDeFiltros(criterioDeFiltrado) {
+  establecerVariablesDeFiltroLocal(criterioDeFiltrado);
+  filtroDeConsulta = construirFiltroDeConsulta();
+  return axios.get(
+    `${SERVICIO_DE_DATOS_API_NAHUAL}/egresades/desempleados?${filtroDeConsulta}`
+  );
+}
 
-function establecerVariablesDeFiltroLocal(criterioDeFiltrado){
-  switch (criterioDeFiltrado.filterby) {
-    case 'moduloCompletado':
-      if (criterioDeFiltrado.value==='Todos')
-        filtrarPorModuloCompletado  = ''
-      else
-        filtrarPorModuloCompletado  =`modulo=${criterioDeFiltrado.value}&`;
-      break
-    case 'nivelDeIngles':
-      if (criterioDeFiltrado.value==='Todos')
-        filtrarPorNivelDeIngles = ''
-      else
-        filtrarPorNivelDeIngles =`nivelIngles=${criterioDeFiltrado.value}&`;
-      break
-    case 'nodo':
-      if (criterioDeFiltrado.value==='Todos')
-        filtrarPorNombreDeNodo = ''
-      else
-        filtrarPorNombreDeNodo =`nombreNodo=${criterioDeFiltrado.value}&`;
-      break
-    case 'Todos':
-        filtrarPorNivelDeIngles = ''
-        filtrarPorNombreDeNodo = ''
-        filtrarPorModuloCompletado  = ''
-      break
+function removerUnFiltro(filtro) {
+  switch (filtro.value) {
+    case "moduloCompletado":
+      filtrarPorModuloCompletado = "";
+      break;
+    case "nivelDeIngles":
+      filtrarPorNivelDeIngles = "";
+      break;
+    case "nodo":
+      filtrarPorNombreDeNodo = "";
+      break;
     default:
-      break
+      reiniciarFiltros();
+      break;
   }
 }
 
-function construirFiltroDeConsulta(){
-  let consulta = '';
-  return consulta.concat(filtrarPorModuloCompletado ,filtrarPorNivelDeIngles,filtrarPorNombreDeNodo)
+function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
+  switch (criterioDeFiltrado.filterby) {
+    case "moduloCompletado":
+      if (criterioDeFiltrado.value === "Todos") filtrarPorModuloCompletado = "";
+      else filtrarPorModuloCompletado = `modulo=${criterioDeFiltrado.value}&`;
+      break;
+    case "nivelDeIngles":
+      if (criterioDeFiltrado.value === "Todos") filtrarPorNivelDeIngles = "";
+      else filtrarPorNivelDeIngles = `nivelIngles=${criterioDeFiltrado.value}&`;
+      break;
+    case "nodo":
+      if (criterioDeFiltrado.value === "Todos") filtrarPorNombreDeNodo = "";
+      else filtrarPorNombreDeNodo = `nombreNodo=${criterioDeFiltrado.value}&`;
+      break;
+    case "Todos":
+      reiniciarFiltros();
+      break;
+    case "SinFiltros":
+      removerUnFiltro(criterioDeFiltrado);
+      break;
+    default:
+      alert(
+        "Parece haber un error con la base de datos, intentelo nuevamente."
+      );
+      break;
+  }
 }
 
-export default FabricaDeFiltros ;
+function reiniciarFiltros() {
+  filtrarPorNivelDeIngles = "";
+  filtrarPorNombreDeNodo = "";
+  filtrarPorModuloCompletado = "";
+}
+
+function construirFiltroDeConsulta() {
+  let consulta = "";
+  return consulta.concat(
+    filtrarPorModuloCompletado,
+    filtrarPorNivelDeIngles,
+    filtrarPorNombreDeNodo
+  );
+}
+
+export default FabricaDeFiltros;

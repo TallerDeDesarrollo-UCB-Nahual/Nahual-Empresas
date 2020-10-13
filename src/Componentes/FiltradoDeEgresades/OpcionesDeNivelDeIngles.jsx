@@ -21,20 +21,8 @@ class OpcionesDeNivelDeIngles extends Component{
     })
   }
 
-  agregarNivelDeInglesPorDefecto(){
-    const nivelDeInglesTodos={
-      id:0,
-      key:0,
-      text: "Todos",
-      value: "Todos",
-      filterby: "nivelDeIngles"
-    }
-    return nivelDeInglesTodos;
-  }
-
   agregarOpcionesDeFiltrado(respuesta) {
     const opcionesDeNivelDeIngles = []
-    opcionesDeNivelDeIngles.push(this.agregarNivelDeInglesPorDefecto());
     respuesta.forEach(opcionDeNivelDeIngles => {
         opcionDeNivelDeIngles={
         key: opcionDeNivelDeIngles.id,
@@ -69,8 +57,8 @@ class OpcionesDeNivelDeIngles extends Component{
       )
   }
 
-  recibirProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false)
+  componentWillReceiveProps(nuevasProps){
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filterby === 'nivelDeIngles')
       this.setState({valor:'Todos'})
   }
   

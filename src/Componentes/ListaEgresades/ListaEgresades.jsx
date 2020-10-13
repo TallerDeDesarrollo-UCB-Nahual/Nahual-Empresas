@@ -8,20 +8,20 @@ import {
   Icon,
   Segment
 } from "semantic-ui-react";
-import FilterButton from "./BotonDeFiltrado";
 import Egresade from "./Egresade";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FabricaDeFiltros from "../FiltradoDeEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
-import OpcionesDeQuitarFiltro from "../FilterGraduates/OpcionesDeQuitarFiltro";
+import OpcionesDeQuitarFiltro from "../FiltradoDeEgresades/OpcionesDeQuitarFiltro"
+import BotonDeFiltrado from "./BotonDeFiltrado";
 
-class GraduatesList extends Component {
+class ListaEgresades extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			egresades: [],
-			filterBy: "All",
+			filterBy: "Todos",
 			criterioDeFiltrado: "",
 			nuevaPeticionDeFiltrado: false,
 			mostrarBotonDeCarga: true,
@@ -227,7 +227,7 @@ class GraduatesList extends Component {
       
         {this.iconoDeCarga()}
         <Segment>
-          <FilterButton
+          <BotonDeFiltrado
             manejarEvento={this.manejarEvento}
 						valor={this.state.deshabilitarFiltro}
 						quitarUnFiltro={this.state.quitarUnFiltro} 
@@ -267,4 +267,4 @@ class GraduatesList extends Component {
   }
 }
 
-export default GraduatesList;
+export default ListaEgresades;
