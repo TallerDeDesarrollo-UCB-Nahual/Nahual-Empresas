@@ -1,0 +1,7 @@
+/*******************************
+     User Global Variables
+*******************************/
+@green          : #81CE32;
+@loaderLineColor : @green;
+@fontName          : 'Spinnaker';
+@headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
