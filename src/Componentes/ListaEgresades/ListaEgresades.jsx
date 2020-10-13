@@ -211,8 +211,8 @@ class ListaEgresades extends Component {
 				filterby: 'SinFiltros',
 			},
 			quitarUnFiltro:data,
-			newFilterRequest: true,
-			displayLoader: true,
+			nuevaPeticionDeFiltrado: true,
+			mostrarBotonDeCarga: true,
 		})
 	}
 	
