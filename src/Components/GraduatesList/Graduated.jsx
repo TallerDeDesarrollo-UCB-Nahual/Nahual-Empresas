@@ -7,6 +7,11 @@ function Graduated(props) {
 		let checkboxes = Array.from(document.getElementsByName("checkbox"));
 		props.seleccionarEgresades(egresade, checkboxes[props.numeracion].checked);
 	};
+
+	function PrimeraLetraEnMayuscula(str) {
+		return str.replace(/\b\w/g, (l) => l.toUpperCase());
+	}
+
 	return (
 		<Table.Row >
 			<Table.Cell textAlign='center' >
@@ -17,7 +22,7 @@ function Graduated(props) {
 					onClick={() => seleccionarEgresade(props.item)}
 				/>
 			</Table.Cell>
-			<Table.Cell>{props.item.nombreCompleto}</Table.Cell>
+			<Table.Cell>{PrimeraLetraEnMayuscula(props.item.nombreCompleto)}</Table.Cell>
 			<Table.Cell>{props.item.nombreNodo}</Table.Cell>
 			<Table.Cell>{props.item.modulo}</Table.Cell>
 			<Table.Cell>{props.item.nivelIngles}</Table.Cell>
