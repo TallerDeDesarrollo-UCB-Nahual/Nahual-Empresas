@@ -5,7 +5,6 @@ import {
   Dimmer,
   Message,
   Label,
-  Header,
   Icon,
   Segment
 } from "semantic-ui-react";
@@ -226,18 +225,18 @@ class GraduatesList extends Component {
       <>
       
         {this.loadingIcon()}
-        <Segment color="green">
+        <Segment>
           <FilterButton
             handleOnSelectOption={this.handleOnSelectOption}
 						valor={this.state.deshabilitarFiltro}
 						quitarUnFiltro={this.state.quitarUnFiltro} 
           />
+					{this.removerFiltros()}
 					<OpcionesDeQuitarFiltro  
 						quitarFiltro={this.quitarUnFiltro} 
 						esUltimoFiltro={this.verificarSiEraUltimoBoton}
 						opcion={this.state.filterCriteria}
 					/>
-          {this.removerFiltros()}
         </Segment>
         <div style={{ overflowX: "auto" }}>
           <Table singleLine selectable striped unstackable>

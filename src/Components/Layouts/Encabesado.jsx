@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 
 import {
-  Button,
   Container,
   Menu,
   Segment,
@@ -24,7 +23,7 @@ class Encabesado extends Component {
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          <Segment style={{ height: "80px" }}>
+          <Segment vertical style={{ height: "100px" }}>
             <Menu stackable fixed="top">
               <Container>
                 <Menu.Item>

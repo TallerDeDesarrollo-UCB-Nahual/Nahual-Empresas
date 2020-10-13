@@ -169,7 +169,7 @@ class OpcionesDeQuitarFiltro extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.state.nodo.mostrarBoton === true && (
           <Label image>
             {this.state.nodo.filtro}
@@ -205,7 +205,7 @@ class OpcionesDeQuitarFiltro extends Component {
             <Label.Detail>{this.state.nivelDeIngles.texto}</Label.Detail>
           </Label>
         )}
-      </div>
+      </>
     );
   }
 }
