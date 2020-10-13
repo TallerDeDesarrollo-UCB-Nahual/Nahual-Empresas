@@ -224,10 +224,7 @@ class GraduatesList extends Component {
   render() {
     return (
       <>
-        <Header as="h1" icon textAlign="center" color="green">
-          <Icon name="graduation" />
-          <Header.Content>Lista Egresades</Header.Content>
-        </Header>
+      
         {this.loadingIcon()}
         <Segment color="green">
           <FilterButton

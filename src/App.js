@@ -1,11 +1,15 @@
 import React from "react";
 import GraduatesList from "./Components/GraduatesList/GraduatesList.jsx";
+import Encabesado from "./Components/Layouts/Encabesado.jsx";
 
 function App() {
   return (
-    <div className="ui container">
-      <GraduatesList />
-    </div>
+    <>
+      <Encabesado />
+      <div className="ui container">
+        <GraduatesList />
+      </div>
+    </>
   );
 }
 
