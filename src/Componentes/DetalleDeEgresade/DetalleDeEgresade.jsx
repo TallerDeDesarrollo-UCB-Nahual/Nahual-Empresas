@@ -34,7 +34,7 @@ class DetalleDeEgresade extends Component {
   render() {
     return (
       <Modal
-        abierto={this.state.abierto}
+        open={this.state.abierto}
         onClose={() => this.mostrarModal (false)}
         onOpen={() => this.mostrarModal (true)}
         size="small"
