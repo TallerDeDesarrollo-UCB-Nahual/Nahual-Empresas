@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
+import { Button, Modal, Image, Segment, Loader, Dimmer, Icon } from 'semantic-ui-react'
 import BodyModal from './BodyModal';
 import axios from "axios";
 
@@ -39,7 +39,7 @@ class GraduateDetail extends Component {
         onOpen={() => this.showModal(true)}
         size="small"
         closeIcon
-        trigger={<Button onClick={() => (this.getGraduateAPI(this.props.id))} icon='eye' />}
+        trigger={<Button circular basic color="green" icon onClick={() => (this.getGraduateAPI(this.props.id))}><Icon color="black" name="eye"></Icon> </Button>}
       >
         {
           this.state.graduate ?

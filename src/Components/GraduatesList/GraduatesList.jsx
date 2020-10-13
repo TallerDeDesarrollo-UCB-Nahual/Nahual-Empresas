@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Input, Table, Loader, Dimmer, Message, Button } from "semantic-ui-react";
+import {
+  Table,
+  Loader,
+  Dimmer,
+  Message,
+  Label,
+  Header,
+  Icon,
+  Segment
+} from "semantic-ui-react";
 import FilterButton from "./FilterButton";
 import Graduated from "./Graduated";
-import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import FactoryFilter from "../FilterGraduates/FactoryFilter/FactoryFilter";
 import GraduateService from "../../Services/Services-Graduates/GraduateService";
 import BotonExportar from "./BotonExportar";
@@ -144,51 +152,56 @@ class GraduatesList extends Component {
         }}
       />
     );
-	}
+  }
 
-	removerFiltros(){
-		return(
-			this.state.deshabilitarFiltro.desactivarOpcion === true &&
-			<Button color='red'
-			onClick={()=>this.quitarFiltros(this.state.deshabilitarFiltro)}
-			valor={this.state.deshabilitarFiltro}
-			>Remover Filtros </Button>
-		)
-	}
+  removerFiltros() {
+    return (
+      this.state.deshabilitarFiltro.desactivarOpcion === true && (
+        <Label
+          pointing="left"
+          as="a"
+          onClick={() => this.quitarFiltros(this.state.deshabilitarFiltro)}
+          valor={this.state.deshabilitarFiltro}
+        >
+          Quitar Todos
+          <Icon name="delete" />
+        </Label>
+      )
+    );
+  }
 
-	seleccionarTodosEgresades() {
-		let checkboxes = this.cambiarEstadoDeCheckbox(false);
-		checkboxes[0].checked
-			? this.setState({ egresadesSeleccionados: this.state.graduates })
-			: this.setState({ egresadesSeleccionados: [] });
-	}
+  seleccionarTodosEgresades() {
+    let checkboxes = this.cambiarEstadoDeCheckbox(false);
+    checkboxes[0].checked
+      ? this.setState({ egresadesSeleccionados: this.state.graduates })
+      : this.setState({ egresadesSeleccionados: [] });
+  }
 
-	seleccionarEgresades = (egresade, checked) => {
-		if (checked) {
-			this.setState({
-				egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
-					egresade
-				),
-			});
-		} else {
-			this.state.egresadesSeleccionados.map(() => {
-				return this.setState({
-					egresadesSeleccionados: this.state.egresadesSeleccionados.filter(
-						(e) => e.id !== egresade.id
-					),
-				});
-			});
-		}
-	};
-
-	cambiarEstadoDeCheckbox(filtro) {
-		let checkboxes = Array.from(document.getElementsByName("checkbox"));
-		checkboxes.map((checkbox) => {
-			return filtro
-				? (checkbox.checked = false)
-				: (checkbox.checked = checkboxes[0].checked);
-		});
-		return checkboxes;
+  seleccionarEgresades = (egresade, checked) => {
+    if (checked) {
+      this.setState({
+        egresadesSeleccionados: this.state.egresadesSeleccionados.concat(
+          egresade
+        )
+      });
+    } else {
+      this.state.egresadesSeleccionados.map(() => {
+        return this.setState({
+          egresadesSeleccionados: this.state.egresadesSeleccionados.filter(
+            (e) => e.id !== egresade.id
+          )
+        });
+      });
+    }
+  };
+  cambiarEstadoDeCheckbox(filtro) {
+    let checkboxes = Array.from(document.getElementsByName("checkbox"));
+    checkboxes.map((checkbox) => {
+      return filtro
+        ? (checkbox.checked = false)
+        : (checkbox.checked = checkboxes[0].checked);
+    });
+    return checkboxes;
 	}
 	
 	quitarUnFiltro = (data) => {
@@ -208,77 +221,54 @@ class GraduatesList extends Component {
 			this.quitarFiltros(this.state.deshabilitarFiltro)
 	}
 
-	render() {
-		return (
-			<div style={{ paddingBottom: "5%" }}>
-				<img
-					src={NahualLogo}
-					width="150"
-					style={{ marginTop: 20 }}
-					alt="Nahual"
-				/>
-				<h1>Lista Egresades</h1>
-				<div style={{ marginLeft: "150px", marginRight: "150px" }}>
-					{this.loadingIcon()}
-					<Table
-						style={{
-							borderCollapse: "collapse",
-							border: "#81ce32 2px solid",
-						}}
-						inverted
-						unstackable
-						verticalAlign="middle"
-						celled
-					>
-						<Table.Header style={{ backgroundColor: "#81ce32" }}>
-							<Table.Row>
-								<Table.HeaderCell colSpan="2">
-									<FilterButton 
-										handleOnSelectOption={this.handleOnSelectOption} 
-										valor={this.state.deshabilitarFiltro}
-										quitarUnFiltro={this.state.quitarUnFiltro} />
-									{this.removerFiltros()}
-								</Table.HeaderCell>
-								<Table.HeaderCell colSpan="4">
-									<OpcionesDeQuitarFiltro  
-										quitarFiltro={this.quitarUnFiltro} 
-										esUltimoFiltro={this.verificarSiEraUltimoBoton}
-										opcion={this.state.filterCriteria}></OpcionesDeQuitarFiltro>
-								</Table.HeaderCell>
-					</Table.Row>
-						</Table.Header>
-						<Table.Header style={{ backgroundColor: "#81ce32" }}>
-							<Table.Row style={{ textAlign: "left" }}>
-								<Table.HeaderCell style={{ textAlign: "center" }}>
-									<input
-										type="checkbox"
-										name="checkbox"
-										onClick={() => this.seleccionarTodosEgresades()}
-										style={{ transform: "scale(1.4)" }}
-									/>
-								</Table.HeaderCell>
-								<Table.HeaderCell>NOMBRE</Table.HeaderCell>
-								<Table.HeaderCell>NODO</Table.HeaderCell>
-								<Table.HeaderCell>MODULOS CURSADOS</Table.HeaderCell>
-								<Table.HeaderCell>NIVEL DE INGLES</Table.HeaderCell>
-								<Table.HeaderCell></Table.HeaderCell>
-							</Table.Row>
-						</Table.Header>
-						<Table.Body
-							style={{
-								color: "black",
-								backgroundColor: "white",
-								textAlign: "left",
-							}}
-						>
-							{this.listGraduates()}
-						</Table.Body>
-					</Table>
-					{this.emptyList()}
-				</div>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <>
+        <Header as="h1" icon textAlign="center" color="green">
+          <Icon name="graduation" />
+          <Header.Content>Lista Egresades</Header.Content>
+        </Header>
+        {this.loadingIcon()}
+        <Segment color="green">
+          <FilterButton
+            handleOnSelectOption={this.handleOnSelectOption}
+						valor={this.state.deshabilitarFiltro}
+						quitarUnFiltro={this.state.quitarUnFiltro} 
+          />
+					<OpcionesDeQuitarFiltro  
+						quitarFiltro={this.quitarUnFiltro} 
+						esUltimoFiltro={this.verificarSiEraUltimoBoton}
+						opcion={this.state.filterCriteria}
+					/>
+          {this.removerFiltros()}
+        </Segment>
+        <div style={{ overflowX: "auto" }}>
+          <Table singleLine selectable striped unstackable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center">
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    onClick={() => this.seleccionarTodosEgresades()}
+                    style={{ transform: "scale(1.4)" }}
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>NOMBRE Y APELLIDO</Table.HeaderCell>
+                <Table.HeaderCell>NODO</Table.HeaderCell>
+                <Table.HeaderCell>MÓDULOS CURSADOS</Table.HeaderCell>
+                <Table.HeaderCell>NIVEL DE INGLES</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"></Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>{this.listGraduates()}</Table.Body>
+          </Table>
+        </div>
+
+        {this.emptyList()}
+      </>
+    );
+  }
 }
 
 export default GraduatesList;

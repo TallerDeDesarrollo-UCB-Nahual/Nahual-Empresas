@@ -17,7 +17,7 @@ const BodyModal = ({ graduate, closeModal }) => {
         </Grid>
       </Modal.Content>
       <Modal.Actions>
-        <Button negative onClick={closeModal} >
+        <Button basic color="grey" onClick={closeModal} >
           Cerrar
         </Button>
         {graduate.linkedin ?
