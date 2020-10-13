@@ -7,7 +7,8 @@ import {
   Segment,
   Visibility,
   Image,
-  Header
+  Header,
+  Responsive
 } from "semantic-ui-react";
 
 class Encabezado extends Component {
@@ -23,27 +24,31 @@ class Encabezado extends Component {
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          <Segment vertical style={{ height: "100px" }}>
-            <Menu stackable fixed="top">
-              <Container>
-                <Menu.Item>
-                  <Image
-                    rounded
-                    size={fixed ? "tiny" : "small"}
-                    src={NahualLogo}
-                  />
-                </Menu.Item>
-                <Menu.Item position="right">
-                  <Header
-                    color="grey"
-                    as={fixed ? "h3" : "h2"}
-                    icon="graduation"
-                    content="Lista de Egresades"
-                  />
-                </Menu.Item>
-              </Container>
-            </Menu>
-          </Segment>
+          <Responsive maxWidth={767}>
+            <Segment vertical style={{ height: "11rem" }}></Segment>
+          </Responsive>
+          <Responsive minWidth={768}>
+            <Segment vertical style={{ height: "7rem" }}></Segment>
+          </Responsive>
+          <Menu stackable fixed="top">
+            <Container>
+              <Menu.Item>
+                <Image
+                  rounded
+                  size={fixed ? "tiny" : "small"}
+                  src={NahualLogo}
+                />
+              </Menu.Item>
+              <Menu.Item position="right">
+                <Header
+                  color="grey"
+                  as={fixed ? "h3" : "h2"}
+                  icon="graduation"
+                  content="Lista de Egresades"
+                />
+              </Menu.Item>
+            </Container>
+          </Menu>
         </Visibility>
       </>
     );
