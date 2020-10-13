@@ -10,7 +10,7 @@ import {
   Header
 } from "semantic-ui-react";
 
-class Encabesado extends Component {
+class Encabezado extends Component {
   state = {};
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -49,4 +49,4 @@ class Encabesado extends Component {
     );
   }
 }
-export default Encabesado;
+export default Encabezado;
