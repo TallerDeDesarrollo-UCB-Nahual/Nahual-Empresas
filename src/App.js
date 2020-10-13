@@ -7,10 +7,10 @@ function App() {
   return (
     <>
       <Encabezado />
-      <div className="ui container">
-        <ListaEgresades />
+      <div className="ui container" style={{ minHeight: "60vh" }} >
+        <GraduatesList />
       </div>
-      <PieDePagina/>
+      <PieDePagina />
     </>
   );
 }
