@@ -10,9 +10,14 @@ import {
   Header,
   Responsive
 } from "semantic-ui-react";
+import BotonIniciarSesion from "../Login/BotonIniciarSesion";
+import BotonCerrarSesion from "../Login/BotonCerrarSesion";
 
 class Encabezado extends Component {
   state = {};
+  cambiarSesion2() {
+    this.props.cambiarAutenticacion();
+  }
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
   render() {
@@ -39,14 +44,41 @@ class Encabezado extends Component {
                   src={NahualLogo}
                 />
               </Menu.Item>
-              <Menu.Item position="right">
-                <Header
-                  color="grey"
-                  as={fixed ? "h3" : "h2"}
-                  icon="graduation"
-                  content="Lista de Egresades"
-                />
-              </Menu.Item>
+              {this.props.usuarioLogueado ? (
+                <>
+                  <Menu.Item position="right">
+                    <Header
+                      color="grey"
+                      as={fixed ? "h3" : "h2"}
+                      icon="graduation"
+                      content="Lista de Egresades"
+                    />
+                  </Menu.Item>
+
+                  <Menu.Item>
+                    <BotonCerrarSesion
+                      cambiarSesion={() => this.cambiarSesion2()}
+                    />
+                  </Menu.Item>
+                </>
+              ) : (
+                <>
+                  <Menu.Item position="right">
+                    <Header
+                      color="grey"
+                      as={fixed ? "h3" : "h2"}
+                      icon="graduation"
+                      content="Bienvenido"
+                    />
+                  </Menu.Item>
+
+                  <Menu.Item>
+                    <BotonIniciarSesion
+                      cambiarSesion={() => this.cambiarSesion2()}
+                    />
+                  </Menu.Item>
+                </>
+              )}
             </Container>
           </Menu>
         </Visibility>
