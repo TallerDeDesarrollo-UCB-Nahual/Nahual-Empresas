@@ -3,11 +3,23 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import 'semantic-ui-less/semantic.less'
 import { Auth0Provider } from "@auth0/auth0-react";
+import history from "./Componentes/Login/history"
+
+const onRedirectCallback = (appState) => {
+  history.push(
+    appState && appState.returnTo
+      ? appState.returnTo
+      : window.location.pathname
+  );
+};
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-70lwkuxn.us.auth0.com"
-    clientId="svxsg0b0LzERbFzx0VYHrEmqobv0hd7g"
+    domain="dev-gl-221m2.us.auth0.com"
+    clientId="F29XDMT4pvq6h1ppIlypw1YHKfiilaQR"
     redirectUri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+    audience={"nahual-empresas/login"}
+
   >
     <App />
   </Auth0Provider>

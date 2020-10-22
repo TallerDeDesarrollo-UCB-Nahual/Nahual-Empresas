@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import {
   Container,
@@ -13,21 +14,21 @@ import {
 import BotonIniciarSesion from "../Login/BotonIniciarSesion";
 import BotonCerrarSesion from "../Login/BotonCerrarSesion";
 
-class Encabezado extends Component {
-  state = {};
-  cambiarSesion2() {
-    this.props.cambiarAutenticacion();
-  }
-  hideFixedMenu = () => this.setState({ fixed: false });
-  showFixedMenu = () => this.setState({ fixed: true });
-  render() {
-    const { fixed } = this.state;
+function Encabezado () {
+  
+  const state = {};
+  const [fixed, setFixed] = useState(true);
+  
+  const hideFixedMenu = () => this.setState({ fixed: false });
+  const showFixedMenu = () => this.setState({ fixed: true });
+
+    const {
+      isAuthenticated
+    } = useAuth0();
     return (
       <>
         <Visibility
           once={false}
-          onBottomPassed={this.showFixedMenu}
-          onBottomPassedReverse={this.hideFixedMenu}
         >
           <Responsive maxWidth={767}>
             <Segment vertical style={{ height: "11rem" }}></Segment>
@@ -44,7 +45,7 @@ class Encabezado extends Component {
                   src={NahualLogo}
                 />
               </Menu.Item>
-              {this.props.usuarioLogueado ? (
+              {isAuthenticated ? (
                 <>
                   <Menu.Item position="right">
                     <Header
@@ -85,5 +86,5 @@ class Encabezado extends Component {
       </>
     );
   }
-}
+
 export default Encabezado;
