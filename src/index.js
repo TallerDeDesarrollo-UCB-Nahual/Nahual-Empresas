@@ -19,7 +19,8 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
     audience={"nahual-empresas/login"}
-
+    useRefreshTokens={true}
+    cacheLocation="localstorage"
   >
     <App />
   </Auth0Provider>
