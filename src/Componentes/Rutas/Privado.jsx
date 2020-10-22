@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const Privado = ({ component: Component, userLogged, ...rest }) => {
   if (!userLogged) {
-    return <Redirect to="/IniciarSesion" />;
+    return <Redirect to="/" />;
   }
   return <Route {...rest} component={Component} />;
 };

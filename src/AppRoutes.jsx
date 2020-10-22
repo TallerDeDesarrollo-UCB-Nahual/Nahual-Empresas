@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch,Redirect } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Encabezado from "./Componentes/Layouts/Encabezado";
 import PieDePagina from "./Componentes/Layouts/PieDePagina";
 import ListaEgresades from "./Componentes/ListaEgresades/ListaEgresades";
@@ -24,7 +24,7 @@ const AppRoutes = () => {
           />
           {/* Publico */}
           <Publico
-            path="/IniciarSesion"
+            path="/" exact
             component={IniciarSesion}
             userLogged={isAuthenticated}
           />

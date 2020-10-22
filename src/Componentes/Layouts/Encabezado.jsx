@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -15,13 +15,8 @@ import BotonIniciarSesion from "../Login/BotonIniciarSesion";
 import BotonCerrarSesion from "../Login/BotonCerrarSesion";
 
 function Encabezado() {
-	const state = {};
-	const [fixed, setFixed] = useState(true);
 
-	const hideFixedMenu = () => this.setState({ fixed: false });
-	const showFixedMenu = () => this.setState({ fixed: true });
-
-	const { isAuthenticated } = useAuth0();
+	const { user, isAuthenticated } = useAuth0();
 	return (
 		<>
 			<Visibility once={false}>
@@ -34,29 +29,36 @@ function Encabezado() {
 				<Menu stackable fixed="top">
 					<Container>
 						<Menu.Item>
-							<Image rounded size={fixed ? "tiny" : "small"} src={NahualLogo} />
+							<Image rounded size={"small"} src={NahualLogo} />
 						</Menu.Item>
 						{isAuthenticated ? (
 							<>
 								<Menu.Item position="right">
 									<Header
 										color="grey"
-										as={fixed ? "h3" : "h2"}
+										as="h2"
 										icon="graduation"
 										content="Lista de Egresades"
 									/>
 								</Menu.Item>
-
+                <Menu.Item>
+								<Image
+									src={user.picture}
+									avatar
+								/>
+								<span>{user.name}</span>
+                </Menu.Item>
 								<Menu.Item>
 									<BotonCerrarSesion />
 								</Menu.Item>
+                
 							</>
 						) : (
 							<>
 								<Menu.Item position="right">
 									<Header
 										color="grey"
-										as={fixed ? "h3" : "h2"}
+										as="h2"
 										icon="graduation"
 										content="Bienvenido"
 									/>

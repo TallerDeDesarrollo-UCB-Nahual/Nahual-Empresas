@@ -4,10 +4,6 @@ import { Button } from "semantic-ui-react";
 
 const BotonCerrarSesion = () => {
   const { logout } = useAuth0();
-  const logoutWithRedirect = () =>
-    logout({
-      returnTo: window.location.origin,
-    });
   return (
     <Button onClick={() => logout()}>
       Cerrar Sesión
