@@ -55,8 +55,8 @@ class OpcionesDeQuitarFiltro extends Component {
     }
   }
 
-  enviarEstadosModuloCompletado(valor, filtroPor, objeto) {
-    if (valor === "Todos") {
+  enviarEstadosModuloCompletado(objeto) {
+    if (objeto.value === "Todos") {
       this.setState(
         {
           moduloCompletado: {
@@ -75,13 +75,13 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: objeto.text,
           filtro: "Modulo Completado",
           value: "Todos",
-          filterby: filtroPor,
+          filterby: objeto.filterby,
         },
       });
   }
 
-  enviarEstadosNivelDeIngles(valor, filtroPor, objeto) {
-    if (valor === "Todos") {
+  enviarEstadosNivelDeIngles(objeto) {
+    if (objeto.value === "Todos") {
       this.setState(
         {
           nivelDeIngles: {
@@ -100,13 +100,13 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: objeto.text,
           filtro: "Nivel de Ingles",
           value: "Todos",
-          filterby: filtroPor,
+          filterby: objeto.filterby,
         },
       });
   }
 
-  enviarEstadosNodo(valor, filtroPor, objeto) {
-    if (valor === "Todos") {
+  enviarEstadosNodo(objeto) {
+    if (objeto.value === "Todos") {
       this.setState(
         {
           nodo: {
@@ -125,7 +125,7 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: objeto.text,
           filtro: "Nodo",
           value: "Todos",
-          filterby: filtroPor,
+          filterby: objeto.filterby,
         },
       });
   }
@@ -134,22 +134,16 @@ class OpcionesDeQuitarFiltro extends Component {
     switch (opcionSeleccionada.filterby) {
       case "moduloCompletado":
         this.enviarEstadosModuloCompletado(
-          opcionSeleccionada.value,
-          opcionSeleccionada.filterby,
           opcionSeleccionada
         );
         break;
       case "nivelDeIngles":
         this.enviarEstadosNivelDeIngles(
-          opcionSeleccionada.value,
-          opcionSeleccionada.filterby,
           opcionSeleccionada
         );
         break;
       case "nodo":
         this.enviarEstadosNodo(
-          opcionSeleccionada.value,
-          opcionSeleccionada.filterby,
           opcionSeleccionada
         );
         break;
