@@ -13,7 +13,7 @@ const AppRoutes = () => {
 
   return (
     <Router>
-      <Encabezado usuarioLogueado={isAuthenticated} />
+      <Encabezado />
       <div className="ui container" style={{ minHeight: "60vh" }}>
         <Switch>
           {/* admin */}
