@@ -72,7 +72,7 @@ class OpcionesDeQuitarFiltro extends Component {
       this.setState({
         moduloCompletado: {
           mostrarBoton: true,
-          texto: valor,
+          texto: objeto.text,
           filtro: "Modulo Completado",
           value: "Todos",
           filterby: filtroPor,
@@ -97,7 +97,7 @@ class OpcionesDeQuitarFiltro extends Component {
       this.setState({
         nivelDeIngles: {
           mostrarBoton: true,
-          texto: valor,
+          texto: objeto.text,
           filtro: "Nivel de Ingles",
           value: "Todos",
           filterby: filtroPor,
@@ -122,7 +122,7 @@ class OpcionesDeQuitarFiltro extends Component {
       this.setState({
         nodo: {
           mostrarBoton: true,
-          texto: valor,
+          texto: objeto.text,
           filtro: "Nodo",
           value: "Todos",
           filterby: filtroPor,

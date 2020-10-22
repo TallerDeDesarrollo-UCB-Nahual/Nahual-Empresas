@@ -27,7 +27,7 @@ class OpcionesDeNodo extends Component{
       opcionNodo={
         key: opcionNodo.id,
         text: opcionNodo.nombre,
-        value: opcionNodo.nombre,
+        value: opcionNodo.id,
         filterby: "nodo"
       }
       opcionesDeNodo.push(opcionNodo);
