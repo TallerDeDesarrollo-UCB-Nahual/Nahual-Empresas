@@ -7,7 +7,8 @@ import {
   Grid,
   Divider,
   Icon,
-  Reveal
+  Reveal,
+  Popup
 } from "semantic-ui-react";
 import imagenSinAcceso from "../../assets/NoAcceso.png";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -30,6 +31,7 @@ const NoAutorizado = () => {
     var parametros = url.searchParams;
     parametros.set("token", await obtenerTokenId());
     parametros.set("redirect", DOMINIO);
+    parametros.set("origen", "nauhal-empresas");
     url.search = parametros.toString();
     return url.toString();
   };
@@ -75,9 +77,16 @@ const NoAutorizado = () => {
                 <Icon name="unlock" />
                 Solicitar Acceso
               </Header>
-              <Button onClick={() => redireccionarSolicitarAcceso()}>
-                Solicitar
-              </Button>
+
+              <Popup
+                content="Si ya solicitaste acceso, no vuelva a hacerlo, su solicitud esta siendo procesada."
+                trigger={
+                  <Button
+                    onClick={() => redireccionarSolicitarAcceso()}
+                    content="Solicitar"
+                  />
+                }
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>

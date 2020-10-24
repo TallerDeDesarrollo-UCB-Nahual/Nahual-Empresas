@@ -6,13 +6,11 @@ import {
   Container,
   Menu,
   Image,
-  Header,
-  Dropdown,
-  Button
+  Dropdown
 } from "semantic-ui-react";
 
 function Encabezado() {
-  const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated, logout } = useAuth0();
   return (
     <>
       <Menu stackable fixed="top">
@@ -20,17 +18,9 @@ function Encabezado() {
           <Menu.Item>
             <Image rounded size={"small"} src={NahualLogo} />
           </Menu.Item>
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <>
-              <Menu.Item position="right">
-                <Header
-                  color="grey"
-                  as="h2"
-                  icon="graduation"
-                  content="Lista de Egresades"
-                />
-              </Menu.Item>
-              <Menu.Item>
+              <Menu.Item  position="right">
                 <Dropdown
                   trigger={
                     <span>
@@ -46,29 +36,12 @@ function Encabezado() {
                     }
                   ]}
                   pointing="top left"
-                  icon={null}
                   onChange={() => logout()}
                 />
               </Menu.Item>
               <Menu.Item></Menu.Item>
             </>
-          ) : (
-            <>
-              <Menu.Item position="right">
-                <Header
-                  color="grey"
-                  as="h2"
-                  icon="graduation"
-                  content="Bienvenido"
-                />
-              </Menu.Item>
-              <Menu.Item>
-                <Button onClick={() => loginWithRedirect()}>
-                  Iniciar Sesíon
-                </Button>
-              </Menu.Item>
-            </>
-          )}
+          ) }
         </Container>
       </Menu>
     </>

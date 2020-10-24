@@ -26,23 +26,29 @@ class Autenticado extends Component {
     alert("Hay un error en la base de datos, status: " + error.status);
   }
   async obtenerVerificacion() {
-    // const SERVICIO_DE_VERIFICACION_API_NAHUAL =
-    //   process.env.REACT_APP_API_ACCESO_URL;
-    // const { user } = this.context;
+    const SERVICIO_DE_VERIFICACION_API_NAHUAL =
+      process.env.REACT_APP_API_ACCESO_URL;
+    const { user } = this.context;
 
-    // await Axios.get(
-    //   `${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificar/${user.id}`
-    // )
-    //   .then((respuesta) => {
-    //     this.setState({
-    //       validado: respuesta.data.response
-    //       mostrarBotonDeCarga:false
-
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     this.errorDeCaptura(error);
-    //   });
+    await Axios.post(`${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificar`, {
+      correo: user.email,
+      nombre: user.name,
+      origen: "nahual-empresas"
+    })
+      .then((respuesta) => {
+        this.setState({
+          validado: respuesta.data.response,
+          mostrarBotonDeCarga: false
+        });
+      })
+      .catch((error) => {
+        //this.errorDeCaptura(error);
+      });
+    console.log({
+      correo: user.email,
+      nombre: user.name,
+      origen: "nahual-empresas"
+    });
     setTimeout(() => {
       this.setState({
         validado: false,
@@ -63,11 +69,7 @@ class Autenticado extends Component {
     return (
       <>
         {this.iconoDeCarga()}
-        {this.state.validado ? (
-          <ListaEgresades />
-        ) : (
-         <NoAutorizado/>
-        )}
+        {this.state.validado ? <ListaEgresades /> : <NoAutorizado />}
       </>
     );
   }
