@@ -12,7 +12,7 @@ function FabricaDeFiltros(criterioDeFiltrado) {
   establecerVariablesDeFiltroLocal(criterioDeFiltrado);
   filtroDeConsulta = construirFiltroDeConsulta();
   return axios.get(
-    `${SERVICIO_DE_DATOS_API_NAHUAL}/egresades/desempleados?${filtroDeConsulta}`
+    `${SERVICIO_DE_DATOS_API_NAHUAL}/egresades/desempleados/DTO?${filtroDeConsulta}`
   );
 }
 
@@ -41,11 +41,11 @@ function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
       break;
     case "nivelDeIngles":
       if (criterioDeFiltrado.value === "Todos") filtrarPorNivelDeIngles = "";
-      else filtrarPorNivelDeIngles = `nivelIngles=${criterioDeFiltrado.value}&`;
+      else filtrarPorNivelDeIngles = `nivelInglesId=${criterioDeFiltrado.value}&`;
       break;
     case "nodo":
       if (criterioDeFiltrado.value === "Todos") filtrarPorNombreDeNodo = "";
-      else filtrarPorNombreDeNodo = `nombreNodo=${criterioDeFiltrado.value}&`;
+      else filtrarPorNombreDeNodo = `nodoId=${criterioDeFiltrado.value}&`;
       break;
     case "Todos":
       reiniciarFiltros();

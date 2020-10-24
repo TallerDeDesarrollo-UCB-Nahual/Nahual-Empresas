@@ -14,14 +14,14 @@ class DetalleDeEgresade extends Component {
   obtenerAPIDeEgresade() {
     const API_URL = process.env.REACT_APP_API_URL;
     axios
-      .get(`${API_URL}/estudiantes/${this.props.id}`)
+      .get(`${API_URL}/estudiantes/${this.props.id}/DTO`)
       .then(respuesta => {
         this.setState({
           egresade : respuesta.data.response
         });
       })
       .catch(function (error) {
-        console.log(error);
+      alert("Error en la base de datos.")
       });
   }
 
