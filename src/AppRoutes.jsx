@@ -6,29 +6,21 @@ import ListaEgresades from "./Componentes/ListaEgresades/ListaEgresades";
 import IniciarSesion from "./Componentes/Login/IniciarSesion";
 import Privado from "./Componentes/Rutas/Privado";
 import Publico from "./Componentes/Rutas/Publico";
-import { useAuth0 } from "@auth0/auth0-react";
+import ComprobarAutorizacion from "./Componentes/Login/ComprobarAutorizacion";
 
 const AppRoutes = () => {
-  const { isAuthenticated } = useAuth0();
-
   return (
     <Router>
       <Encabezado />
       <div className="ui container" style={{ minHeight: "60vh" }}>
         <Switch>
           {/* admin */}
-          <Privado
-            path="/lista-egresades"
-            component={ListaEgresades}
-            userLogged={isAuthenticated}
-          />
+          <Privado path="/" exact component={ComprobarAutorizacion} />
+
+          <Privado path="/lista-egresades" exact component={ListaEgresades} />
           {/* Publico */}
-          <Publico
-            path="/" exact
-            component={IniciarSesion}
-            userLogged={isAuthenticated}
-          />
-        
+          <Publico path="/iniciar-sesion" exact component={IniciarSesion} />
+
           <Route component={() => <h2>ERROR 404</h2>} />
         </Switch>
       </div>
