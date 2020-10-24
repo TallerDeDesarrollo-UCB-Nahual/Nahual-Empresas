@@ -55,8 +55,8 @@ class OpcionesDeQuitarFiltro extends Component {
     }
   }
 
-  enviarEstadosModuloCompletado(objeto) {
-    if (objeto.value === "Todos") {
+  enviarEstadosModuloCompletado(filtroSeleccionado) {
+    if (filtroSeleccionado.value === "Todos") {
       this.setState(
         {
           moduloCompletado: {
@@ -65,23 +65,23 @@ class OpcionesDeQuitarFiltro extends Component {
         },
         () => {
           this.validarTodosLosFiltrosRemovidos();
-          this.props.quitarFiltro(objeto);
+          this.props.quitarFiltro(filtroSeleccionado);
         }
       );
     } else
       this.setState({
         moduloCompletado: {
           mostrarBoton: true,
-          texto: objeto.text,
+          texto: filtroSeleccionado.text,
           filtro: "Modulo Completado",
           value: "Todos",
-          filterby: objeto.filterby,
+          filterby: filtroSeleccionado.filterby,
         },
       });
   }
 
-  enviarEstadosNivelDeIngles(objeto) {
-    if (objeto.value === "Todos") {
+  enviarEstadosNivelDeIngles(filtroSeleccionado) {
+    if (filtroSeleccionado.value === "Todos") {
       this.setState(
         {
           nivelDeIngles: {
@@ -90,23 +90,23 @@ class OpcionesDeQuitarFiltro extends Component {
         },
         () => {
           this.validarTodosLosFiltrosRemovidos();
-          this.props.quitarFiltro(objeto);
+          this.props.quitarFiltro(filtroSeleccionado);
         }
       );
     } else
       this.setState({
         nivelDeIngles: {
           mostrarBoton: true,
-          texto: objeto.text,
+          texto: filtroSeleccionado.text,
           filtro: "Nivel de Ingles",
           value: "Todos",
-          filterby: objeto.filterby,
+          filterby: filtroSeleccionado.filterby,
         },
       });
   }
 
-  enviarEstadosNodo(objeto) {
-    if (objeto.value === "Todos") {
+  enviarEstadosNodo(filtroSeleccionado) {
+    if (filtroSeleccionado.value === "Todos") {
       this.setState(
         {
           nodo: {
@@ -115,17 +115,17 @@ class OpcionesDeQuitarFiltro extends Component {
         },
         () => {
           this.validarTodosLosFiltrosRemovidos();
-          this.props.quitarFiltro(objeto);
+          this.props.quitarFiltro(filtroSeleccionado);
         }
       );
     } else
       this.setState({
         nodo: {
           mostrarBoton: true,
-          texto: objeto.text,
+          texto: filtroSeleccionado.text,
           filtro: "Nodo",
           value: "Todos",
-          filterby: objeto.filterby,
+          filterby: filtroSeleccionado.filterby,
         },
       });
   }

@@ -21,7 +21,7 @@ class DetalleDeEgresade extends Component {
         });
       })
       .catch(function (error) {
-        alert("Parece haber un error con la base de datos, intentano nuevamente.")
+      alert("Error en la base de datos.")
       });
   }
 
