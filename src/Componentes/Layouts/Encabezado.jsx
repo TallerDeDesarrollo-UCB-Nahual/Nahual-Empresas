@@ -19,6 +19,7 @@ function Encabezado() {
 	const { user, isAuthenticated } = useAuth0();
 	return (
 		<>
+		{console.log(isAuthenticated)}
 			<Visibility once={false}>
 				<Responsive maxWidth={767}>
 					<Segment vertical style={{ height: "11rem" }}></Segment>

@@ -1,12 +1,15 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
-const Publico = ({ component: Component,  ...rest }) => {
-  const { isAuthenticated } = useAuth0();
+const Publico = ({ component: Component, ...rest }) => {
+  let seInicioSesion = Object.keys(localStorage)[0]
+    ? Object.keys(localStorage)[0].includes("@@auth0")
+    : false;
 
-  if (isAuthenticated ) {
-    return <Redirect to="/" />;
+  console.log(seInicioSesion, "publico");
+
+  if (seInicioSesion) {
+    return <Redirect to="/comprobar-autorizacion" />;
   }
   return <Route {...rest} component={Component} />;
 };

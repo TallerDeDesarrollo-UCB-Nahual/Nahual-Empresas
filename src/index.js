@@ -14,11 +14,10 @@ const onRedirectCallback = (appState) => {
 };
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-gl-221m2.us.auth0.com"
-    clientId="F29XDMT4pvq6h1ppIlypw1YHKfiilaQR"
+    domain="dev-0563c-jv.us.auth0.com"
+    clientId="S061jKAzilYURqj7BchMiDioFPWXI5y7"
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
-    audience={"nahual-empresas/login"}
     useRefreshTokens={true}
     cacheLocation="localstorage"
   >
