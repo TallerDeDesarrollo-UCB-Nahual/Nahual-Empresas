@@ -44,11 +44,6 @@ class Autenticado extends Component {
       .catch((error) => {
         //this.errorDeCaptura(error);
       });
-    console.log({
-      correo: user.email,
-      nombre: user.name,
-      origen: "nahual-empresas"
-    });
     setTimeout(() => {
       this.setState({
         validado: false,
