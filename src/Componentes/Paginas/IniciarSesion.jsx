@@ -9,17 +9,17 @@ const IniciarSesion = () => {
     <Segment vertical textAlign="center">
       <Image size="small" centered src={imagenSaludo} />
       <Header textAlign="center" size="huge" icon>
-        !Bienvenido!
+        ¡Bienvenido!
         <Header.Subheader>
           Es bueno tenerte aquí, para poder continuar debes:
         </Header.Subheader>
       </Header>
       <Button
-       style={{  marginTop: "30px" }}
+        style={{ marginTop: "30px" }}
         content="Iniciar Sesión"
         icon="right chevron"
         labelPosition="right"
-        size='big'
+        size="big"
         onClick={() => iniciarSesion()}
       />
     </Segment>

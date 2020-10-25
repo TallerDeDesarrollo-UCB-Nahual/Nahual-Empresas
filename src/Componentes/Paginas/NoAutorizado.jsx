@@ -14,10 +14,7 @@ import imagenSinAcceso from "../../assets/NoAcceso.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NoAutorizado = () => {
-  const {
-    user: usuario,
-    logout: cerrarSesion
-  } = useAuth0();
+  const { user: usuario, logout: cerrarSesion } = useAuth0();
 
   const SERVICIO_DE_SOLICITAR_ACCESO_NAHUAL =
     process.env.REACT_APP_SOLICITAR_ACCESO_URL;
@@ -29,20 +26,20 @@ const NoAutorizado = () => {
   const generarLink = () => {
     const datos = {
       nombre: usuario.name,
-      correo: usuario.mail,
+      correo: usuario.email,
       origen: "nahual-empresas",
       redirigir: DOMINIO
     };
     var AES = require("crypto-js/aes");
-    var ecriptado = AES.encrypt(JSON.stringify(datos), CLAVE);
+    var encriptado = AES.encrypt(JSON.stringify(datos), CLAVE);
     var url = new URL(SERVICIO_DE_SOLICITAR_ACCESO_NAHUAL);
     var parametros = url.searchParams;
-    parametros.set("datos", ecriptado.toString());
+    parametros.set("datos", encriptado.toString());
     url.search = parametros.toString();
     return url.toString();
   };
 
-  const redireccionarSolicitarAcceso = async () => {
+  const redireccionarSolicitarAcceso = () => {
     window.location.assign(generarLink());
   };
 
