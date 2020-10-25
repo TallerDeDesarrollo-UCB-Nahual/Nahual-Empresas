@@ -75,7 +75,7 @@ const NoAutorizado = () => {
             <Grid.Column>
               <Header icon>
                 <Icon name="unlock" />
-                Solicitar Acceso
+                Solicitar acceso
               </Header>
 
               <Popup
