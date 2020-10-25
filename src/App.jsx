@@ -7,13 +7,13 @@ import Autenticado from "./Componentes/Paginas/Autenticado";
 import { Container } from "semantic-ui-react";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated: estaAutenticado } = useAuth0();
 
   return (
     <>
       <Encabezado />
       <Container  style={{ minHeight: "60vh", marginTop: "115px" }} >
-        {isAuthenticated ? <Autenticado /> : <IniciarSesion />}
+        {estaAutenticado ? <Autenticado /> : <IniciarSesion />}
       </Container>
       <PieDePagina />
     </>

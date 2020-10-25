@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 function Encabezado() {
-  const { user, isAuthenticated, logout } = useAuth0();
+  const { user: usuario, isAuthenticated: estaAutenticado, logout: cerrarSesion } = useAuth0();
   return (
     <>
       <Menu stackable fixed="top">
@@ -18,14 +18,14 @@ function Encabezado() {
           <Menu.Item>
             <Image rounded size={"small"} src={NahualLogo} />
           </Menu.Item>
-          {isAuthenticated && (
+          {estaAutenticado && (
             <>
               <Menu.Item  position="right">
                 <Dropdown
                   trigger={
                     <span>
-                      <Image src={user.picture} avatar />
-                      {user.name}
+                      <Image src={usuario.picture} avatar />
+                      {usuario.name}
                     </span>
                   }
                   options={[
@@ -36,7 +36,7 @@ function Encabezado() {
                     }
                   ]}
                   pointing="top left"
-                  onChange={() => logout()}
+                  onChange={() => cerrarSesion()}
                 />
               </Menu.Item>
               <Menu.Item></Menu.Item>

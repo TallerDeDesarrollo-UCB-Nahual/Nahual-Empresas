@@ -4,7 +4,7 @@ import { Button, Header, Image, Segment } from "semantic-ui-react";
 import imagenSaludo from "../../assets/saludo.png";
 
 const IniciarSesion = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect: iniciarSesion } = useAuth0();
   return (
     <Segment vertical textAlign="center">
       <Image size="small" centered src={imagenSaludo} />
@@ -20,7 +20,7 @@ const IniciarSesion = () => {
         icon="right chevron"
         labelPosition="right"
         size='big'
-        onClick={() => loginWithRedirect()}
+        onClick={() => iniciarSesion()}
       />
     </Segment>
   );

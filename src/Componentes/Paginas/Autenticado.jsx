@@ -27,11 +27,11 @@ class Autenticado extends Component {
   async obtenerVerificacion() {
     const SERVICIO_DE_VERIFICACION_API_NAHUAL =
       process.env.REACT_APP_API_ACCESO_URL;
-    const { user } = this.context;
+    const { user: usuario } = this.context;
 
     await Axios.post(`${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificar`, {
-      correo: user.email,
-      nombre: user.name,
+      correo: usuario.email,
+      nombre: usuario.name,
       origen: "nahual-empresas"
     })
       .then((respuesta) => {

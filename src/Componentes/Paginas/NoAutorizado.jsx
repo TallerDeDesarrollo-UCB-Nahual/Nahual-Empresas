@@ -14,7 +14,7 @@ import imagenSinAcceso from "../../assets/NoAcceso.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NoAutorizado = () => {
-  const { user, logout, getIdTokenClaims } = useAuth0();
+  const { user: usuario, logout: cerrarSesion, getIdTokenClaims: obtenerToken } = useAuth0();
 
   const SERVICIO_DE_SOLICITAR_ACCESO_NAHUAL =
     process.env.REACT_APP_SOLICITAR_ACCESO_URL;
@@ -22,7 +22,7 @@ const NoAutorizado = () => {
   const DOMINIO = process.env.REACT_APP_DOMINIO;
 
   const obtenerTokenId = async () => {
-    const claims = await getIdTokenClaims();
+    const claims = await obtenerToken();
     return claims.__raw;
   };
 
@@ -45,7 +45,7 @@ const NoAutorizado = () => {
       <Grid centered>
         <Reveal animated="small fade" instant>
           <Reveal.Content visible>
-            <Image circular size="small" src={user.picture} />
+            <Image circular size="small" src={usuario.picture} />
           </Reveal.Content>
           <Reveal.Content hidden>
             <Image size="tiny" src={imagenSinAcceso} />
@@ -56,7 +56,7 @@ const NoAutorizado = () => {
         style={{ marginTop: "45px" }}
         textAlign="center"
         as="h2"
-        content={user.name}
+        content={usuario.name}
         subheader="No tienes acceso para ingresar a esta página, tienes la siguientes opciones:"
       />
       <Segment placeholder>
@@ -68,7 +68,7 @@ const NoAutorizado = () => {
                 <Icon name="sign out" />
                 Cambiar a una cuenta con acceso
               </Header>
-              <Button onClick={() => logout()} color="grey">
+              <Button onClick={() => cerrarSesion()} color="grey">
                 Cerrar Sesión
               </Button>
             </Grid.Column>
