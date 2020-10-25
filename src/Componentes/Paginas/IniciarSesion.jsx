@@ -9,7 +9,7 @@ const IniciarSesion = () => {
     <Segment vertical textAlign="center">
       <Image size="small" centered src={imagenSaludo} />
       <Header textAlign="center" size="huge" icon>
-        Bienvenido!
+        !Bienvenido!
         <Header.Subheader>
           Es bueno tenerte acá, para poder continuar debes:
         </Header.Subheader>

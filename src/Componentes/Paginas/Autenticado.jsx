@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import ListaEgresades from "../ListaEgresades/ListaEgresades";
 import NoAutorizado from "./NoAutorizado";
 import { Auth0Context } from "@auth0/auth0-react";
-
 import { Dimmer, Loader } from "semantic-ui-react";
 
 class Autenticado extends Component {
