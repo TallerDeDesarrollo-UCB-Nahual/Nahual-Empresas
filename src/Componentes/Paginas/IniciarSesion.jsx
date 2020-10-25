@@ -11,7 +11,7 @@ const IniciarSesion = () => {
       <Header textAlign="center" size="huge" icon>
         !Bienvenido!
         <Header.Subheader>
-          Es bueno tenerte acá, para poder continuar debes:
+          Es bueno tenerte aquí, para poder continuar debes:
         </Header.Subheader>
       </Header>
       <Button

@@ -57,7 +57,7 @@ const NoAutorizado = () => {
         textAlign="center"
         as="h2"
         content={usuario.name}
-        subheader="No tienes acceso para ingresar a esta página, tienes la siguientes opciones:"
+        subheader="No tienes acceso para ingresar a esta página, tienes las siguientes opciones:"
       />
       <Segment placeholder>
         <Grid columns={2} stackable textAlign="center">
@@ -79,7 +79,7 @@ const NoAutorizado = () => {
               </Header>
 
               <Popup
-                content="Si ya solicitaste acceso, no vuelva a hacerlo, su solicitud esta siendo procesada."
+                content="Si ya solicitaste acceso, no vuelvas a hacerlo, su solicitud esta siendo procesada."
                 trigger={
                   <Button
                     onClick={() => redireccionarSolicitarAcceso()}
