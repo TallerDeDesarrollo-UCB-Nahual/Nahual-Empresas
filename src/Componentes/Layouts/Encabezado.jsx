@@ -2,7 +2,7 @@ import React from "react";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import { Container, Menu, Image, Dropdown } from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 
 function Encabezado() {
   const {
