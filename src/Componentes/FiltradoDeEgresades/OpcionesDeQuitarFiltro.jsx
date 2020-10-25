@@ -131,6 +131,7 @@ class OpcionesDeQuitarFiltro extends Component {
   }
 
   opciones(opcionSeleccionada) {
+    // eslint-disable-next-line
     switch (opcionSeleccionada.filterby) {
       case "moduloCompletado":
         this.enviarEstadosModuloCompletado(
