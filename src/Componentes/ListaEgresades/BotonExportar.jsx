@@ -75,6 +75,11 @@ const conjuntoDeDatos = [
         style: estilos
       },
       {
+        title: "Sede",
+        width: { wpx: 90 },
+        style: estilos
+      },
+      {
         title: "Linkedin",
         width: { wpx: 200 },
         style: estilos
@@ -109,7 +114,8 @@ const generarFila = (egresade, numeroDeFila) => {
     egresade.celular,
     fechaDeNacimiento,
     egresade.nivelIngles,
-    egresade.nombreNodo,
+    egresade.nodo,
+    egresade.sede,
     egresade.linkedin,
     egresade.modulo,
     egresade.añoGraduacion
