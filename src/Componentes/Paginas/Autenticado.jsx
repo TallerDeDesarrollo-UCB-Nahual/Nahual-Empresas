@@ -29,26 +29,20 @@ class Autenticado extends Component {
       process.env.REACT_APP_API_ACCESO_URL;
     const { user: usuario } = this.context;
 
-    await Axios.post(`${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificar`, {
+    await Axios.post(`${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificarAcceso`, {
       correo: usuario.email,
       nombre: usuario.name,
       origen: "nahual-empresas"
     })
       .then((respuesta) => {
         this.setState({
-          validado: respuesta.data.response,
+          validado: respuesta.data.data,
           mostrarBotonDeCarga: false
         });
       })
       .catch((error) => {
-        //this.errorDeCaptura(error);
+        this.errorDeCaptura(error);
       });
-    setTimeout(() => {
-      this.setState({
-        validado: false,
-        mostrarBotonDeCarga: false
-      });
-    }, 2000);
   }
   iconoDeCarga() {
     return (
