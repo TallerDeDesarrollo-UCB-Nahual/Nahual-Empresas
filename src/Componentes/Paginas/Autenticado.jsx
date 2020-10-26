@@ -28,11 +28,16 @@ class Autenticado extends Component {
     const SERVICIO_DE_VERIFICACION_API_NAHUAL =
       process.env.REACT_APP_API_ACCESO_URL;
     const { user: usuario } = this.context;
-
-    await Axios.post(`${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificarAcceso`, {
-      correo: usuario.email,
+    const data = JSON.stringify({
       nombre: usuario.name,
-      origen: "nahual-empresas"
+      email: usuario.email,
+      aplicacion: "Empresas"
+    });
+    Axios({
+      method: "post",
+      url: `${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificarAcceso`,
+      headers: { "Content-Type": "application/json" },
+      data: data
     })
       .then((respuesta) => {
         this.setState({
