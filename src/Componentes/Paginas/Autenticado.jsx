@@ -28,7 +28,7 @@ class Autenticado extends Component {
     const SERVICIO_DE_VERIFICACION_API_NAHUAL =
       process.env.REACT_APP_API_ACCESO_URL;
     const { user: usuario } = this.context;
-    const data = JSON.stringify({
+    const datos = JSON.stringify({
       nombre: usuario.name,
       email: usuario.email,
       aplicacion: "Empresas"
@@ -37,7 +37,7 @@ class Autenticado extends Component {
       method: "post",
       url: `${SERVICIO_DE_VERIFICACION_API_NAHUAL}/verificarAcceso`,
       headers: { "Content-Type": "application/json" },
-      data: data
+      data: datos
     })
       .then((respuesta) => {
         this.setState({
