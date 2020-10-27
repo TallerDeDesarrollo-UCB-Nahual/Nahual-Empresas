@@ -1,57 +1,48 @@
-import React, { Component } from "react";
+import React from "react";
 import NahualLogo from "../../assets/logo-proyecto-nahual.webp";
+import { useAuth0 } from "@auth0/auth0-react";
 
-import {
-  Container,
-  Menu,
-  Segment,
-  Visibility,
-  Image,
-  Header,
-  Responsive
-} from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 
-class Encabezado extends Component {
-  state = {};
-  hideFixedMenu = () => this.setState({ fixed: false });
-  showFixedMenu = () => this.setState({ fixed: true });
-  render() {
-    const { fixed } = this.state;
-    return (
-      <>
-        <Visibility
-          once={false}
-          onBottomPassed={this.showFixedMenu}
-          onBottomPassedReverse={this.hideFixedMenu}
-        >
-          <Responsive maxWidth={767}>
-            <Segment vertical style={{ height: "11rem" }}></Segment>
-          </Responsive>
-          <Responsive minWidth={768}>
-            <Segment vertical style={{ height: "7rem" }}></Segment>
-          </Responsive>
-          <Menu stackable fixed="top">
-            <Container>
-              <Menu.Item>
-                <Image
-                  rounded
-                  size={fixed ? "tiny" : "small"}
-                  src={NahualLogo}
-                />
-              </Menu.Item>
-              <Menu.Item position="right">
-                <Header
-                  color="grey"
-                  as={fixed ? "h3" : "h2"}
-                  icon="graduation"
-                  content="Lista de Egresades"
-                />
-              </Menu.Item>
-            </Container>
-          </Menu>
-        </Visibility>
-      </>
-    );
-  }
+function Encabezado() {
+  const {
+    user: usuario,
+    isAuthenticated: estaAutenticado,
+    logout: cerrarSesion
+  } = useAuth0();
+  return (
+    <>
+      <Menu fixed="top">
+        <Menu.Item>
+          <Image rounded size={"small"} src={NahualLogo} />
+        </Menu.Item>
+        {estaAutenticado && (
+          <>
+            <Menu.Item position="right">
+              <Dropdown
+                trigger={
+                  <span>
+                    <Image src={usuario.picture} avatar />
+                    {usuario.name}
+                  </span>
+                }
+                options={[
+                  {
+                    key: "cerrar-sesion",
+                    text: "Cerrar Sesión",
+                    icon: "sign out"
+                  }
+                ]}
+                pointing="top left"
+                onChange={() => cerrarSesion()}
+              />
+            </Menu.Item>
+            <Menu.Item></Menu.Item>
+          </>
+        )}
+      </Menu>
+    </>
+  );
 }
+
 export default Encabezado;
