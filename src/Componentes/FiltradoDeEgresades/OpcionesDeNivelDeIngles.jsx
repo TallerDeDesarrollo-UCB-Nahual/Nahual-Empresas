@@ -27,7 +27,7 @@ class OpcionesDeNivelDeIngles extends Component{
         opcionDeNivelDeIngles={
         key: opcionDeNivelDeIngles.id,
         text: opcionDeNivelDeIngles.nombre,
-        value: opcionDeNivelDeIngles.nombre,
+        value: opcionDeNivelDeIngles.id,
         filterby: "nivelDeIngles"
       }
       opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);

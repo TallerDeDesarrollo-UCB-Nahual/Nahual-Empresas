@@ -6,136 +6,139 @@ import {
   Message,
   Label,
   Icon,
-  Segment
+  Segment,
+  Header
 } from "semantic-ui-react";
 import Egresade from "./Egresade";
 import FabricaDeFiltros from "../FiltradoDeEgresades/FabricaDeFiltros/FabricaDeFiltros";
 import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeEgresades";
 import BotonExportar from "./BotonExportar";
-import OpcionesDeQuitarFiltro from "../FiltradoDeEgresades/OpcionesDeQuitarFiltro"
+import OpcionesDeQuitarFiltro from "../FiltradoDeEgresades/OpcionesDeQuitarFiltro";
 import BotonDeFiltrado from "./BotonDeFiltrado";
+import iconoEgresade from "../../assets/egresadeIcon.png"
 
 class ListaEgresades extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			egresades: [],
-			filterBy: "Todos",
-			criterioDeFiltrado: "",
-			nuevaPeticionDeFiltrado: false,
-			mostrarBotonDeCarga: true,
-			quitarUnFiltro: '',
-			deshabilitarFiltro:{
-				value: 'Todos',
-				filterby: 'Todos',
-				desactivarOpcion:false
-			},
-			egresadesSeleccionados: []
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      egresades: [],
+      filterBy: "Todos",
+      criterioDeFiltrado: "",
+      nuevaPeticionDeFiltrado: false,
+      mostrarBotonDeCarga: true,
+      quitarUnFiltro: "",
+      deshabilitarFiltro: {
+        value: "Todos",
+        filterby: "Todos",
+        desactivarOpcion: false
+      },
+      egresadesSeleccionados: []
+    };
+  }
 
-	componentDidMount() {
-		this.obtenerTodesLosEgresades();
-	}
+  componentDidMount() {
+    this.obtenerTodesLosEgresades();
+  }
 
-	obtenerRespuesta(respuesta) {
-		this.setState({
-			egresades: respuesta.data.response,
-			nuevaPeticionDeFiltrado: false,
-			mostrarBotonDeCarga: false,
-		});
-	}
+  obtenerRespuesta(respuesta) {
+    this.setState({
+      egresades: respuesta.data.response,
+      nuevaPeticionDeFiltrado: false,
+      mostrarBotonDeCarga: false
+    });
+  }
 
-	errorDeCaptura(error) {
-		this.setState({
-			nuevaPeticionDeFiltrado: false,
-			mostrarBotonDeCarga: false,
-		});
-		alert("Hay un error en la base de datos, status: " + error.status);
-	}
+  errorDeCaptura(error) {
+    this.setState({
+      nuevaPeticionDeFiltrado: false,
+      mostrarBotonDeCarga: false
+    });
+    alert("Hay un error en la base de datos, status: " + error.status);
+  }
 
-	async obtenerTodesLosEgresades() {
-		await ServicioDeEgresades.obtenerEgresades()
-			.then((respuesta) => {
-				this.obtenerRespuesta(respuesta);
-			})
-			.catch((error) => {
-				this.errorDeCaptura(error);
-			});
-	}
+  async obtenerTodesLosEgresades() {
+    await ServicioDeEgresades.obtenerEgresades()
+      .then((respuesta) => {
+        this.obtenerRespuesta(respuesta);
+      })
+      .catch((error) => {
+        this.errorDeCaptura(error);
+      });
+  }
 
-	async obtenerEgresadesFiltrados() {
-		await FabricaDeFiltros(this.state.criterioDeFiltrado)
-			.then((respuesta) => {
-				this.obtenerRespuesta(respuesta);
-			})
-			.catch((error) => {
-				this.errorDeCaptura(error);
-			});
-	}
+  async obtenerEgresadesFiltrados() {
+    await FabricaDeFiltros(this.state.criterioDeFiltrado)
+      .then((respuesta) => {
+        this.obtenerRespuesta(respuesta);
+      })
+      .catch((error) => {
+        this.errorDeCaptura(error);
+      });
+  }
 
-	listaEgresades() {
-		if (this.state.nuevaPeticionDeFiltrado) {
-			this.obtenerEgresadesFiltrados();
-		}
-		return this.mapeoListaEgresades(this.state.egresades);
-	}
+  listaEgresades() {
+    if (this.state.nuevaPeticionDeFiltrado) {
+      this.obtenerEgresadesFiltrados();
+    }
+    return this.mapeoListaEgresades(this.state.egresades);
+  }
 
-	mapeoListaEgresades(listaEgresades) {
-		return listaEgresades.map((egresade, index) => {
-			return (
-				<Egresade
-					item={egresade}
-					key={egresade.id}
-					seleccionarEgresades={this.seleccionarEgresades}
-					numeracion={index + 1}
-				/>
-			);
-		});
-	}
+  mapeoListaEgresades(listaEgresades) {
+    return listaEgresades.map((egresade, index) => {
+      return (
+        <Egresade
+          item={egresade}
+          key={egresade.id}
+          seleccionarEgresades={this.seleccionarEgresades}
+          numeracion={index + 1}
+        />
+      );
+    });
+  }
 
-	enviarDatosAlEstado(data, estado){
-		this.setState({
-			criterioDeFiltrado: data,
-			filterBy: data.value,
-			nuevaPeticionDeFiltrado: true,
-			mostrarBotonDeCarga: true,
-			egresadesSeleccionados:[],
-			quitarUnFiltro: '',
-			deshabilitarFiltro: {			
-				value: 'Todos',
-				filterby: 'Todos',
-				desactivarOpcion: estado
-		}})
-		this.cambiarEstadoDeCheckbox(true);
-	}
+  enviarDatosAlEstado(data, estado) {
+    this.setState({
+      criterioDeFiltrado: data,
+      filterBy: data.value,
+      nuevaPeticionDeFiltrado: true,
+      mostrarBotonDeCarga: true,
+      egresadesSeleccionados: [],
+      quitarUnFiltro: "",
+      deshabilitarFiltro: {
+        value: "Todos",
+        filterby: "Todos",
+        desactivarOpcion: estado
+      }
+    });
+    this.cambiarEstadoDeCheckbox(true);
+  }
 
-	manejarEvento = (data) => {
-		this.enviarDatosAlEstado(data, true)
-	}
+  manejarEvento = (data) => {
+    this.enviarDatosAlEstado(data, true);
+  };
 
-	quitarFiltros (data){
-		this.enviarDatosAlEstado(data, false)
-	}
+  quitarFiltros(data) {
+    this.enviarDatosAlEstado(data, false);
+  }
 
-	iconoDeCarga() {
-		return (
-			this.state.mostrarBotonDeCarga === true && (
-				<Dimmer active inverted>
-					<Loader inverted>Cargando</Loader>
-				</Dimmer>
-			)
-		);
-	}
+  iconoDeCarga() {
+    return (
+      this.state.mostrarBotonDeCarga === true && (
+        <Dimmer active inverted>
+          <Loader inverted>Cargando</Loader>
+        </Dimmer>
+      )
+    );
+  }
 
-	listaVacia() {
-		let cabeceraDelMensaje = "por el momento no tenemos egresades disponibles.";
-		let contenidoDelMensaje = "Intenta mas tarde";
-		if (this.state.filterBy !== "Todos") {
-			cabeceraDelMensaje = "no existen datos relacionados con su busqueda.";
-			contenidoDelMensaje = "Intenta con otro filtro";
-		}
-		return this.state.egresades.length === 0 ? (
+  listaVacia() {
+    let cabeceraDelMensaje = "por el momento no tenemos egresades disponibles.";
+    let contenidoDelMensaje = "Intenta mas tarde";
+    if (this.state.filterBy !== "Todos") {
+      cabeceraDelMensaje = "no existen datos relacionados con su busqueda.";
+      contenidoDelMensaje = "Intenta con otro filtro";
+    }
+    return this.state.egresades.length === 0 ? (
       <Message
         icon="warning sign"
         warning
@@ -169,12 +172,12 @@ class ListaEgresades extends Component {
     );
   }
 
-	seleccionarTodosEgresades() {
-		let checkboxes = this.cambiarEstadoDeCheckbox(false);
-		checkboxes[0].checked
-			? this.setState({ egresadesSeleccionados: this.state.egresades })
-			: this.setState({ egresadesSeleccionados: [] });
-	}
+  seleccionarTodosEgresades() {
+    let checkboxes = this.cambiarEstadoDeCheckbox(false);
+    checkboxes[0].checked
+      ? this.setState({ egresadesSeleccionados: this.state.egresades })
+      : this.setState({ egresadesSeleccionados: [] });
+  }
 
   seleccionarEgresades = (egresade, checked) => {
     if (checked) {
@@ -201,41 +204,41 @@ class ListaEgresades extends Component {
         : (checkbox.checked = checkboxes[0].checked);
     });
     return checkboxes;
-	}
-	
-	quitarUnFiltro = (data) => {
-		this.setState({
-			criterioDeFiltrado: {			
-				value: data.filterby,
-				filterby: 'SinFiltros',
-			},
-			quitarUnFiltro:data,
-			nuevaPeticionDeFiltrado: true,
-			mostrarBotonDeCarga: true,
-		})
-	}
-	
-	verificarSiEraUltimoBoton=(data)=>{
-		if (data===false)
-			this.quitarFiltros(this.state.deshabilitarFiltro)
-	}
+  }
+
+  quitarUnFiltro = (data) => {
+    this.setState({
+      criterioDeFiltrado: {
+        value: data.filterby,
+        filterby: "SinFiltros"
+      },
+      quitarUnFiltro: data,
+      nuevaPeticionDeFiltrado: true,
+      mostrarBotonDeCarga: true
+    });
+  };
+
+  verificarSiEraUltimoBoton = (data) => {
+    if (data === false) this.quitarFiltros(this.state.deshabilitarFiltro);
+  };
 
   render() {
     return (
       <>
         {this.iconoDeCarga()}
+				<Header as='h2' image={iconoEgresade} textAlign="center" content='Lista Egresades' />
         <Segment>
           <BotonDeFiltrado
             manejarEvento={this.manejarEvento}
-						valor={this.state.deshabilitarFiltro}
-						quitarUnFiltro={this.state.quitarUnFiltro} 
+            valor={this.state.deshabilitarFiltro}
+            quitarUnFiltro={this.state.quitarUnFiltro}
           />
-					{this.removerFiltros()}
-					<OpcionesDeQuitarFiltro  
-						quitarFiltro={this.quitarUnFiltro} 
-						esUltimoFiltro={this.verificarSiEraUltimoBoton}
-						opcion={this.state.criterioDeFiltrado}
-					/>
+          {this.removerFiltros()}
+          <OpcionesDeQuitarFiltro
+            quitarFiltro={this.quitarUnFiltro}
+            esUltimoFiltro={this.verificarSiEraUltimoBoton}
+            opcion={this.state.criterioDeFiltrado}
+          />
         </Segment>
         <div style={{ overflowX: "auto" }}>
           <Table singleLine selectable striped unstackable>
@@ -259,7 +262,7 @@ class ListaEgresades extends Component {
             <Table.Body>{this.listaEgresades()}</Table.Body>
           </Table>
         </div>
-				{this.listaVacia()}
+        {this.listaVacia()}
       </>
     );
   }

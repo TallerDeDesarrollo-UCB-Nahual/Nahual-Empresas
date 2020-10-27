@@ -23,7 +23,7 @@ function Egresade(props) {
 				/>
 			</Table.Cell>
 			<Table.Cell>{PrimeraLetraEnMayuscula(props.item.nombreCompleto)}</Table.Cell>
-			<Table.Cell>{props.item.nombreNodo}</Table.Cell>
+			<Table.Cell>{props.item.nodo}</Table.Cell>
 			<Table.Cell>{props.item.modulo}</Table.Cell>
 			<Table.Cell>{props.item.nivelIngles}</Table.Cell>
 			<Table.Cell textAlign='center'>
