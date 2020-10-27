@@ -27,7 +27,7 @@ const NoAutorizado = () => {
     const datos = {
       nombre: usuario.name,
       correo: usuario.email,
-      origen: "nahual-empresas",
+      origen: "Empresas",
       redirigir: DOMINIO
     };
     var AES = require("crypto-js/aes");
