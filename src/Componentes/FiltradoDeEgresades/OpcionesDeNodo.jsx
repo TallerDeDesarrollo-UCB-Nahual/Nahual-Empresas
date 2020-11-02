@@ -28,7 +28,7 @@ class OpcionesDeNodo extends Component{
         key: opcionNodo.id,
         text: opcionNodo.nombre,
         value: opcionNodo.id,
-        filterby: "nodo"
+        filtrarPor: "nodo"
       }
       opcionesDeNodo.push(opcionNodo);
     });
@@ -58,7 +58,7 @@ class OpcionesDeNodo extends Component{
   }
 
   componentWillReceiveProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filterby === 'nodo')
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filtrarPor === 'nodo')
       this.setState({valor:'Todos'})
   }
 

@@ -10,7 +10,7 @@ class OpcionesDeQuitarFiltro extends Component {
         key: 0,
         text: "Todos",
         value: "Todos",
-        filterby: "Todos",
+        filtrarPor: "Todos",
       },
       moduloCompletado: {
         mostrarBoton: false,
@@ -75,7 +75,7 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: filtroSeleccionado.text,
           filtro: "Modulo Completado",
           value: "Todos",
-          filterby: filtroSeleccionado.filterby,
+          filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });
   }
@@ -100,7 +100,7 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: filtroSeleccionado.text,
           filtro: "Nivel de Ingles",
           value: "Todos",
-          filterby: filtroSeleccionado.filterby,
+          filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });
   }
@@ -125,14 +125,14 @@ class OpcionesDeQuitarFiltro extends Component {
           texto: filtroSeleccionado.text,
           filtro: "Nodo",
           value: "Todos",
-          filterby: filtroSeleccionado.filterby,
+          filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });
   }
 
   opciones(opcionSeleccionada) {
     // eslint-disable-next-line
-    switch (opcionSeleccionada.filterby) {
+    switch (opcionSeleccionada.filtrarPor) {
       case "moduloCompletado":
         this.enviarEstadosModuloCompletado(
           opcionSeleccionada

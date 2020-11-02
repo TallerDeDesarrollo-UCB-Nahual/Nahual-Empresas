@@ -28,7 +28,7 @@ class OpcionesDeModulosCompletados extends Component{
         key: opcionDeModuloCompletado.id,
         text: opcionDeModuloCompletado.nombre,
         value: opcionDeModuloCompletado.nombre,
-        filterby: "moduloCompletado"
+        filtrarPor: "moduloCompletado"
       }
       opcionesDeModulosCompletados.push(opcionDeModuloCompletado);
     });
@@ -58,7 +58,7 @@ class OpcionesDeModulosCompletados extends Component{
   }
 
   componentWillReceiveProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filterby === 'moduloCompletado')
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filtrarPor === 'moduloCompletado')
       this.setState({valor:'Todos'})
   }
 

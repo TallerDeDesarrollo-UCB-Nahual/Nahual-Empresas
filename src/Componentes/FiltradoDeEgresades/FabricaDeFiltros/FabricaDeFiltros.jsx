@@ -34,7 +34,7 @@ function removerUnFiltro(filtro) {
 }
 
 function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
-  switch (criterioDeFiltrado.filterby) {
+  switch (criterioDeFiltrado.filtrarPor) {
     case "moduloCompletado":
       if (criterioDeFiltrado.value === "Todos") filtrarPorModuloCompletado = "";
       else filtrarPorModuloCompletado = `modulo=${criterioDeFiltrado.value}&`;
