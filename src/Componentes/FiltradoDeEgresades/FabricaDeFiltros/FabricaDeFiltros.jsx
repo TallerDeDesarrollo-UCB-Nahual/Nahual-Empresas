@@ -17,7 +17,7 @@ function FabricaDeFiltros(criterioDeFiltrado) {
 }
 
 function removerUnFiltro(filtro) {
-  switch (filtro.value) {
+  switch (filtro.valor) {
     case "moduloCompletado":
       filtrarPorModuloCompletado = "";
       break;
@@ -36,16 +36,16 @@ function removerUnFiltro(filtro) {
 function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
   switch (criterioDeFiltrado.filtrarPor) {
     case "moduloCompletado":
-      if (criterioDeFiltrado.value === "Todos") filtrarPorModuloCompletado = "";
-      else filtrarPorModuloCompletado = `modulo=${criterioDeFiltrado.value}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorModuloCompletado = "";
+      else filtrarPorModuloCompletado = `modulo=${criterioDeFiltrado.valor}&`;
       break;
     case "nivelDeIngles":
-      if (criterioDeFiltrado.value === "Todos") filtrarPorNivelDeIngles = "";
-      else filtrarPorNivelDeIngles = `nivelInglesId=${criterioDeFiltrado.value}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorNivelDeIngles = "";
+      else filtrarPorNivelDeIngles = `nivelInglesId=${criterioDeFiltrado.valor}&`;
       break;
     case "nodo":
-      if (criterioDeFiltrado.value === "Todos") filtrarPorNombreDeNodo = "";
-      else filtrarPorNombreDeNodo = `nodoId=${criterioDeFiltrado.value}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorNombreDeNodo = "";
+      else filtrarPorNombreDeNodo = `nodoId=${criterioDeFiltrado.valor}&`;
       break;
     case "Todos":
       reiniciarFiltros();

@@ -9,23 +9,23 @@ class OpcionesDeQuitarFiltro extends Component {
         id: 0,
         key: 0,
         text: "Todos",
-        value: "Todos",
+        valor: "Todos",
         filtrarPor: "Todos",
       },
       moduloCompletado: {
         mostrarBoton: false,
         texto: "",
-        value: "Todos",
+        valor: "Todos",
       },
       nivelDeIngles: {
         mostrarBoton: false,
         texto: "",
-        value: "Todos",
+        valor: "Todos",
       },
       nodo: {
         mostrarBoton: false,
         texto: "",
-        value: "Todos",
+        valor: "Todos",
       },
     };
   }
@@ -56,7 +56,7 @@ class OpcionesDeQuitarFiltro extends Component {
   }
 
   enviarEstadosModuloCompletado(filtroSeleccionado) {
-    if (filtroSeleccionado.value === "Todos") {
+    if (filtroSeleccionado.valor === "Todos") {
       this.setState(
         {
           moduloCompletado: {
@@ -74,14 +74,14 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: filtroSeleccionado.text,
           filtro: "Modulo Completado",
-          value: "Todos",
+          valor: "Todos",
           filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });
   }
 
   enviarEstadosNivelDeIngles(filtroSeleccionado) {
-    if (filtroSeleccionado.value === "Todos") {
+    if (filtroSeleccionado.valor === "Todos") {
       this.setState(
         {
           nivelDeIngles: {
@@ -99,14 +99,14 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: filtroSeleccionado.text,
           filtro: "Nivel de Ingles",
-          value: "Todos",
+          valor: "Todos",
           filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });
   }
 
   enviarEstadosNodo(filtroSeleccionado) {
-    if (filtroSeleccionado.value === "Todos") {
+    if (filtroSeleccionado.valor === "Todos") {
       this.setState(
         {
           nodo: {
@@ -124,7 +124,7 @@ class OpcionesDeQuitarFiltro extends Component {
           mostrarBoton: true,
           texto: filtroSeleccionado.text,
           filtro: "Nodo",
-          value: "Todos",
+          valor: "Todos",
           filtrarPor: filtroSeleccionado.filtrarPor,
         },
       });

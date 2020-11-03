@@ -27,7 +27,7 @@ class OpcionesDeNivelDeIngles extends Component{
         opcionDeNivelDeIngles={
         key: opcionDeNivelDeIngles.id,
         text: opcionDeNivelDeIngles.nombre,
-        value: opcionDeNivelDeIngles.id,
+        valor: opcionDeNivelDeIngles.id,
         filtrarPor: "nivelDeIngles"
       }
       opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);
@@ -36,7 +36,7 @@ class OpcionesDeNivelDeIngles extends Component{
   }
 
   manejarEvento(opcionSeleccionada){
-    this.setState({ valor: opcionSeleccionada.value });
+    this.setState({ valor: opcionSeleccionada.valor });
     this.props.manejarEvento(opcionSeleccionada)
   }
 
@@ -45,9 +45,9 @@ class OpcionesDeNivelDeIngles extends Component{
       <Dropdown.Menu >
         {this.state.opcionesDeFiltrado.map((opcionSeleccionada) => (
           <Dropdown.Item 
-            active={opcionSeleccionada.value === this.state.valor} 
+            active={opcionSeleccionada.valor === this.state.valor} 
             key={opcionSeleccionada.key}
-            value={opcionSeleccionada.value}
+            valor={opcionSeleccionada.valor}
             text={opcionSeleccionada.text}
             {... opcionSeleccionada}
             onClick={() => this.manejarEvento(opcionSeleccionada)}
