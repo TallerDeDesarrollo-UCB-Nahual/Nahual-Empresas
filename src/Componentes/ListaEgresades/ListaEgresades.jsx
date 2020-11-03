@@ -28,7 +28,7 @@ class ListaEgresades extends Component {
       mostrarBotonDeCarga: true,
       quitarUnFiltro: "",
       deshabilitarFiltro: {
-        value: "Todos",
+        valor: "Todos",
         filtrarPor: "Todos",
         desactivarOpcion: false
       },
@@ -84,28 +84,28 @@ class ListaEgresades extends Component {
   }
 
   mapeoListaEgresades(listaEgresades) {
-    return listaEgresades.map((egresade, index) => {
+    return listaEgresades.map((egresade, indice) => {
       return (
         <Egresade
           item={egresade}
           key={egresade.id}
           seleccionarEgresades={this.seleccionarEgresades}
-          numeracion={index + 1}
+          numeracion={indice + 1}
         />
       );
     });
   }
 
-  enviarDatosAlEstado(data, estado) {
+  enviarDatosAlEstado(datos, estado) {
     this.setState({
-      criterioDeFiltrado: data,
-      filtrarPor: data.value,
+      criterioDeFiltrado: datos,
+      filtrarPor: datos.valor,
       nuevaPeticionDeFiltrado: true,
       mostrarBotonDeCarga: true,
       egresadesSeleccionados: [],
       quitarUnFiltro: "",
       deshabilitarFiltro: {
-        value: "Todos",
+        valor: "Todos",
         filtrarPor: "Todos",
         desactivarOpcion: estado
       }
@@ -113,12 +113,12 @@ class ListaEgresades extends Component {
     this.cambiarEstadoDeCheckbox(true);
   }
 
-  manejarEvento = (data) => {
-    this.enviarDatosAlEstado(data, true);
+  manejarEvento = (datos) => {
+    this.enviarDatosAlEstado(datos, true);
   };
 
-  quitarFiltros(data) {
-    this.enviarDatosAlEstado(data, false);
+  quitarFiltros(datos) {
+    this.enviarDatosAlEstado(datos, false);
   }
 
   iconoDeCarga() {
@@ -143,7 +143,7 @@ class ListaEgresades extends Component {
         icon="warning sign"
         warning
         header={`Lo sentimos, ${cabeceraDelMensaje}`}
-        content={`${contenidoDelMensaje}. Gracias`}
+        content={`${contenidoDelMensaje}. Gracias.`}
       />
     ) : (
       <BotonExportar
@@ -206,20 +206,20 @@ class ListaEgresades extends Component {
     return checkboxes;
   }
 
-  quitarUnFiltro = (data) => {
+  quitarUnFiltro = (datos) => {
     this.setState({
       criterioDeFiltrado: {
-        value: data.filtrarPor,
+        valor: datos.filtrarPor,
         filtrarPor: "SinFiltros"
       },
-      quitarUnFiltro: data,
+      quitarUnFiltro: datos,
       nuevaPeticionDeFiltrado: true,
       mostrarBotonDeCarga: true
     });
   };
 
-  verificarSiEraUltimoBoton = (data) => {
-    if (data === false) this.quitarFiltros(this.state.deshabilitarFiltro);
+  verificarSiEraUltimoBoton = (datos) => {
+    if (datos === false) this.quitarFiltros(this.state.deshabilitarFiltro);
   };
 
   render() {
