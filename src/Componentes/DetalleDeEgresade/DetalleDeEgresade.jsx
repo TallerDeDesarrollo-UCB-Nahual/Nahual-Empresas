@@ -25,9 +25,9 @@ class DetalleDeEgresade extends Component {
       });
   }
 
-  mostrarModal (state) {
+  mostrarModal (estado) {
     this.setState({
-      abierto: state
+      abierto: estado
     });
   }
 
