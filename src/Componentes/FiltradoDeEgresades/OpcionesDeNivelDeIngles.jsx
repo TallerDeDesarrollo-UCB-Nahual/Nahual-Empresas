@@ -28,7 +28,7 @@ class OpcionesDeNivelDeIngles extends Component{
         key: opcionDeNivelDeIngles.id,
         text: opcionDeNivelDeIngles.nombre,
         valor: opcionDeNivelDeIngles.id,
-        filtrarPor: "nivelDeIngles"
+        filtrar_por: "nivelDeIngles"
       }
       opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);
     });
@@ -58,7 +58,7 @@ class OpcionesDeNivelDeIngles extends Component{
   }
 
   componentWillReceiveProps(nuevasProps){
-    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filtrarPor === 'nivelDeIngles')
+    if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filtrar_por === 'nivelDeIngles')
       this.setState({valor:'Todos'})
   }
   

@@ -22,14 +22,14 @@ class ListaEgresades extends Component {
     super(props);
     this.state = {
       egresades: [],
-      filtrarPor: "Todos",
+      filtrar_por: "Todos",
       criterioDeFiltrado: "",
       nuevaPeticionDeFiltrado: false,
       mostrarBotonDeCarga: true,
       quitarUnFiltro: "",
       deshabilitarFiltro: {
         valor: "Todos",
-        filtrarPor: "Todos",
+        filtrar_por: "Todos",
         desactivarOpcion: false
       },
       egresadesSeleccionados: []
@@ -99,14 +99,14 @@ class ListaEgresades extends Component {
   enviarDatosAlEstado(datos, estado) {
     this.setState({
       criterioDeFiltrado: datos,
-      filtrarPor: datos.valor,
+      filtrar_por: datos.valor,
       nuevaPeticionDeFiltrado: true,
       mostrarBotonDeCarga: true,
       egresadesSeleccionados: [],
       quitarUnFiltro: "",
       deshabilitarFiltro: {
         valor: "Todos",
-        filtrarPor: "Todos",
+        filtrar_por: "Todos",
         desactivarOpcion: estado
       }
     });
@@ -134,7 +134,7 @@ class ListaEgresades extends Component {
   listaVacia() {
     let cabeceraDelMensaje = "por el momento no tenemos egresades disponibles.";
     let contenidoDelMensaje = "Intenta mas tarde";
-    if (this.state.filtrarPor !== "Todos") {
+    if (this.state.filtrar_por !== "Todos") {
       cabeceraDelMensaje = "no existen datos relacionados con su busqueda.";
       contenidoDelMensaje = "Intenta con otro filtro";
     }
@@ -209,8 +209,8 @@ class ListaEgresades extends Component {
   quitarUnFiltro = (datos) => {
     this.setState({
       criterioDeFiltrado: {
-        valor: datos.filtrarPor,
-        filtrarPor: "SinFiltros"
+        valor: datos.filtrar_por,
+        filtrar_por: "SinFiltros"
       },
       quitarUnFiltro: datos,
       nuevaPeticionDeFiltrado: true,
