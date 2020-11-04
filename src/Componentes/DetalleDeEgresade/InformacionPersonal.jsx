@@ -10,7 +10,7 @@ function convertirAMayusculas(str) {
 
 function InformacionPersonal({ egresade }) {
   moment.locale('es');
-  const fecha_convertida = moment(egresade.fechaNacimiento).format('LL');
+  const fechaConvertida = moment(egresade.fechaNacimiento).format('LL');
   return (
     <Item.Group>
       <Item>
@@ -24,7 +24,7 @@ function InformacionPersonal({ egresade }) {
               <Item.Description>
                 <p> <Icon name='mail outline' /> <b>Correo: </b>{egresade.correo}</p>
                 <p> <Icon name='call' /> <b>Teléfono: </b>{egresade.celular}</p>
-                <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fecha_convertida}</p>             
+                <p> <Icon name='calendar outline' /><b>Fecha de nacimiento: </b>{fechaConvertida}</p>             
                 <p> <Icon name='level up alternate' /><b>Nivel de inglés: </b>{egresade.nivelIngles}</p>
                 <p> <Icon name='map marker alternate'/><b>Sede: </b> {egresade.sede}</p>
                 <p> <Icon name='map outline' /><b>Nodo: </b>{egresade.nodo}</p>

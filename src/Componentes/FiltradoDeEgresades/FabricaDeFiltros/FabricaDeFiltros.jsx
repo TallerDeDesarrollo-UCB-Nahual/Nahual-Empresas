@@ -2,9 +2,9 @@ import axios from "axios";
 
 const SERVICIO_DE_DATOS_API_NAHUAL = process.env.REACT_APP_API_URL;
 let [
-  filtrar_porModuloCompletado,
-  filtrar_porNivelDeIngles,
-  filtrar_porNombreDeNodo,
+  filtrarPorModuloCompletado,
+  filtrarPorNivelDeIngles,
+  filtrarPorNombreDeNodo,
   filtroDeConsulta,
 ] = ["", "", "", ""];
 
@@ -19,13 +19,13 @@ function FabricaDeFiltros(criterioDeFiltrado) {
 function removerUnFiltro(filtro) {
   switch (filtro.valor) {
     case "moduloCompletado":
-      filtrar_porModuloCompletado = "";
+      filtrarPorModuloCompletado = "";
       break;
     case "nivelDeIngles":
-      filtrar_porNivelDeIngles = "";
+      filtrarPorNivelDeIngles = "";
       break;
     case "nodo":
-      filtrar_porNombreDeNodo = "";
+      filtrarPorNombreDeNodo = "";
       break;
     default:
       reiniciarFiltros();
@@ -36,16 +36,16 @@ function removerUnFiltro(filtro) {
 function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
   switch (criterioDeFiltrado.filtrar_por) {
     case "moduloCompletado":
-      if (criterioDeFiltrado.valor === "Todos") filtrar_porModuloCompletado = "";
-      else filtrar_porModuloCompletado = `modulo=${criterioDeFiltrado.valor}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorModuloCompletado = "";
+      else filtrarPorModuloCompletado = `modulo=${criterioDeFiltrado.valor}&`;
       break;
     case "nivelDeIngles":
-      if (criterioDeFiltrado.valor === "Todos") filtrar_porNivelDeIngles = "";
-      else filtrar_porNivelDeIngles = `nivelInglesId=${criterioDeFiltrado.valor}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorNivelDeIngles = "";
+      else filtrarPorNivelDeIngles = `nivelInglesId=${criterioDeFiltrado.valor}&`;
       break;
     case "nodo":
-      if (criterioDeFiltrado.valor === "Todos") filtrar_porNombreDeNodo = "";
-      else filtrar_porNombreDeNodo = `nodoId=${criterioDeFiltrado.valor}&`;
+      if (criterioDeFiltrado.valor === "Todos") filtrarPorNombreDeNodo = "";
+      else filtrarPorNombreDeNodo = `nodoId=${criterioDeFiltrado.valor}&`;
       break;
     case "Todos":
       reiniciarFiltros();
@@ -62,17 +62,17 @@ function establecerVariablesDeFiltroLocal(criterioDeFiltrado) {
 }
 
 function reiniciarFiltros() {
-  filtrar_porNivelDeIngles = "";
-  filtrar_porNombreDeNodo = "";
-  filtrar_porModuloCompletado = "";
+  filtrarPorNivelDeIngles = "";
+  filtrarPorNombreDeNodo = "";
+  filtrarPorModuloCompletado = "";
 }
 
 function construirFiltroDeConsulta() {
   let consulta = "";
   return consulta.concat(
-    filtrar_porModuloCompletado,
-    filtrar_porNivelDeIngles,
-    filtrar_porNombreDeNodo
+    filtrarPorModuloCompletado,
+    filtrarPorNivelDeIngles,
+    filtrarPorNombreDeNodo
   );
 }
 
