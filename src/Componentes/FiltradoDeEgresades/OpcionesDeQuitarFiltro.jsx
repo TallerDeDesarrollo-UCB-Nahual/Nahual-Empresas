@@ -7,8 +7,8 @@ class OpcionesDeQuitarFiltro extends Component {
     this.state = {
       removerFiltro: {
         id: 0,
-        key: 0,
-        text: "Todos",
+        llave: 0,
+        texto: "Todos",
         valor: "Todos",
         filtrar_por: "Todos",
       },

@@ -25,7 +25,7 @@ class OpcionesDeModulosCompletados extends Component{
     const opcionesDeModulosCompletados = []
     respuesta.forEach(opcionDeModuloCompletado => {
       opcionDeModuloCompletado={
-        key: opcionDeModuloCompletado.id,
+        llave: opcionDeModuloCompletado.id,
         text: opcionDeModuloCompletado.nombre,
         valor: opcionDeModuloCompletado.nombre,
         filtrar_por: "moduloCompletado"
@@ -45,10 +45,10 @@ class OpcionesDeModulosCompletados extends Component{
       <Dropdown.Menu >
         {this.state.opcionesDeFiltrado.map((opcionSeleccionada) => (
           <Dropdown.Item 
-            active={opcionSeleccionada.valor === this.state.valor}
-            key={opcionSeleccionada.key}
+            activo={opcionSeleccionada.valor === this.state.valor}
+            llave={opcionSeleccionada.key}
             valor={opcionSeleccionada.valor}
-            text={opcionSeleccionada.text}
+            texto={opcionSeleccionada.text}
             {... opcionSeleccionada}
             onClick={() => this.manejarEvento(opcionSeleccionada)}
           />

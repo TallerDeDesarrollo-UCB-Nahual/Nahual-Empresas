@@ -25,7 +25,7 @@ class OpcionesDeNivelDeIngles extends Component{
     const opcionesDeNivelDeIngles = []
     respuesta.forEach(opcionDeNivelDeIngles => {
         opcionDeNivelDeIngles={
-        key: opcionDeNivelDeIngles.id,
+        llave: opcionDeNivelDeIngles.id,
         text: opcionDeNivelDeIngles.nombre,
         valor: opcionDeNivelDeIngles.id,
         filtrar_por: "nivelDeIngles"
@@ -45,10 +45,10 @@ class OpcionesDeNivelDeIngles extends Component{
       <Dropdown.Menu >
         {this.state.opcionesDeFiltrado.map((opcionSeleccionada) => (
           <Dropdown.Item 
-            active={opcionSeleccionada.valor === this.state.valor} 
-            key={opcionSeleccionada.key}
+            activo={opcionSeleccionada.valor === this.state.valor} 
+            llave={opcionSeleccionada.key}
             valor={opcionSeleccionada.valor}
-            text={opcionSeleccionada.text}
+            texto={opcionSeleccionada.text}
             {... opcionSeleccionada}
             onClick={() => this.manejarEvento(opcionSeleccionada)}
           />

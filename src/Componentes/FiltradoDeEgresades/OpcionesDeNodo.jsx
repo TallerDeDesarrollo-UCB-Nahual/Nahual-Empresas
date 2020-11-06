@@ -25,7 +25,7 @@ class OpcionesDeNodo extends Component{
     const opcionesDeNodo = []
     respuesta.forEach(opcionNodo => {
       opcionNodo={
-        key: opcionNodo.id,
+        llave: opcionNodo.id,
         text: opcionNodo.nombre,
         valor: opcionNodo.id,
         filtrar_por: "nodo"
@@ -45,10 +45,10 @@ class OpcionesDeNodo extends Component{
       <Dropdown.Menu >
         {this.state.opcionesDeFiltrado.map((opcionSeleccionada) => (
           <Dropdown.Item 
-            active={opcionSeleccionada.valor === this.state.valor}
-            key={opcionSeleccionada.key}
+            activo={opcionSeleccionada.valor === this.state.valor}
+            llave={opcionSeleccionada.key}
             valor={opcionSeleccionada.valor}
-            text={opcionSeleccionada.text}
+            texto={opcionSeleccionada.text}
             {... opcionSeleccionada}
             onClick={() => this.manejarEvento(opcionSeleccionada)}
           />
