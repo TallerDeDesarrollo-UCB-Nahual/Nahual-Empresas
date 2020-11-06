@@ -32,7 +32,7 @@ class OpcionesDeNivelDeIngles extends Component{
       }
       opcionesDeNivelDeIngles.push(opcionDeNivelDeIngles);
     });
-    this.setState({opcionesDeFiltrado :opcionesDeNivelDeIngles})
+    this.setState({opcionesDeFiltrado: opcionesDeNivelDeIngles})
   }
 
   manejarEvento(opcionSeleccionada){
@@ -59,7 +59,7 @@ class OpcionesDeNivelDeIngles extends Component{
 
   componentWillReceiveProps(nuevasProps){
     if (nuevasProps.valor.desactivarOpcion === false || nuevasProps.quitarUnFiltro.filtrar_por === 'nivelDeIngles')
-      this.setState({valor:'Todos'})
+      this.setState({valor: 'Todos'})
   }
   
   render(){
