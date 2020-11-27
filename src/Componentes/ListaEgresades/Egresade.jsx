@@ -22,7 +22,7 @@ function Egresade(props) {
 					onClick={() => seleccionarEgresade(props.item)}
 				/>
 			</Table.Cell>
-			<Table.Cell>{PrimeraLetraEnMayuscula(props.item.nombreCompleto)}</Table.Cell>
+			<Table.Cell>{PrimeraLetraEnMayuscula(props.item.nombre + " " + props.item.apellido)}</Table.Cell>
 			<Table.Cell>{props.item.nodo}</Table.Cell>
 			<Table.Cell>{props.item.modulo}</Table.Cell>
 			<Table.Cell>{props.item.nivelIngles}</Table.Cell>

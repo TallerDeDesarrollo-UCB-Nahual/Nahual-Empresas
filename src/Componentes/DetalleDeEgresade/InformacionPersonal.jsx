@@ -20,7 +20,7 @@ function InformacionPersonal({ egresade }) {
         />
         <Item.Content verticalAlign='middle'>
             <div style={{ textAlign: "left" }}>
-              <Header as='h1'> {convertirAMayusculas(egresade.nombreCompleto)} </Header><br />
+              <Header as='h1'> {convertirAMayusculas(egresade.nombre + " " + egresade.apellido)} </Header><br />
               <Item.Description>
                 <p> <Icon name='mail outline' /> <b>Correo: </b>{egresade.correo}</p>
                 <p> <Icon name='call' /> <b>Teléfono: </b>{egresade.celular}</p>
