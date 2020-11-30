@@ -109,7 +109,7 @@ const generarFila = (egresade, numeroDeFila) => {
     : "";
   return [
     numeroDeFila + 1,
-    PrimeraLetraEnMayuscula(egresade.nombreCompleto),
+    PrimeraLetraEnMayuscula(egresade.nombre + " " + egresade.apellido),
     egresade.correo,
     egresade.celular,
     fechaDeNacimiento,
