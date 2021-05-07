@@ -15,7 +15,8 @@ import ServicioDeEgresades from "../../Servicios/Servicios-Egresades/ServicioDeE
 import BotonExportar from "./BotonExportar";
 import OpcionesDeQuitarFiltro from "../FiltradoDeEgresades/OpcionesDeQuitarFiltro";
 import BotonDeFiltrado from "./BotonDeFiltrado";
-import iconoEgresade from "../../assets/egresadeIcon.png"
+import iconoEgresade from "../../assets/egresadeIcon.png";
+import {Pagination} from 'semantic-ui-react';
 
 class ListaEgresades extends Component {
   constructor(props) {
@@ -32,9 +33,15 @@ class ListaEgresades extends Component {
         filterby: "Todos",
         desactivarOpcion: false
       },
-      egresadesSeleccionados: []
+      egresadesSeleccionados: [],
+      firstElement:0,
+      lastElement:10,
+      actualPage:1,
+      cantItems:0,
+      cantPages:0
     };
   }
+
 
   componentDidMount() {
     this.obtenerTodesLosEgresades();
@@ -44,7 +51,9 @@ class ListaEgresades extends Component {
     this.setState({
       egresades: respuesta.data.response,
       nuevaPeticionDeFiltrado: false,
-      mostrarBotonDeCarga: false
+      mostrarBotonDeCarga: false,
+      cantItems:respuesta.data.response.length,
+      cantPages:Math.round((respuesta.data.response.length/10)+0.5)
     });
   }
 
@@ -84,7 +93,7 @@ class ListaEgresades extends Component {
   }
 
   mapeoListaEgresades(listaEgresades) {
-    return listaEgresades.map((egresade, index) => {
+    return listaEgresades.slice(this.state.firstElement,this.state.lastElement).map((egresade, index) => {
       return (
         <Egresade
           item={egresade}
@@ -222,6 +231,12 @@ class ListaEgresades extends Component {
     if (data === false) this.quitarFiltros(this.state.deshabilitarFiltro);
   };
 
+  setPageNum = (event, { activePage }) => {
+    this.setState({ page: activePage });
+    this.state.lastElement= ((activePage)*10);
+    this.state.firstElement= (this.state.lastElement-10);
+  };
+
   render() {
     return (
       <>
@@ -261,6 +276,16 @@ class ListaEgresades extends Component {
             </Table.Header>
             <Table.Body>{this.listaEgresades()}</Table.Body>
           </Table>
+          <Pagination
+            boundaryRange={0}
+            defaultActivePage={this.state.actualPage}
+            ellipsisItem={null}
+            firstItem={null}
+            lastItem={null}
+            siblingRange={1}
+            totalPages={this.state.cantPages}
+            onPageChange={this.setPageNum}
+          />
         </div>
         {this.listaVacia()}
       </>
